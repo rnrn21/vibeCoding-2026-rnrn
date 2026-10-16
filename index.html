@@ -14,14 +14,71 @@
     <header>
         <div class="container">
             <h1 class="logo">STYLE<span>404</span></h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#show">Show</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#community">Community</a></li>
-                </ul>
-            </nav>
+            <div class="header-right">
+                <button class="menu-toggle" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu-panel">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <nav class="main-nav" aria-label="메인 메뉴">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#show">Show</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#community">Community</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="mega-menu" id="mobile-menu-panel">
+            <div class="mega-menu-inner">
+                <nav class="mobile-nav" aria-label="모바일 메인 메뉴">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#show">Show</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#community">Community</a></li>
+                    </ul>
+                </nav>
+                <div class="mega-menu-grid">
+                    <section class="mega-menu-column" aria-labelledby="submenu-home">
+                        <h2 id="submenu-home">Home</h2>
+                        <ul>
+                            <li><a href="#home">Welcome</a></li>
+                            <li><a href="#home">Latest News</a></li>
+                            <li><a href="#home">Featured Looks</a></li>
+                            <li><a href="#home">Editor's Pick</a></li>
+                        </ul>
+                    </section>
+                    <section class="mega-menu-column" aria-labelledby="submenu-show">
+                        <h2 id="submenu-show">Show</h2>
+                        <ul>
+                            <li><a href="#show">Runway Calendar</a></li>
+                            <li><a href="#show">Live Shows</a></li>
+                            <li><a href="#show">Designer Interviews</a></li>
+                            <li><a href="#show">Behind the Scenes</a></li>
+                        </ul>
+                    </section>
+                    <section class="mega-menu-column" aria-labelledby="submenu-gallery">
+                        <h2 id="submenu-gallery">Gallery</h2>
+                        <ul>
+                            <li><a href="#gallery">Lookbook</a></li>
+                            <li><a href="#gallery">Street Style</a></li>
+                            <li><a href="#gallery">Editorial</a></li>
+                            <li><a href="#gallery">Design Archive</a></li>
+                        </ul>
+                    </section>
+                    <section class="mega-menu-column" aria-labelledby="submenu-community">
+                        <h2 id="submenu-community">Community</h2>
+                        <ul>
+                            <li><a href="#community">Member Stories</a></li>
+                            <li><a href="#community">Style Forum</a></li>
+                            <li><a href="#community">Events</a></li>
+                            <li><a href="#community">Join Us</a></li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -203,6 +260,32 @@
 
         // 초기 시작
         startAutoPlay();
+
+        const header = document.querySelector('header');
+        const mainNav = document.querySelector('.main-nav');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mobileMenu = window.matchMedia('(max-width: 768px)');
+
+        function setMenuOpen(isOpen) {
+            header.classList.toggle('is-menu-open', isOpen);
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            menuToggle.setAttribute('aria-label', isOpen ? '메뉴 닫기' : '메뉴 열기');
+        }
+
+        mainNav.addEventListener('pointerenter', () => {
+            if (!mobileMenu.matches) setMenuOpen(true);
+        });
+        mainNav.addEventListener('focusin', () => setMenuOpen(true));
+        header.addEventListener('pointerleave', () => {
+            if (!mobileMenu.matches) setMenuOpen(false);
+        });
+        header.addEventListener('focusout', (event) => {
+            if (!header.contains(event.relatedTarget)) setMenuOpen(false);
+        });
+        menuToggle.addEventListener('click', () => {
+            setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
+        });
+        mobileMenu.addEventListener('change', () => setMenuOpen(false));
     </script>
 </body>
 </html>
