@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion 404 | Designer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Roboto for clean look -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- 1. 상단영역 -->
+    <header>
+        <div class="container">
+            <h1 class="logo">FASHION<span>404</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#show">Show</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#community">Community</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. 메인영역 -->
+    <main>
+        <!-- 슬라이더 배너 영역 -->
+        <section class="main-banner">
+            <div class="slider-container">
+                <div class="slider-wrapper">
+                    <!-- 슬라이드 1 -->
+                    <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=1920');">
+                        <div class="slide-content">
+                            <span class="slide-subtitle">2024 NEW SEASON</span>
+                            <h2 class="slide-title">CYBER PUNK<br>AESTHETIC</h2>
+                            <p class="slide-desc">가상과 현실의 경계를 허무는 새로운 컬렉션을 만나보세요.</p>
+                            <a href="#" class="btn-more">VIEW MORE</a>
+                        </div>
+                    </div>
+                    <!-- 슬라이드 2 -->
+                    <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1445205170230-053b830c6050?q=80&w=1920');">
+                        <div class="slide-content">
+                            <span class="slide-subtitle">EXCLUSIVE COLLAB</span>
+                            <h2 class="slide-title">NEON VELVET<br>NIGHTS</h2>
+                            <p class="slide-desc">부드러운 벨벳과 강렬한 네온의 완벽한 조화.</p>
+                            <a href="#" class="btn-more">VIEW MORE</a>
+                        </div>
+                    </div>
+                    <!-- 슬라이드 3 -->
+                    <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1920');">
+                        <div class="slide-content">
+                            <span class="slide-subtitle">LIMITED EDITION</span>
+                            <h2 class="slide-title">FASHION<br>GLITCH 404</h2>
+                            <p class="slide-desc">정의되지 않은 스타일, 당신만의 코드를 완성하세요.</p>
+                            <a href="#" class="btn-more">VIEW MORE</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 인디케이터 -->
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 기존 이벤트 파트 -->
+        <section class="hero">
+            <div class="container">
+                <h2>LATEST EVENTS</h2>
+                <div class="card-wrapper">
+                    <!-- 카드 1 -->
+                    <article class="card">
+                        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=600');"></div>
+                        <div class="card-content">
+                            <span class="category">2024 Collection</span>
+                            <h3>Midnight Glitch</h3>
+                            <p>도시의 밤을 재해석한 다크블루 톤의 뉴 패러다임.</p>
+                        </div>
+                    </article>
+                    <!-- 카드 2 -->
+                    <article class="card featured">
+                        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1550639525-c97d455acf70?q=80&w=600');"></div>
+                        <div class="card-content">
+                            <span class="category">Special Event</span>
+                            <h3>Hot Pink Error</h3>
+                            <p>블랙 속에서 빛나는 강렬한 핫핑크의 에너지.</p>
+                        </div>
+                    </article>
+                    <!-- 카드 3 -->
+                    <article class="card">
+                        <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=600');"></div>
+                        <div class="card-content">
+                            <span class="category">Collaboration</span>
+                            <h3>Unknown Identity</h3>
+                            <p>패션과 디지털 아트가 만나는 경계선 위의 미학.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 3. 하단영역 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">FASHION<span>404</span></div>
+                <div class="footer-info">
+                    <p><strong>Design Office:</strong> 404 Fashion St, Seoul, South Korea</p>
+                    <p><strong>Contact:</strong> info@fashion404.com | +82 02 1234 5678</p>
+                    <p class="copyright">&copy; 2024 Fashion 404. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const wrapper = document.querySelector('.slider-wrapper');
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+        let startX = 0;
+        let isDragging = false;
+        let autoPlayTimer;
+        let resumeTimer;
+
+        // 슬라이드 이동 함수
+        function goToSlide(index) {
+            if (index < 0) index = slides.length - 1;
+            if (index >= slides.length) index = 0;
+            
+            currentIndex = index;
+            wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // 도트 업데이트
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        // 자동 재생 시작
+        function startAutoPlay() {
+            stopAutoPlay();
+            autoPlayTimer = setInterval(() => {
+                goToSlide(currentIndex + 1);
+            }, 3000);
+        }
+
+        // 자동 재생 정지
+        function stopAutoPlay() {
+            clearInterval(autoPlayTimer);
+            clearTimeout(resumeTimer);
+        }
+
+        // 사용자 조작 후 재개 설정
+        function resetAutoPlayTimer() {
+            stopAutoPlay();
+            resumeTimer = setTimeout(() => {
+                startAutoPlay();
+            }, 5000);
+        }
+
+        // 터치/마우스 이벤트 (스와이프)
+        wrapper.addEventListener('mousedown', dragStart);
+        wrapper.addEventListener('touchstart', dragStart);
+        wrapper.addEventListener('mouseup', dragEnd);
+        wrapper.addEventListener('touchend', dragEnd);
+
+        function dragStart(e) {
+            isDragging = true;
+            startX = (e.type === 'touchstart') ? e.touches[0].clientX : e.clientX;
+            stopAutoPlay();
+        }
+
+        function dragEnd(e) {
+            if (!isDragging) return;
+            const endX = (e.type === 'touchend') ? e.changedTouches[0].clientX : e.clientX;
+            const diff = startX - endX;
+
+            if (Math.abs(diff) > 50) { // 50px 이상 이동시 슬라이드
+                if (diff > 0) {
+                    goToSlide(currentIndex + 1);
+                } else {
+                    goToSlide(currentIndex - 1);
+                }
+            }
+            isDragging = false;
+            resetAutoPlayTimer();
+        }
+
+        // 도트 클릭 이벤트
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToSlide(index);
+                resetAutoPlayTimer();
+            });
+        });
+
+        // 초기 시작
+        startAutoPlay();
+    </script>
+</body>
+</html>
