@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fashion 404 | Designer Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts: Roboto for clean look -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
@@ -160,6 +161,79 @@
                 </div>
             </div>
         </section>
+
+        <section class="fashion-show-section" aria-labelledby="fashion-show-title">
+            <div class="fashion-show-container">
+                <div class="fashion-show-heading">
+                    <span class="fashion-show-eyebrow">FASHION AROUND THE WORLD</span>
+                    <h2 id="fashion-show-title">세계의 패션쇼</h2>
+                    <p>도시마다 다른 감각과 런웨이의 순간을 만나보세요.</p>
+                </div>
+                <div class="swiper fashion-show-swiper">
+                    <div class="swiper-wrapper">
+                        <article class="swiper-slide fashion-show-card">
+                            <img src="https://picsum.photos/seed/fashion1/600/800" alt="파리 패션위크 런웨이 이미지">
+                            <div class="fashion-show-card-content">
+                                <h3>파리 패션위크</h3>
+                                <p><span>개최 도시</span>파리</p>
+                                <p><span>개최 시기</span>2월 · 9월</p>
+                            </div>
+                        </article>
+                        <article class="swiper-slide fashion-show-card">
+                            <img src="https://picsum.photos/seed/fashion2/600/800" alt="밀라노 패션위크 런웨이 이미지">
+                            <div class="fashion-show-card-content">
+                                <h3>밀라노 패션위크</h3>
+                                <p><span>개최 도시</span>밀라노</p>
+                                <p><span>개최 시기</span>2월 · 9월</p>
+                            </div>
+                        </article>
+                        <article class="swiper-slide fashion-show-card">
+                            <img src="https://picsum.photos/seed/fashion3/600/800" alt="뉴욕 패션위크 런웨이 이미지">
+                            <div class="fashion-show-card-content">
+                                <h3>뉴욕 패션위크</h3>
+                                <p><span>개최 도시</span>뉴욕</p>
+                                <p><span>개최 시기</span>2월 · 9월</p>
+                            </div>
+                        </article>
+                        <article class="swiper-slide fashion-show-card">
+                            <img src="https://picsum.photos/seed/fashion4/600/800" alt="런던 패션위크 런웨이 이미지">
+                            <div class="fashion-show-card-content">
+                                <h3>런던 패션위크</h3>
+                                <p><span>개최 도시</span>런던</p>
+                                <p><span>개최 시기</span>2월 · 9월</p>
+                            </div>
+                        </article>
+                        <article class="swiper-slide fashion-show-card">
+                            <img src="https://picsum.photos/seed/fashion5/600/800" alt="서울 패션위크 런웨이 이미지">
+                            <div class="fashion-show-card-content">
+                                <h3>서울 패션위크</h3>
+                                <p><span>개최 도시</span>서울</p>
+                                <p><span>개최 시기</span>3월 · 9월</p>
+                            </div>
+                        </article>
+                        <article class="swiper-slide fashion-show-card">
+                            <img src="https://picsum.photos/seed/fashion6/600/800" alt="도쿄 패션위크 런웨이 이미지">
+                            <div class="fashion-show-card-content">
+                                <h3>도쿄 패션위크</h3>
+                                <p><span>개최 도시</span>도쿄</p>
+                                <p><span>개최 시기</span>3월 · 8월</p>
+                            </div>
+                        </article>
+                        <article class="swiper-slide fashion-show-card">
+                            <img src="https://picsum.photos/seed/fashion7/600/800" alt="상하이 패션위크 런웨이 이미지">
+                            <div class="fashion-show-card-content">
+                                <h3>상하이 패션위크</h3>
+                                <p><span>개최 도시</span>상하이</p>
+                                <p><span>개최 시기</span>3월 · 10월</p>
+                            </div>
+                        </article>
+                    </div>
+                    <button class="swiper-button-prev" type="button" aria-label="이전 패션쇼"></button>
+                    <button class="swiper-button-next" type="button" aria-label="다음 패션쇼"></button>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- 3. 하단영역 -->
@@ -176,7 +250,41 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        new Swiper('.fashion-show-swiper', {
+            loop: true,
+            loopAdditionalSlides: 2,
+            slidesPerView: 1.2,
+            spaceBetween: 20,
+            grabCursor: true,
+            speed: 600,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: true,
+                pauseOnMouseEnter: true
+            },
+            navigation: {
+                nextEl: '.fashion-show-swiper .swiper-button-next',
+                prevEl: '.fashion-show-swiper .swiper-button-prev'
+            },
+            pagination: {
+                el: '.fashion-show-swiper .swiper-pagination',
+                clickable: true
+            },
+            breakpoints: {
+                480: {
+                    slidesPerView: 2
+                },
+                768: {
+                    slidesPerView: 3
+                },
+                1200: {
+                    slidesPerView: 4
+                }
+            }
+        });
+
         const wrapper = document.querySelector('.slider-wrapper');
         const slides = document.querySelectorAll('.slide');
         const dots = document.querySelectorAll('.dot');
