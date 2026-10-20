@@ -1,284 +1,335 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>산리오코리아</title>
     <style>
-        /* 1. 웹 폰트 로딩 (CDN 방식) */
-        @import url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.css');
+      /* 1. 웹 폰트 로딩 (CDN 방식) */
+      @import url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.css");
 
-        /* 전체루트설정 */
-        html{
-            /* rem단위를 위한 Root 글자크기 설정 */
-            font-size: ; 
-        }
+      /* --- 공통 스타일 및 리셋 --- */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-        /* --- 공통 스타일 및 리셋 --- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+      body {
+        font-family: "NanumBarunGothic", "Apple SD Gothic Neo", sans-serif;
+        color: #333;
+      }
 
-        body {
-            font-family: 'NanumBarunGothic', 'Apple SD Gothic Neo', sans-serif;
-            color: #333;
-        }
+      /* --- 1. 상단영역 (Header) --- */
+      .site-header {
+        width: 100%;
+        background-color: #fff;
+        border-bottom: 1px solid #eee;
+      }
 
-        /* --- 1. 상단영역 (Header) --- */
-        .site-header {
-            width: 100%;
-            background-color: #fff;
-            border-bottom: 1px solid #eee;
-        }
+      .header-inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100px;
+        padding: 0 20px;
+      }
 
-        .header-inner {
-            max-width: 1440px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 100px;
-            padding: 0 20px;
-        }
+      .logo-box {
+        flex-shrink: 0;
+      }
+      .logo-img {
+        height: 56px;
+      }
 
-        .logo-box {
-            flex-shrink: 0;
-        }
-        .logo-img {
-            height: 56px;
-        }
+      .nav-list {
+        display: flex;
+        gap: 40px;
+        list-style: none;
+        font-size: 1.1rem;
+      }
 
-        .nav-list {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-            font-size: 1.1rem;
-        }
+      .nav-list a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+      }
 
-        .nav-list a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
+      .nav-list a:hover {
+        color: #ff69b4;
+      }
 
-        .nav-list a:hover {
-            color: #ff69b4;
-        }
+      /* --- 2. 메인영역 --- */
+      /* 2-1. 배너 영역 */
+      .main-banner {
+        position: relative !important;
+        background-image: url("./images/images/스크린샷 2026-10-08 12.10.46.png");
+        background-repeat: repeat;
+        padding: 80px 0 100px 0;
+      }
 
-        /* --- 2. 메인영역 --- */
-        /* 2-1. 배너 영역 */
-        .main-banner {
-            position: relative !important; /* 내부 요소 위치 기준점 */
-            background-image: url('./images/images/스크린샷 2026-10-08 12.10.46.png');
-            background-repeat: repeat;
-            padding: 80px 0 100px 0; /* 하단 스크롤 버튼 여백 확보 */
-        }
+      .main-visual-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 900px;
+        height: 500px;
+        margin: 0 auto;
+        background: transparent;
+      }
 
+      .main-visual-img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      /* SNS 버튼 영역 기본 스타일 (PC 기준 크기 44px) */
+      .sns-buttons {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 2;
+      }
+
+      .sns-buttons a {
+        display: block;
+      }
+
+      .sns-buttons img {
+        width: 44px;
+        height: 44px;
+        display: block;
+      }
+
+      /* 📍 스크롤 유도 버튼 기본 스타일 */
+      .scroll_btn {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        z-index: 9999 !important;
+        cursor: pointer;
+      }
+
+      /* 마우스 외곽선 */
+      .scroll_btn .mouse {
+        display: block;
+        width: 20px;
+        height: 32px;
+        border: 1px solid #605d5d;
+        border-radius: 12px;
+        margin: 0 auto;
+        position: relative;
+        background-color: #ffffff !important;
+        animation: mouseBounce 2.5s ease-in-out infinite;
+      }
+
+      /* 마우스 내부 휠 */
+      .scroll_btn .mouse span {
+        display: block;
+        width: 4px;
+        height: 6px;
+        background-color: #605d5d;
+        border-radius: 2px;
+        position: absolute;
+        top: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: scrollWheel 3s ease-in-out infinite;
+      }
+      /* 이시이지반방마: 이름 시간 ..   */
+
+      /* SCROLL DOWN 텍스트 */
+      .scroll_btn p {
+        margin-top: 12px;
+        font-size: 11px;
+        font-weight: normal;
+        color: #000000 !important;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+
+      /* 애니메이션 키프레임 */
+      @keyframes scrollWheel {
+        0% {
+          opacity: 0;
+          top: 6px;
+        }
+        30% {
+          opacity: 1;
+        }
+        70% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          top: 18px;
+        }
+      }
+
+      @keyframes mouseBounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      /* 미디어 쿼리 (반응형: 화면이 줄어들 때 전체 버튼 크기 비례 축소) */
+      @media (max-width: 1000px) {
         .main-visual-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 900px;
-            height: 500px;
-            margin: 0 auto;
-            background: transparent;
+          width: 100vw;
+          max-width: 100%;
+          height: auto;
+          padding: 0 16px;
         }
-
         .main-visual-img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+          width: 100%;
+          height: auto;
         }
+      }
 
-        /* SNS 버튼 위치 설정 */
+      @media (max-width: 900px) {
         .sns-buttons {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 2;
+          top: 20px;
+          right: 15px;
+          gap: 8px;
+        }
+        /* 💡 SNS 버튼 크기 축소 적용 */
+        .sns-buttons img {
+          width: 32px !important;
+          height: 32px !important;
         }
 
-        /* 📍 스크롤 유도 버튼 전체 (무조건 최상단 노출) */
-        .scroll_btn {
-            position: absolute;
-            bottom: 20px;            /* 배너 하단에서 20px 위 */
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-            z-index: 9999 !important; /* 다른 요소에 가려지지 않도록 최상단 고정 */
-            cursor: pointer;
-        }
-        /* 📍 마우스 외곽선 (마우스 전체가 위아래로 움직이도록 animation 추가) */
-.scroll_btn .mouse {
-    display: block;
-    width: 20px;
-    height: 32px;
-    border: 2px solid #000;
-    border-radius: 12px;
-    margin: 0 auto;
-    position: relative;
-    background-color: #ffffff !important;
-    
-    /* 👇 마우스 전체가 위아래로 움직이는 애니메이션 추가! */
-    animation: mouseBounce 1.5s ease-in-out infinite;
-}
-
-/* 📍 마우스 내부 움직이는 휠 */
-.scroll_btn .mouse span {
-    display: block;
-    width: 4px;
-    height: 6px;
-    background-color: #000;
-    border-radius: 2px;
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: scrollWheel 3s infinite;
-}
-
-/* 📍 1. 휠 내부 움직임 애니메이션 */
-@keyframes scrollWheel {
-    0% {
-        opacity: 1;
-        top: 4px;
-    }
-    100% {
-        opacity: 0;
-        top: 18px;
-    }
-}
-
-/* 📍 2. 마우스 전체가 위아래로 바운스되는 애니메이션 (새로 추가!) */
-@keyframes mouseBounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(6px); /* 위아래 이동 폭 (필요에 따라 조절 가능) */
-    }
-}
-        /* 미디어 쿼리 (반응형) */
-        @media (max-width: 1000px) {
-            .main-visual-box {
-                width: 100vw;
-                max-width: 100%;
-                height: auto;
-                padding: 0 16px;
-            }
-            .main-visual-img {
-                width: 100%;
-                height: auto;
-            }
+        /* 💡 마우스 아이콘 크기 축소 적용 */
+        .scroll_btn .mouse {
+          width: 16px;
+          height: 26px;
+          border-width: 1.5px;
         }
 
-        @media (max-width: 900px) {
-            .sns-buttons {
-                top: 20px;
-                right: 10px;
-            }
+        .scroll_btn .mouse span {
+          width: 3px;
+          height: 5px;
+          top: 5px;
         }
 
-        /* 각 섹션 기본 공백 */
-        .character-section,
-        .company-section,
-        .recruit-section,
-        .place-section,
-        .contact-section {
-            padding: 60px 20px;
+        .scroll_btn p {
+          font-size: 9px;
+          margin-top: 8px;
         }
+      }
+
+      /* 각 섹션 기본 공백 */
+      .character-section,
+      .company-section,
+      .recruit-section,
+      .place-section,
+      .contact-section {
+        padding: 60px 20px;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <main class="wrapper">
-        
-        <!-- 1. 상단영역 -->
-        <header class="site-header">
-            <div class="header-inner">
-                <figure class="logo-box">
-                    <a href="#">
-                        <img src="./images/images/logo_2023.png" alt="산리오코리아 로고" class="logo-img">
-                    </a>
-                </figure>
-                <nav class="header-nav">
-                    <ul class="nav-list">
-                        <li><a href="#company">company</a></li>
-                        <li><a href="#character">character</a></li>
-                        <li><a href="#place">place</a></li>
-                        <li><a href="#recruit">recruit</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
-
-        <!-- 2. 메인영역 -->
-        <div class="site-main">
-            
-            <!-- 2-1. 배너영역 -->
-            <section class="main-banner">
-                <figure class="main-visual-box">
-                    <img src="./images/images/main_visual_pc_v1.png" alt="메인 비주얼" class="main-visual-img">
-                </figure>
-                
-                <!-- SNS 버튼 영역 -->
-                <div class="sns-buttons">
-                    <a href="https://www.instagram.com" target="_blank" rel="noopener" style="display: block;">
-                        <img src="./images/images/i_ins_pc_v3.png" alt="인스타그램" style="width: 44px; height: 44px; display: block;">
-                    </a>
-                    <a href="https://www.youtube.com" target="_blank" rel="noopener" style="display: block;">
-                        <img src="./images/images/i_you_pc_v3.png" alt="유튜브" style="width: 44px; height: 44px; display: block;">
-                    </a>
-                </div>
-
-                <!-- 📍 스크롤 유도 버튼 (마우스 아이콘 + 텍스트) -->
-                <div class="scroll_btn">
-                    <span class="mouse">
-                        <span></span>
-                    </span>
-                    <p style="font-size: 66%;">SCROLL DOWN</p>
-           
-                </div>
-            </section>
-            
-            <!-- 2-2. 캐릭터영역 -->
-            <section class="character-section">
-                <!-- 캐릭터 영역 내용은 추후 추가 -->
-            </section>
-
-            <!-- 2-3. 컴퍼니영역 -->
-            <section class="company-section">
-                <!-- 컴퍼니 영역 내용은 추후 추가 -->
-            </section>
-
-            <!-- 2-4. 리쿠르트영역 -->
-            <section class="recruit-section">
-                <!-- 리쿠르트 영역 내용은 추후 추가 -->
-            </section>
-
-            <!-- 2-5. 플레이스영역 -->
-            <section class="place-section">
-                <!-- 플레이스 영역 내용은 추후 추가 -->
-            </section>
-
-            <!-- 2-6. 컨텍어스영역 -->
-            <section class="contact-section">
-                <!-- 컨텍어스 영역 내용은 추후 추가 -->
-            </section>
-
+      <!-- 1. 상단영역 -->
+      <header class="site-header">
+        <div class="header-inner">
+          <figure class="logo-box">
+            <a href="#">
+              <img
+                src="./images/images/logo_2023.png"
+                alt="산리오코리아 로고"
+                class="logo-img"
+              />
+            </a>
+          </figure>
+          <nav class="header-nav">
+            <ul class="nav-list">
+              <li><a href="#company">company</a></li>
+              <li><a href="#character">character</a></li>
+              <li><a href="#place">place</a></li>
+              <li><a href="#recruit">recruit</a></li>
+            </ul>
+          </nav>
         </div>
+      </header>
 
-        <!-- 3. 하단영역 -->
-        <footer class="site-footer">
-            <!-- 하단 영역 내용은 추후 추가 -->
-        </footer>
+      <!-- 2. 메인영역 -->
+      <div class="site-main">
+        <!-- 2-1. 배너영역 -->
+        <section class="main-banner">
+          <figure class="main-visual-box">
+            <img
+              src="./images/images/main_visual_pc_v1.png"
+              alt="메인 비주얼"
+              class="main-visual-img"
+            />
+          </figure>
 
+          <!-- SNS 버튼 영역 (인라인 스타일 제거 완료) -->
+          <div class="sns-buttons">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener">
+              <img src="./images/images/i_ins_pc_v3.png" alt="인스타그램" />
+            </a>
+            <a href="https://www.youtube.com" target="_blank" rel="noopener">
+              <img src="./images/images/i_you_pc_v3.png" alt="유튜브" />
+            </a>
+          </div>
+
+          <!-- 스크롤 유도 버튼 -->
+          <div class="scroll_btn">
+            <span class="mouse">
+              <span></span>
+            </span>
+            <p>SCROLL DOWN</p>
+          </div>
+        </section>
+
+        <!-- 2-2. 캐릭터영역 -->
+        <section class="character-section">
+          <!-- 캐릭터 영역 내용 -->
+          <div class="tit-box">
+            <h2 class="part-tit"></h2>
+            <div class=""btn_box">
+            <a href="#" class="btn view"></a>
+          </div>
+        </section>
+
+        <!-- 2-3. 컴퍼니영역 -->
+        <section class="company-section">
+          <!-- 컴퍼니 영역 내용은 추후 추가 -->
+        </section>
+
+        <!-- 2-4. 리쿠르트영역 -->
+        <section class="recruit-section">
+          <!-- 리쿠르트 영역 내용은 추후 추가 -->
+        </section>
+
+        <!-- 2-5. 플레이스영역 -->
+        <section class="place-section">
+          <!-- 플레이스 영역 내용은 추후 추가 -->
+        </section>
+
+        <!-- 2-6. 컨텍어스영역 -->
+        <section class="contact-section">
+          <!-- 컨텍어스 영역 내용은 추후 추가 -->
+        </section>
+      </div>
+
+      <!-- 3. 하단영역 -->
+      <footer class="site-footer">
+        <!-- 하단 영역 내용은 추후 추가 -->
+      </footer>
     </main>
-
-</body>
+  </body>
 </html>
