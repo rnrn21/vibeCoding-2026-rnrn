@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <title>산리오코리아</title>
     <style>
+        /* 1. 웹 폰트 로딩 (CDN 방식) */
+        @import url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.css');
+
+        /* 전체루트설정 */
+        html{
+            /* rem단위를 위한 Root 글자크기 설정 */
+            font-size: ; 
+        }
+
         /* --- 공통 스타일 및 리셋 --- */
         * {
             box-sizing: border-box;
@@ -12,7 +21,7 @@
         }
 
         body {
-            font-family: 'Apple SD Gothic Neo', sans-serif;
+            font-family: 'NanumBarunGothic', 'Apple SD Gothic Neo', sans-serif;
             color: #333;
         }
 
@@ -60,9 +69,10 @@
         /* --- 2. 메인영역 --- */
         /* 2-1. 배너 영역 */
         .main-banner {
+            position: relative !important; /* 내부 요소 위치 기준점 */
             background-image: url('./images/images/스크린샷 2026-10-08 12.10.46.png');
             background-repeat: repeat;
-            padding: 80px 0; /* 배너 전체 위아래 패딩 부여 */
+            padding: 80px 0 100px 0; /* 하단 스크롤 버튼 여백 확보 */
         }
 
         .main-visual-box {
@@ -82,6 +92,77 @@
             object-fit: contain;
         }
 
+        /* SNS 버튼 위치 설정 */
+        .sns-buttons {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 2;
+        }
+
+        /* 📍 스크롤 유도 버튼 전체 (무조건 최상단 노출) */
+        .scroll_btn {
+            position: absolute;
+            bottom: 20px;            /* 배너 하단에서 20px 위 */
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 9999 !important; /* 다른 요소에 가려지지 않도록 최상단 고정 */
+            cursor: pointer;
+        }
+        /* 📍 마우스 외곽선 (마우스 전체가 위아래로 움직이도록 animation 추가) */
+.scroll_btn .mouse {
+    display: block;
+    width: 20px;
+    height: 32px;
+    border: 2px solid #000;
+    border-radius: 12px;
+    margin: 0 auto;
+    position: relative;
+    background-color: #ffffff !important;
+    
+    /* 👇 마우스 전체가 위아래로 움직이는 애니메이션 추가! */
+    animation: mouseBounce 1.5s ease-in-out infinite;
+}
+
+/* 📍 마우스 내부 움직이는 휠 */
+.scroll_btn .mouse span {
+    display: block;
+    width: 4px;
+    height: 6px;
+    background-color: #000;
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 3s infinite;
+}
+
+/* 📍 1. 휠 내부 움직임 애니메이션 */
+@keyframes scrollWheel {
+    0% {
+        opacity: 1;
+        top: 4px;
+    }
+    100% {
+        opacity: 0;
+        top: 18px;
+    }
+}
+
+/* 📍 2. 마우스 전체가 위아래로 바운스되는 애니메이션 (새로 추가!) */
+@keyframes mouseBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(6px); /* 위아래 이동 폭 (필요에 따라 조절 가능) */
+    }
+}
         /* 미디어 쿼리 (반응형) */
         @media (max-width: 1000px) {
             .main-visual-box {
@@ -96,7 +177,14 @@
             }
         }
 
-        /* 각 섹션 기본 공백 (추후 내용 추가 시 활용) */
+        @media (max-width: 900px) {
+            .sns-buttons {
+                top: 20px;
+                right: 10px;
+            }
+        }
+
+        /* 각 섹션 기본 공백 */
         .character-section,
         .company-section,
         .recruit-section,
@@ -113,13 +201,11 @@
         <!-- 1. 상단영역 -->
         <header class="site-header">
             <div class="header-inner">
-                <!-- 로고 이미지 박스 -->
                 <figure class="logo-box">
                     <a href="#">
                         <img src="./images/images/logo_2023.png" alt="산리오코리아 로고" class="logo-img">
                     </a>
                 </figure>
-                <!-- 메뉴 리스트 -->
                 <nav class="header-nav">
                     <ul class="nav-list">
                         <li><a href="#company">company</a></li>
@@ -139,6 +225,8 @@
                 <figure class="main-visual-box">
                     <img src="./images/images/main_visual_pc_v1.png" alt="메인 비주얼" class="main-visual-img">
                 </figure>
+                
+                <!-- SNS 버튼 영역 -->
                 <div class="sns-buttons">
                     <a href="https://www.instagram.com" target="_blank" rel="noopener" style="display: block;">
                         <img src="./images/images/i_ins_pc_v3.png" alt="인스타그램" style="width: 44px; height: 44px; display: block;">
@@ -147,30 +235,16 @@
                         <img src="./images/images/i_you_pc_v3.png" alt="유튜브" style="width: 44px; height: 44px; display: block;">
                     </a>
                 </div>
-                <style>
-                    /* 분홍색 타일 박스 부모 영역에 기준점(relative) 부여 */
-                    .main-banner, .main-visual-box {
-                        position: relative !important;
-                    }
-                    
-                    /* SNS 버튼 박스 스타일 및 위치 설정 */
-                    .sns-buttons {
-                        position: absolute;
-                        top: 30px;
-                        right: 30px;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 12px;
-                        z-index: 2;
-                    }
-            
-                    @media (max-width: 900px) {
-                        .sns-buttons {
-                            top: 20px;
-                            right: 10px;
-                        }
-                    }
-                </style>
+
+                <!-- 📍 스크롤 유도 버튼 (마우스 아이콘 + 텍스트) -->
+                <div class="scroll_btn">
+                    <span class="mouse">
+                        <span></span>
+                    </span>
+                    <p style="font-size: 66%;">SCROLL DOWN</p>
+           
+                </div>
+            </section>
             
             <!-- 2-2. 캐릭터영역 -->
             <section class="character-section">
