@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <title>산리오코리아</title>
+    <!-- 카카오맵 API 로딩 (발급받은 JavaScript App Key가 있으시면 appkey= 뒤에 입력하시면 됩니다) -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_JAVASCRIPT_APP_KEY&libraries=services"></script>
     <style>
       /* 1. 웹 폰트 로딩 (CDN 방식) */
       @import url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.css");
@@ -25,10 +27,6 @@
         width: 100%;
         background-color: #fff;
         border-bottom: 1px solid #eee;
-      }
-
-      .site-main > section + section {
-        padding: 85px 20px;
       }
 
       .header-inner {
@@ -66,11 +64,14 @@
       }
 
       /* --- 2. 메인영역 --- */
-      /* 2-1. 배너 영역 */
+      /* 2-1. 배너 영역 (분홍 격자 배경 전체 채우기) */
       .main-banner {
         position: relative !important;
-        background-image: url("./images/images/스크린샷 2026-10-08 12.10.46.png");
+        width: 100%;
+        background-image: url("./images/images/main_visual_bg.jpg");
         background-repeat: repeat;
+        background-size: 50px 50px; /* 또는 격자를 작고 촘촘한 타일로 축소 */
+        background-color: #ffd8eb; /* 이미지 로딩 전 분홍색 기본 배경 */
         padding: 80px 0 100px 0;
       }
 
@@ -79,7 +80,8 @@
         justify-content: center;
         align-items: center;
         width: 900px;
-        height: 500px;
+        max-width: 95%;
+        height: auto;
         margin: 0 auto;
         background: transparent;
       }
@@ -87,11 +89,10 @@
       .main-visual-img {
         display: block;
         width: 100%;
-        height: 100%;
+        height: auto;
         object-fit: contain;
       }
 
-      /* SNS 버튼 영역 */
       .sns-buttons {
         position: absolute;
         top: 30px;
@@ -112,7 +113,6 @@
         display: block;
       }
 
-      /* 스크롤 유도 버튼 */
       .scroll_btn {
         position: absolute;
         bottom: 20px;
@@ -158,34 +158,20 @@
       }
 
       @keyframes scrollWheel {
-        0% {
-          opacity: 0;
-          top: 6px;
-        }
-        30% {
-          opacity: 1;
-        }
-        70% {
-          opacity: 1;
-        }
-        100% {
-          opacity: 0;
-          top: 18px;
-        }
+        0% { opacity: 0; top: 6px; }
+        30% { opacity: 1; }
+        70% { opacity: 1; }
+        100% { opacity: 0; top: 18px; }
       }
 
       @keyframes mouseBounce {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-5px);
-        }
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
       }
 
-      /* --- 2-2. 캐릭터 영역 스타일 --- */
+      /* --- 2-2. 캐릭터 영역 --- */
       .character-section {
+        padding: 85px 20px;
         background-color: #fff;
       }
 
@@ -230,7 +216,6 @@
         color: #fff;
       }
 
-      /* 캐릭터 그리드 (4열) */
       .character-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -309,6 +294,7 @@
 
       /* --- 2-3. COMPANY 영역 --- */
       .company-section {
+        padding: 85px 20px;
         background-color: #f7f7f7;
         text-align: center;
       }
@@ -318,7 +304,6 @@
         margin: 0 auto;
       }
 
-      /* 가로 3열 정렬 고정 */
       .company-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -332,7 +317,6 @@
         text-align: center;
       }
 
-      /* 아이콘 이미지 스타일 추가 */
       .info-card-icon {
         height: 60px;
         margin-bottom: 20px;
@@ -379,11 +363,16 @@
 
       /* --- 2-4. RECRUIT 영역 --- */
       .recruit-section {
+        padding: 85px 20px;
         background-color: #fff;
         text-align: center;
+
+        background-image: url("./images/images/bg_recruit.png");
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
       }
 
-      /* 가로 3열 정렬 고정 */
       .recruit-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -391,14 +380,22 @@
         margin-top: 40px;
       }
 
-      /* --- 2-5. PLACE 영역 --- */
+      /* --- 2-5. PLACE 영역 (배경 일러스트 전체 꽉 채우기) --- */
       .place-section {
-        background-color: #b3e5fc;
-        background-image: url("./images/images/bg_place_pc.png"); /* PLACE 배경 일러스트 이미지 */
-        background-position: bottom center;
+        position: relative;
+        width: 100%;
+        height: 420px;
+        background-image: url("./images/images/bg_shop.jpg");
+        background-size: cover; 
+        /* cover- 비율유지하며 영역 전체 꽉 채우기 */
+        background-position: center bottom;
+        /* 하단 마을 기준 정렬 */
         background-repeat: no-repeat;
-        background-size: contain;
-        padding-bottom: 220px !important; /* 일러스트 공간 확보 */
+        background-color: #a4e0ff;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 60px;
         text-align: center;
       }
 
@@ -409,13 +406,22 @@
 
       /* --- 2-6. CONTACT US 영역 --- */
       .contact-section {
-        background-color: #4b6584;
+        background-color: #5171a5;
+        padding: 85px 20px 100px;
         text-align: center;
         color: #fff;
+        position: relative;
+        /* top버튼 배치를 위한 기준점 설정 */
+      }
+
+      .sanrio-logo-icon {
+        height: 36px;
+        margin-bottom: 10px;
       }
 
       .contact-section .part-tit {
         color: #fff;
+        font-size: 36px;
         margin-bottom: 20px;
       }
 
@@ -439,39 +445,102 @@
       }
 
       .contact-info-box {
-        max-width: 900px;
+        max-width: 950px;
         margin: 0 auto;
         background-color: #fff;
-        border-radius: 16px;
+        border-radius: 20px;
         padding: 30px;
         display: flex;
         gap: 30px;
         align-items: center;
         text-align: left;
         color: #333;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        position: relative;
+      }
+      /* 1. 지도 이미지 박스 및 리본 중앙 배치 */
+.map-container {
+  flex: 1.2;
+  height: 260px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  position: relative;
+  /* 캡처해둔 지도 이미지 파일 설정 */
+  background-size: cover;
+  background-position: center;
+}
+
+/* 지도 이미지 중앙에 리본 핀 올리기 */
+.map-container::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45px;
+  height: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 5;
+}
+
+/* 2. CONTACT US 섹션 기준점 설정 (TOP 버튼 배치용) */
+.contact-section {
+  position: relative; /* 👈 TOP 버튼의 기준 위치가 됩니다 */
+}
+
+/* 3. 오른쪽 하단 TOP 버튼 스타일 */
+.btn-top {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  z-index: 20;
+  transition: opacity 0.3s;
+}
+
+.btn-top:hover {
+  opacity: 0.8;
+}
+
+.btn-top::before {
+  content: "∧";
+  font-size: 14px;
+  line-height: 1;
+}
+
+      /* 지도 컨테이너 및 맵 핀 아이콘 박스 */
+      .map-container {
+        flex: 1.2;
+        height: 260px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #eee;
         position: relative;
       }
 
-      .map-img-wrap {
-        flex: 1.2;
-        height: 220px;
-        border-radius: 10px;
-        overflow: hidden;
-      }
-
-      .map-img-wrap img {
+      .map-container iframe {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        border: none;
       }
 
       .address-info-wrap {
         flex: 1.3;
+        padding-right: 30px;
       }
 
       .address-info-wrap .kr-addr {
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 700;
         line-height: 1.4;
         margin-bottom: 10px;
@@ -480,15 +549,24 @@
 
       .address-info-wrap .en-addr {
         font-size: 11px;
-        color: #777;
-        line-height: 1.3;
-        margin-bottom: 20px;
+        color: #888;
+        line-height: 1.4;
+        margin-bottom: 25px;
       }
 
       .contact-details p {
-        font-size: 12px;
+        font-size: 13px;
         color: #444;
-        margin-bottom: 5px;
+        margin-bottom: 6px;
+      }
+
+      .kitty-car-img {
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        width: 140px;
+        z-index: 10;
+        pointer-events: none;
       }
 
       /* --- 3. 하단영역 (Footer) --- */
@@ -500,54 +578,28 @@
         font-size: 12px;
       }
 
-      .footer-inner {
-        max-width: 1100px;
-        margin: 0 auto;
-      }
-
       .footer-inner p {
         line-height: 1.6;
       }
 
-      /* --- 반응형 미디어 쿼리 (모바일 환경에서만 1열 전환) --- */
+      /* --- 반응형 미디어 쿼리 --- */
       @media (max-width: 768px) {
         .character-grid {
           grid-template-columns: repeat(2, 1fr);
         }
-        .company-grid,
-        .recruit-grid {
+        .company-grid, .recruit-grid {
           grid-template-columns: repeat(1, 1fr);
           max-width: 400px;
           margin: 0 auto;
         }
         .contact-info-box {
           flex-direction: column;
+          padding: 20px;
         }
-      }
-
-      @media (max-width: 900px) {
-        .sns-buttons {
-          top: 20px;
-          right: 15px;
-          gap: 8px;
-        }
-        .sns-buttons img {
-          width: 32px !important;
-          height: 32px !important;
-        }
-        .scroll_btn .mouse {
-          width: 16px;
-          height: 26px;
-          border-width: 1.5px;
-        }
-        .scroll_btn .mouse span {
-          width: 3px;
-          height: 5px;
-          top: 5px;
-        }
-        .scroll_btn p {
-          font-size: 9px;
-          margin-top: 8px;
+        .kitty-car-img {
+          width: 90px;
+          right: 0;
+          bottom: -15px;
         }
       }
     </style>
@@ -579,7 +631,7 @@
 
       <!-- 2. 메인영역 -->
       <div class="site-main">
-        <!-- 2-1. 배너영역 -->
+        <!-- 2-1. 배너영역 (분홍 격자 배경 반영) -->
         <section class="main-banner">
           <figure class="main-visual-box">
             <img
@@ -620,16 +672,8 @@
               <!-- 1. 헬로키티 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt1.png"
-                    alt="헬로키티"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt1_ov.png"
-                    alt="헬로키티 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt1.png" alt="헬로키티" class="default" />
+                  <img src="./images/images/new_main_crt1_ov.png" alt="헬로키티 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">헬로키티</div>
                 <div class="character-label-en">HELLO KITTY</div>
@@ -638,16 +682,8 @@
               <!-- 2. 마이멜로디 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt2.png"
-                    alt="마이멜로디"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt2_ov.png"
-                    alt="마이멜로디 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt2.png" alt="마이멜로디" class="default" />
+                  <img src="./images/images/new_main_crt2_ov.png" alt="마이멜로디 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">마이멜로디</div>
                 <div class="character-label-en">MY MELODY</div>
@@ -656,16 +692,8 @@
               <!-- 3. 쿠로미 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt3.png"
-                    alt="쿠로미"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt3_ov.png"
-                    alt="쿠로미 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt3.png" alt="쿠로미" class="default" />
+                  <img src="./images/images/new_main_crt3_ov.png" alt="쿠로미 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">쿠로미</div>
                 <div class="character-label-en">KUROMI</div>
@@ -674,16 +702,8 @@
               <!-- 4. 폼폼푸린 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt4.png"
-                    alt="폼폼푸린"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt4_ov.png"
-                    alt="폼폼푸린 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt4.png" alt="폼폼푸린" class="default" />
+                  <img src="./images/images/new_main_crt4_ov.png" alt="폼폼푸린 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">폼폼푸린</div>
                 <div class="character-label-en">POMPOMPURIN</div>
@@ -692,16 +712,8 @@
               <!-- 5. 시나모롤 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt5.png"
-                    alt="시나모롤"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt5_ov.png"
-                    alt="시나모롤 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt5.png" alt="시나모롤" class="default" />
+                  <img src="./images/images/new_main_crt5_ov.png" alt="시나모롤 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">시나모롤</div>
                 <div class="character-label-en">CINNAMOROLL</div>
@@ -710,16 +722,8 @@
               <!-- 6. 리틀트윈스타 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt6.png"
-                    alt="리틀트윈스타"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt6_ov.png"
-                    alt="리틀트윈스타 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt6.png" alt="리틀트윈스타" class="default" />
+                  <img src="./images/images/new_main_crt6_ov.png" alt="리틀트윈스타 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">리틀트윈스타</div>
                 <div class="character-label-en">LITTLE TWIN STARS</div>
@@ -728,16 +732,8 @@
               <!-- 7. 포차코 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt7.png"
-                    alt="포차코"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt7_ov.png"
-                    alt="포차코 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt7.png" alt="포차코" class="default" />
+                  <img src="./images/images/new_main_crt7_ov.png" alt="포차코 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">포차코</div>
                 <div class="character-label-en">POCHACCO</div>
@@ -746,16 +742,8 @@
               <!-- 8. 케로케로케로피 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt8.png"
-                    alt="케로케로케로피"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt8_ov.png"
-                    alt="케로케로케로피 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt8.png" alt="케로케로케로피" class="default" />
+                  <img src="./images/images/new_main_crt8_ov.png" alt="케로케로케로피 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">케로케로케로피</div>
                 <div class="character-label-en">KEROKEROKEROPPI</div>
@@ -764,16 +752,8 @@
               <!-- 9. 구데타마 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt9.png"
-                    alt="구데타마"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt9_ov.png"
-                    alt="구데타마 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt9.png" alt="구데타마" class="default" />
+                  <img src="./images/images/new_main_crt9_ov.png" alt="구데타마 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">구데타마</div>
                 <div class="character-label-en">GUDETAMA</div>
@@ -782,16 +762,8 @@
               <!-- 10. 배드바츠마루 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt10.png"
-                    alt="배드바츠마루"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt10_ov.png"
-                    alt="배드바츠마루 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt10.png" alt="배드바츠마루" class="default" />
+                  <img src="./images/images/new_main_crt10_ov.png" alt="배드바츠마루 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">배드바츠마루</div>
                 <div class="character-label-en">BAD BADTZ-MARU</div>
@@ -800,16 +772,8 @@
               <!-- 11. 턱시도샘 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt11.png"
-                    alt="턱시도샘"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt11_ov.png"
-                    alt="턱시도샘 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt11.png" alt="턱시도샘" class="default" />
+                  <img src="./images/images/new_main_crt11_ov.png" alt="턱시도샘 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">턱시도샘</div>
                 <div class="character-label-en">TUXEDOSAM</div>
@@ -818,16 +782,8 @@
               <!-- 12. 코기뮹 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt12.png"
-                    alt="코기뮹"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt12_ov.png"
-                    alt="코기뮹 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt12.png" alt="코기뮹" class="default" />
+                  <img src="./images/images/new_main_crt12_ov.png" alt="코기뮹 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">코기뮹</div>
                 <div class="character-label-en">Cogimyun</div>
@@ -836,16 +792,8 @@
               <!-- 13. 딩구리데이즈 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt13.png"
-                    alt="딩구리데이즈"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt13_ov.png"
-                    alt="딩구리데이즈 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt13.png" alt="딩구리데이즈" class="default" />
+                  <img src="./images/images/new_main_crt13_ov.png" alt="딩구리데이즈 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">딩구리데이즈</div>
                 <div class="character-label-en">Marumofubiyori</div>
@@ -854,16 +802,8 @@
               <!-- 14. 숲의요정 페어리루 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt14.png"
-                    alt="숲의요정 페어리루"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt14_ov.png"
-                    alt="숲의요정 페어리루 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt14.png" alt="숲의요정 페어리루" class="default" />
+                  <img src="./images/images/new_main_crt14_ov.png" alt="숲의요정 페어리루 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">숲의요정 페어리루</div>
                 <div class="character-label-en">RILU RILU FAIRILU</div>
@@ -872,16 +812,8 @@
               <!-- 15. 어그레츠코 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt15.png"
-                    alt="어그레츠코"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt15_ov.png"
-                    alt="어그레츠코 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt15.png" alt="어그레츠코" class="default" />
+                  <img src="./images/images/new_main_crt15_ov.png" alt="어그레츠코 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">어그레츠코</div>
                 <div class="character-label-en">Aggretsuko</div>
@@ -890,16 +822,8 @@
               <!-- 16. 꿈속의 뮤 -->
               <div class="character-card">
                 <div class="character-img-wrap">
-                  <img
-                    src="./images/images/new_main_crt16.png"
-                    alt="꿈속의 뮤"
-                    class="default"
-                  />
-                  <img
-                    src="./images/images/new_main_crt16_ov.png"
-                    alt="꿈속의 뮤 호버"
-                    class="hover"
-                  />
+                  <img src="./images/images/new_main_crt16.png" alt="꿈속의 뮤" class="default" />
+                  <img src="./images/images/new_main_crt16_ov.png" alt="꿈속의 뮤 호버" class="hover" />
                 </div>
                 <div class="character-label-ko">꿈속의 뮤</div>
                 <div class="character-label-en">Mewkledreamy</div>
@@ -915,35 +839,26 @@
             <div class="company-grid">
               <div class="info-card">
                 <div class="info-card-icon">
-                  <img
-                    src="./images/images/ico_company1.png"
-                    alt="회사소개 아이콘"
-                  />
+                  <img src="./images/images/ico_company1.png" alt="회사소개 아이콘" />
                 </div>
                 <h3>회사소개</h3>
-                <p>맑고 깨끗한 강가에<br />문화를 쌓아 올리자.</p>
+                <p>맑고 깨끗한 강가에<br>문화를 쌓아 올리자.</p>
                 <a href="#" class="btn-more">MORE</a>
               </div>
               <div class="info-card">
                 <div class="info-card-icon">
-                  <img
-                    src="./images/images/ico_company3.png"
-                    alt="회사연혁 아이콘"
-                  />
+                  <img src="./images/images/ico_company3.png" alt="회사연혁 아이콘" />
                 </div>
                 <h3>회사연혁</h3>
-                <p>산리오의 히스토리를<br />확인하세요.</p>
+                <p>산리오의 히스토리를<br>확인하세요.</p>
                 <a href="#" class="btn-more">MORE</a>
               </div>
               <div class="info-card">
                 <div class="info-card-icon">
-                  <img
-                    src="./images/images/ico_company4.png"
-                    alt="사업영역 아이콘"
-                  />
+                  <img src="./images/images/ico_company4.png" alt="사업영역 아이콘" />
                 </div>
                 <h3>사업영역</h3>
-                <p>소셜 커뮤니케이션을<br />산리오가 시작합니다.</p>
+                <p>소셜 커뮤니케이션을<br>산리오가 시작합니다.</p>
                 <a href="#" class="btn-more">MORE</a>
               </div>
             </div>
@@ -957,35 +872,26 @@
             <div class="recruit-grid">
               <div class="info-card">
                 <div class="info-card-icon">
-                  <img
-                    src="./images/images/ico_recruit1.png"
-                    alt="채용공고 아이콘"
-                  />
+                  <img src="./images/images/ico_recruit1.png" alt="채용공고 아이콘" />
                 </div>
                 <h3>채용공고</h3>
-                <p>산리오코리아에서<br />인재를 찾습니다</p>
+                <p>산리오코리아에서<br>인재를 찾습니다</p>
                 <a href="#" class="btn-more">MORE</a>
               </div>
               <div class="info-card">
                 <div class="info-card-icon">
-                  <img
-                    src="./images/images/ico_recruit2.png"
-                    alt="직무소개 아이콘"
-                  />
+                  <img src="./images/images/ico_recruit2.png" alt="직무소개 아이콘" />
                 </div>
                 <h3>직무소개</h3>
-                <p>산리오코리아에서는<br />어떤 일을 할까요?</p>
+                <p>산리오코리아에서는<br>어떤 일을 할까요?</p>
                 <a href="#" class="btn-more">MORE</a>
               </div>
               <div class="info-card">
                 <div class="info-card-icon">
-                  <img
-                    src="./images/images/ico_recruit3.png"
-                    alt="복리후생 아이콘"
-                  />
+                  <img src="./images/images/ico_recruit3.png" alt="복리후생 아이콘" />
                 </div>
                 <h3>복리후생</h3>
-                <p>산리오코리아에서<br />누릴 수 있는것!</p>
+                <p>산리오코리아에서<br>누릴 수 있는것!</p>
                 <a href="#" class="btn-more">MORE</a>
               </div>
             </div>
@@ -1005,30 +911,42 @@
         <!-- 2-6. 컨텍어스영역 -->
         <section class="contact-section">
           <div class="section-inner">
+            <div>
+              <img src="./images/images/logo_w.png" alt="Sanrio Logo" class="sanrio-logo-icon" />
+            </div>
             <h2 class="part-tit">CONTACT US</h2>
-            <div class="btn_box" style="margin-bottom: 40px">
+            <div class="btn_box" style="margin-bottom: 40px;">
               <a href="#" class="btn-detail">VIEW DETAIL</a>
             </div>
+        
             <div class="contact-info-box">
-              <div class="map-img-wrap">
-                <img src="./images/images/map_img.png" alt="오피스 위치 지도" />
+              <!-- 1. 지도 이미지 박스: 카카오맵 + 리본 포인트 -->
+              <div class="map-container" id="map" style="position:relative;">
+                <!-- 1. 지도 이미지를 직접 <img> 태그로 추가 (파일명/경로를 꼭 확인해 주세요) -->
+                <img src="./images/images/457.png" alt="지도" class="map-bg-img" />
+                <img id="ribbon-pin" src="./images/images/Pin.png" alt="리본 핀" style="position:absolute; z-index:10; pointer-events:none; width:45px; height:40px; left:50%; top:50%; transform:translate(-50%, -100%);" />
               </div>
+              
               <div class="address-info-wrap">
-                <div class="kr-addr">
-                  서울시 강남구 테헤란로 509, 4층 (삼성동, 엔씨타워1)
-                </div>
-                <div class="en-addr">
-                  509, TEHERANRO, GANGNAM-GU, SEOUL<br />(4TH FLOOR,
-                  SAMSUNG-DONG, NC TOWER 1)
-                </div>
+                <div class="kr-addr">서울시 강남구 테헤란로 509, 4층 (삼성동, 엔씨타워1)</div>
+                <div class="en-addr">509, TEHERANRO, GANGNAM-GU, SEOUL<br>(4TH FLOOR, SAMSUNG-DONG, NC TOWER 1)</div>
                 <div class="contact-details">
                   <p><strong>M:</strong> webmaster@sanriokorea.co.kr</p>
                   <p><strong>T:</strong> +82 (0) 2 543 3810</p>
                   <p><strong>F:</strong> +82 (0) 2 543 2904</p>
                 </div>
               </div>
+        
+              <!-- 자동차 키티 캐릭터 -->
+              <img src="./images/images/i_map_car.png" alt="헬로키티 자동차" class="kitty-car-img" onerror="this.style.display='none'" />
             </div>
           </div>
+        
+          <!-- 2. 클릭 시 맨 위로 부드럽게 스크롤되는 TOP 버튼 -->
+          <a href="#none" class="btn-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+            TOP
+          </a>
+        </section>
         </section>
       </div>
 
@@ -1039,5 +957,8 @@
         </div>
       </footer>
     </main>
+
+    <!-- 카카오맵 스크립트 실행 -->
+  
   </body>
 </html>
