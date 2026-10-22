@@ -62,6 +62,28 @@
       .nav-list a:hover {
         color: #ff69b4;
       }
+      /* --- 햄버거 버튼 기본 스타일 (PC에서는 숨김) --- */
+.menu-toggle-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 22px;
+  padding: 0;
+  z-index: 1000;
+}
+
+.menu-toggle-btn span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
 
       /* --- 2. 메인영역 --- */
       /* 2-1. 배너 영역 (분홍 격자 배경 전체 채우기) */
@@ -405,13 +427,13 @@
       }
 
       /* --- 2-6. CONTACT US 영역 --- */
-      .contact-section {
+     /* --- 2-6. CONTACT US 영역 스타일 --- */
+     .contact-section {
         background-color: #5171a5;
-        padding: 85px 20px 100px;
+        padding: 80px 20px 100px;
         text-align: center;
         color: #fff;
         position: relative;
-        /* top버튼 배치를 위한 기준점 설정 */
       }
 
       .sanrio-logo-icon {
@@ -449,7 +471,7 @@
         margin: 0 auto;
         background-color: #fff;
         border-radius: 20px;
-        padding: 30px;
+        padding: 0px;
         display: flex;
         gap: 30px;
         align-items: center;
@@ -458,80 +480,35 @@
         box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         position: relative;
       }
-      /* 1. 지도 이미지 박스 및 리본 중앙 배치 */
-.map-container {
-  flex: 1.2;
-  height: 260px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid #eee;
-  position: relative;
-  /* 캡처해둔 지도 이미지 파일 설정 */
-  background-size: cover;
-  background-position: center;
-}
 
-/* 지도 이미지 중앙에 리본 핀 올리기 */
-.map-container::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 45px;
-  height: 40px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  z-index: 5;
-}
-
-/* 2. CONTACT US 섹션 기준점 설정 (TOP 버튼 배치용) */
-.contact-section {
-  position: relative; /* 👈 TOP 버튼의 기준 위치가 됩니다 */
-}
-
-/* 3. 오른쪽 하단 TOP 버튼 스타일 */
-.btn-top {
-  position: absolute;
-  right: 40px;
-  bottom: 40px;
-  color: #fff;
-  text-decoration: none;
-  font-size: 11px;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  cursor: pointer;
-  z-index: 20;
-  transition: opacity 0.3s;
-}
-
-.btn-top:hover {
-  opacity: 0.8;
-}
-
-.btn-top::before {
-  content: "∧";
-  font-size: 14px;
-  line-height: 1;
-}
-
-      /* 지도 컨테이너 및 맵 핀 아이콘 박스 */
+      /* 지도 컨테이너 박스 */
       .map-container {
-        flex: 1.2;
-        height: 260px;
+        flex: 1.6;
+        height: 280px;
         border-radius: 12px;
         overflow: hidden;
         border: 1px solid #eee;
         position: relative;
       }
 
-      .map-container iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
+      /* 구글 맵 iframe이 박스 전체를 완벽히 채우도록 설정 */
+      .map-container iframe.map-iframe {
+        width: 100% !important;
+        height: 100% !important;
+        border: 0 !important;
+        display: block !important;
+      }
+
+      /* 지도 중앙 리본 핀 위치 고정 */
+      #ribbon-pin {
+        position: absolute;
+        z-index: 10;
+        pointer-events: none;
+        width: 45px;
+        height: 40px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -100%);
       }
 
       .address-info-wrap {
@@ -560,30 +537,171 @@
         margin-bottom: 6px;
       }
 
+      /* 우측 하단 헬로키티 자동차 위치 고정 */
       .kitty-car-img {
         position: absolute;
         bottom: -20px;
         right: -20px;
         width: 140px;
-        z-index: 10;
+        z-index: 15;
         pointer-events: none;
+      }
+
+      /* TOP 버튼 스타일 */
+      .btn-top {
+        position: fixed !important;
+        right: 30px !important;
+        bottom: 30px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 60px !important;
+        height: 60px !important;
+        background-color: #5171a5 !important;
+        color: #fff !important;
+        text-decoration: none !important;
+        font-size: 11px !important;
+        font-weight: bold !important;
+        border-radius: 12px !important;
+        cursor: pointer !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
+        z-index: 9999 !important;
+        
+        /* 초기 상태: 맨 위에 있을 때 숨김 */
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s;
+      }
+
+      /* 스크롤을 100px 이상 내렸을 때 자바스크립트에 의해 추가되는 클래스 */
+      .btn-top.show {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+
+      .btn-top:hover {
+        background-color: #415d8a !important;
+      }
+
+      .btn-top span {
+        font-size: 14px !important;
+        line-height: 1 !important;
+        margin-bottom: 2px !important;
       }
 
       /* --- 3. 하단영역 (Footer) --- */
       .site-footer {
         background-color: #222;
-        color: #aaa;
+        color: #fff; /* 전체 텍스트 기본 흰색 */
         padding: 40px 20px;
-        text-align: center;
+        font-size: 13px;
+      }
+
+      .site-footer .footer-inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* 양 끝으로 배치 */
+      }
+
+      /* 왼쪽 저작권 */
+      .site-footer .copyright {
+        color: #aaa;
         font-size: 12px;
       }
 
-      .footer-inner p {
-        line-height: 1.6;
+      /* 오른쪽 버튼들을 감싸는 박스 */
+      .footer-right-box {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      /* 개인정보처리방침 버튼 */
+      .btn-privacy {
+        display: inline-block;
+        padding: 10px 24px;
+        border: 1px solid #666;
+        border-radius: 25px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 12px;
+        background-color: transparent;
+        transition: border-color 0.3s;
+      }
+
+      .btn-privacy:hover {
+        border-color: #fff;
       }
 
       /* --- 반응형 미디어 쿼리 --- */
       @media (max-width: 768px) {
+        /* 1. 모바일에서 헤더 높이 줄이기 */
+        .header-inner {
+          height: 70px;
+        }
+        /* 2. 모바일에서 로고 이미지 크기 줄이기 */
+        .logo-img {
+          height: 38px;
+        }
+
+        /* 3. 모바일 메뉴 풀스크린 오버레이 설정 (평소엔 숨김) */
+        .header-nav {
+          position: fixed !important;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background-color: #fff;
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+          z-index: 100000;
+          
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        /* 자바스크립트로 active가 붙으면 화면에 가득 차게 등장 */
+        .header-nav.active {
+          opacity: 1 !important;
+          visibility: visible !important;
+        }
+
+        .header-nav .nav-list {
+          flex-direction: column !important;
+          align-items: center;
+          gap: 40px !important;
+        }
+
+        .header-nav .nav-list a {
+          font-size: 24px !important;
+          font-weight: 700 !important;
+          letter-spacing: 2px;
+          color: #222;
+        }
+
+        /* 4. 삼선 햄버거 버튼 보이기 */
+        .menu-toggle-btn {
+          display: flex !important;
+          position: relative;
+          z-index: 1000;
+        }
+
+        /* 5. 삼선 -> X 버튼 변형 애니메이션 */
+        .menu-toggle-btn.active span:nth-child(1) {
+          transform: translateY(9.5px) rotate(45deg);
+        }
+        .menu-toggle-btn.active span:nth-child(2) {
+          opacity: 0;
+        }
+        .menu-toggle-btn.active span:nth-child(3) {
+          transform: translateY(-9.5px) rotate(-45deg);
+        }
+        
         .character-grid {
           grid-template-columns: repeat(2, 1fr);
         }
@@ -618,16 +736,22 @@
               />
             </a>
           </figure>
-          <nav class="header-nav">
-            <ul class="nav-list">
+          <nav class="header-nav" id="headerNav">
+            <ul class="nav-list" >
               <li><a href="#company">company</a></li>
               <li><a href="#character">character</a></li>
               <li><a href="#place">place</a></li>
               <li><a href="#recruit">recruit</a></li>
             </ul>
           </nav>
-        </div>
-      </header>
+        <!-- 햄버거 메뉴 버튼 (평소엔 PC에서 숨김, 모바일에서만 표시) -->
+    <button class="menu-toggle-btn" id="menuToggleBtn" aria-label="메뉴 열기">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
 
       <!-- 2. 메인영역 -->
       <div class="site-main">
@@ -919,14 +1043,24 @@
               <a href="#" class="btn-detail">VIEW DETAIL</a>
             </div>
         
-            <div class="contact-info-box">
-              <!-- 1. 지도 이미지 박스: 카카오맵 + 리본 포인트 -->
-              <div class="map-container" id="map" style="position:relative;">
-                <!-- 1. 지도 이미지를 직접 <img> 태그로 추가 (파일명/경로를 꼭 확인해 주세요) -->
-                <img src="./images/images/457.png" alt="지도" class="map-bg-img" />
-                <img id="ribbon-pin" src="./images/images/Pin.png" alt="리본 핀" style="position:absolute; z-index:10; pointer-events:none; width:45px; height:40px; left:50%; top:50%; transform:translate(-50%, -100%);" />
+            <div class="contact-info-box" style="position: relative;">
+              <!-- 1. 구글 맵 iframe + 리본 핀 박스 -->
+              <div class="map-container" id="map">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.2341234!2d127.058327!3d37.508518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDMwJzMwLjciTiAxMjcuMDM1JyJF!5e0!3m2!1sko!2skr!4v1234567890" 
+                  width="100%" 
+                  height="100%" 
+                  style="border:0;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  class="map-iframe">
+                </iframe>
+
+                <!-- 리본 핀 (지도 중앙 고정) -->
+                <img id="ribbon-pin" src="./images/images/Pin.png" alt="리본 핀" />
               </div>
               
+              <!-- 2. 주소 정보 영역 -->
               <div class="address-info-wrap">
                 <div class="kr-addr">서울시 강남구 테헤란로 509, 4층 (삼성동, 엔씨타워1)</div>
                 <div class="en-addr">509, TEHERANRO, GANGNAM-GU, SEOUL<br>(4TH FLOOR, SAMSUNG-DONG, NC TOWER 1)</div>
@@ -936,29 +1070,67 @@
                   <p><strong>F:</strong> +82 (0) 2 543 2904</p>
                 </div>
               </div>
-        
-              <!-- 자동차 키티 캐릭터 -->
-              <img src="./images/images/i_map_car.png" alt="헬로키티 자동차" class="kitty-car-img" onerror="this.style.display='none'" />
+
+              <!-- 3. 우측 하단 헬로키티 자동차 (하나만 깔끔하게 유지) -->
+              <img src="./images/images/contact_img.png" alt="헬로키티 자동차" class="kitty-car-img" />
             </div>
           </div>
-        
-          <!-- 2. 클릭 시 맨 위로 부드럽게 스크롤되는 TOP 버튼 -->
-          <a href="#none" class="btn-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
-            TOP
-          </a>
         </section>
         </section>
       </div>
 
       <!-- 3. 하단영역 -->
-      <footer class="site-footer">
-        <div class="footer-inner">
-          <p>Copyright © SANRIO KOREA Co., Ltd. All Rights Reserved.</p>
+<!-- 3. 하단영역 -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <!-- 왼쪽: 저작권 표시 -->
+    <p class="copyright">© 2023 SANRIO CO., LTD.</p>
+
+    <!-- 오른쪽: 개인정보처리방침 버튼 -->
+    <div class="footer-right-box">
+      <a href="#" class="btn-privacy">개인정보처리방침</a>
+    </div>
+  </div>
+</footer>
+
+<!-- 화면 우측 하단에 항상 고정되는 TOP 버튼 (플로팅) -->
+<a href="#none" class="btn-top" id="btnTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+  <span>∧</span>
+  TOP
+</a>
+          </div>
         </div>
       </footer>
     </main>
+    <script>
+      // 1. TOP 버튼 스크롤 제어
+      window.addEventListener('scroll', function() {
+        const btnTop = document.getElementById('btnTop');
+        if (window.scrollY > 100) {
+          btnTop.classList.add('show');
+        } else {
+          btnTop.classList.remove('show');
+        }
+      });
 
-    <!-- 카카오맵 스크립트 실행 -->
-  
+      // 2. 모바일 햄버거 메뉴 토글 제어
+      const menuToggleBtn = document.getElementById('menuToggleBtn');
+      const headerNav = document.getElementById('headerNav');
+
+      menuToggleBtn.addEventListener('click', function() {
+        headerNav.classList.toggle('active');
+        menuToggleBtn.classList.toggle('active');
+      });
+
+      // (보너스) 메뉴 항목을 클릭하면 자동으로 메뉴가 닫히게 처리
+      const navLinks = document.querySelectorAll('.header-nav .nav-list a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          headerNav.classList.remove('active');
+          menuToggleBtn.classList.remove('active');
+        });
+      });
+    </script>
+    
   </body>
 </html>
