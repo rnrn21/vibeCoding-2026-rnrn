@@ -1,0 +1,12 @@
+/* --- 공통 스타일 및 리셋 --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "NanumBarunGothic", "Apple SD Gothic Neo", sans-serif;
+  color: #333;
+  background-color: #fff;
+}

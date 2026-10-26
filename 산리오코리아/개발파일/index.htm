@@ -3,8 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <title>산리오코리아</title>
-    <!-- 카카오맵 API 로딩 (발급받은 JavaScript App Key가 있으시면 appkey= 뒤에 입력하시면 됩니다) -->
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_JAVASCRIPT_APP_KEY&libraries=services"></script>
     <style>
       /* 1. 웹 폰트 로딩 (CDN 방식) */
       @import url("//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.css");
@@ -24,6 +22,10 @@
 
       /* --- 1. 상단영역 (Header) --- */
       .site-header {
+        position: relative;
+        /* 기준 위치 설정 */
+        z-index: 99999;
+        /* 다른 콘텐츠들보다 무조건 위에 오도록 설정! */
         width: 100%;
         background-color: #fff;
         border-bottom: 1px solid #eee;
@@ -650,15 +652,15 @@
         /* 3. 모바일 메뉴 풀스크린 오버레이 설정 (평소엔 숨김) */
         .header-nav {
           position: fixed !important;
-          top: 0;
+          top: 70px;
           left: 0;
           width: 100vw;
-          height: 100vh;
+          height: calc(100vh - 70px); /* 전체 화면에서 헤더를 뺀 나머지 높이 */
           background-color: #fff;
           display: flex !important;
           align-items: center;
           justify-content: center;
-          z-index: 100000;
+          z-index: 100000; /* 헤더보다 낮거나 같아도 됨 (헤더가 위에 있으므로) */
           
           opacity: 0;
           visibility: hidden;
@@ -688,7 +690,7 @@
         .menu-toggle-btn {
           display: flex !important;
           position: relative;
-          z-index: 1000;
+          z-index: 10000;/* 항상 가장 위에 오도록 설정 */
         }
 
         /* 5. 삼선 -> X 버튼 변형 애니메이션 */
@@ -1103,6 +1105,40 @@
       </footer>
     </main>
     <script>
+
+
+
+// 자바스크립트 세계에 오신 것을 환영합니다!
+console.log('hello');
+
+// 1. 상단 헤더 요소 선택
+let 나야나 = document.querySelector('.site-header');
+// 로고 이미지도 회전시키기 위해 선택합니다.
+let 로고이미지 = document.querySelector('.logo-img');
+
+console.log('나는 누구인가', 나야나);
+
+// 2. 배경색과 회전을 담당하는 함수 만들기 (전달값 '색상'을 받도록 설정)
+const 나야나함수 = (색상) => {
+  console.log('함수호출! 전달값은?', 색상);
+
+  // 상단요소의 배경색 바꾸기 
+  나야나.style.backgroundColor = 색상;
+  
+  // 360도 회전 및 2초 애니메이션 적용 (transform 속성 사용)
+  로고이미지.style.transform = 'rotate(360deg)';
+  로고이미지.style.transition = 'all 2s ease-in-out';
+};
+
+// 3. 이벤트 대상 선정: 상단 배너(.main-visual-box)
+let 너를클릭해 = document.querySelector('.main-visual-box');
+
+// 4. 배너를 클릭했을 때 함수를 실행하고 'orange' 전달하기
+너를클릭해.onclick = () => {
+  // 해당 요소에 클릭 이벤트가 발생하면 이 구역을 실행함
+  나야나함수('orange');
+};
+
       // 1. TOP 버튼 스크롤 제어
       window.addEventListener('scroll', function() {
         const btnTop = document.getElementById('btnTop');
@@ -1116,7 +1152,6 @@
       // 2. 모바일 햄버거 메뉴 토글 제어
       const menuToggleBtn = document.getElementById('menuToggleBtn');
       const headerNav = document.getElementById('headerNav');
-
       menuToggleBtn.addEventListener('click', function() {
         headerNav.classList.toggle('active');
         menuToggleBtn.classList.toggle('active');
