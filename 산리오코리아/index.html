@@ -44,11 +44,17 @@
         <!-- 2-1. 배너영역 -->
         <section class="main-banner">
           <figure class="main-visual-box">
+            <!-- PC용 배너 이미지 -->
             <img
               src="./images/images/main_visual_pc_v1.png"
               alt="메인 비주얼"
-              class="main-visual-img"
+              class="main-visual-img pc-img"
             />
+            <!-- 모바일용 배너 이미지 -->
+              <img src="./images/images/main_visual_m_v1.png"
+              alt="메인 비주얼 모바일"
+              class="main-visual-img mobile-img"
+              />
           </figure>
 
           <div class="sns-buttons">
@@ -310,7 +316,18 @@
 
         <!-- 2-5. 플레이스영역 -->
         <section class="place-section" id="place">
-          <div class="section-inner">
+          <!-- 배경 슬라이드 이미지 레이어들 -->
+          <div class="place-bg-slider">
+            <div class="bg-slide slide-1"></div>
+            <div class="bg-slide slide-2"></div>
+            <div class="bg-slide slide-3"></div>
+          </div>
+
+          <!-- 반투명 오버레이 (배경과 텍스트 시인성 확보) -->
+          <div class="place-overlay"></div>
+
+          <!-- 상단 타이틀과 버튼 (배경 및 오버레이 위에 항상 고정) -->
+          <div class="section-inner place-content">
             <h2 class="part-tit">PLACE</h2>
             <div class="btn_box">
               <a href="#" class="btn view">PLACE MORE</a>

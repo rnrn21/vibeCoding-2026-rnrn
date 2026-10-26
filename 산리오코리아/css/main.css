@@ -21,11 +21,17 @@
   background: transparent;
 }
 
-.main-visual-img {
+/* 기본 (PC 화면): PC 이미지는 보이고, 모바일 이미지는 숨김 */
+/* 기본(PC 화면): PC 이미지는 보이고, 모바일 이미지는 숨김 */
+.main-visual-img.pc-img {
   display: block;
   width: 100%;
   height: auto;
   object-fit: contain;
+}
+
+.main-visual-img.mobile-img {
+  display: none;
 }
 
 .sns-buttons {
@@ -267,15 +273,13 @@
 }
 
 /* --- 2-5. PLACE 영역 --- */
+/* --- 2-5. PLACE 영역 슬라이더 및 오버레이 스타일 --- */
 .place-section {
   position: relative;
   width: 100%;
-  height: 420px;
-  background-image: url("./images/images/bg_shop.jpg");
-  background-size: cover; 
-  background-position: center bottom;
-  background-repeat: no-repeat;
+  height: 420px; /* 고정 높이 유지 */
   background-color: #a4e0ff;
+  overflow: hidden; /* 슬라이딩 이미지가 영역 밖으로 나가지 않도록 설정 */
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -283,9 +287,96 @@
   text-align: center;
 }
 
+/* 배경 슬라이더 컨테이너 */
+.place-bg-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* 각 슬라이드 이미지 공통 스타일 */
+.bg-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  will-change: transform;
+}
+
+/* 1번 이미지 */
+.bg-slide.slide-1 {
+  background-image: url("../images/images/bg_shop.jpg");
+  animation: slideAnim1 9s infinite linear;
+}
+
+/* 2번 이미지 */
+.bg-slide.slide-2 {
+  background-image: url("../images/images/bg_shop2.jpeg");
+  animation: slideAnim2 9s infinite linear;
+}
+
+/* 3번 이미지 */
+.bg-slide.slide-3 {
+  background-image: url("../images/images/bg_shop3.jpeg");
+  animation: slideAnim3 9s infinite linear;
+}
+
+/* 반투명 오버레이 스타일 */
+.place-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2); /* 배경을 살짝 부드럽게 감싸주는 연한 화이트/블랙톤 (필요시 투명도 조절 가능) */
+  z-index: 5;
+}
+
+/* 상단 타이틀과 버튼 컨텐츠 레이어 */
+.place-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
 .place-section .part-tit {
   color: #111;
   margin-bottom: 20px;
+}
+
+/* --- 애니메이션 키프레임 (총 9초 주기: 2초 정지 + 1초 이동) --- */
+@keyframes slideAnim1 {
+  0% { transform: translateX(0%); }
+  22.22% { transform: translateX(0%); }
+  33.33% { transform: translateX(-100%); }
+  33.34% { transform: translateX(100%); }
+  88.88% { transform: translateX(100%); }
+  100% { transform: translateX(0%); }
+}
+
+@keyframes slideAnim2 {
+  0% { transform: translateX(100%); }
+  22.22% { transform: translateX(100%); }
+  33.33% { transform: translateX(0%); }
+  55.55% { transform: translateX(0%); }
+  66.66% { transform: translateX(-100%); }
+  66.67% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes slideAnim3 {
+  0% { transform: translateX(100%); }
+  55.55% { transform: translateX(100%); }
+  66.66% { transform: translateX(0%); }
+  88.88% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
 }
 
 /* --- 2-6. CONTACT US 영역 --- */
@@ -409,7 +500,21 @@
   .character-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-
+/* 모바일 화면: PC 이미지는 숨기고, 모바일 이미지를 보여줌 */
+.main-visual-img.pc-img {
+  display: none;!important
+}
+.main-visual-img.mobile-img {
+  display: block !important;
+  width: 100% !important;
+  max-width: 380px !important; /* 화면에서 너무 크지 않게 최대 크기 지정 */
+  height: auto !important;
+  margin: 0 auto;
+  object-fit: contain;
+}
+  .sns-buttons {
+    display: none !important; /* 모바일 화면에서 인스타, 유튜브 버튼 숨기기 */
+  }
   .company-grid, .recruit-grid {
     grid-template-columns: repeat(1, 1fr);
     max-width: 400px;
