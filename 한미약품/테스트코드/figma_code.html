@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한미그룹 2026년 하반기 공개채용</title>
+    <!-- Google Fonts Inter 적용 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            width: 100%;
+            background-color: #ffffff;
+            color: #000000;
+            overflow-x: hidden;
+        }
+
+        /* Top Header */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-inner {
+            width: 100%;
+            max-width: 1440px;
+            padding: 0 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 32px;
+            object-fit: contain;
+        }
+
+        /* Section - main_visual */
+        .main_visual {
+            position: relative;
+            width: 100%;
+            height: 900px;
+            min-height: 720px;
+            background: url('../image/mv_bg.png') no-repeat center center / cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Container - 1440px Fixed Inner Box Centered */
+        .mv-container {
+            position: relative;
+            width: 1440px;
+            height: 900px;
+            margin: 0 auto;
+            isolation: isolate;
+        }
+
+        /* Background Visual Effects (Glow Circles) */
+        .bg-glow-outer {
+            box-sizing: border-box;
+            position: absolute;
+            width: 663px;
+            height: 663px;
+            left: 700px;
+            top: 118px;
+            background: radial-gradient(70.71% 70.71% at 50% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%);
+            border: 5px solid #FFFFFF;
+            filter: blur(5px);
+            border-radius: 500px;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .bg-glow-inner {
+            box-sizing: border-box;
+            position: absolute;
+            width: 553px;
+            height: 553px;
+            left: 755px;
+            top: 173px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 500px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        /* Graphic Assets Layer */
+        .asset-group {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        /* Individual Asset Items */
+        .asset-item {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+        }
+
+        .asset-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Decorative Stars & Floating Items */
+        .mv-star1 { width: 17.6px; height: 16.72px; left: 1018.16px; top: 209.44px; }
+        .mv-star2 { width: 22.88px; height: 23.76px; left: 836.88px; top: 441.76px; }
+        .mv-star3 { width: 21.12px; height: 21.12px; left: 1411.52px; top: 447.04px; }
+        .mv-star4 { width: 23.76px; height: 24.64px; left: 1257.52px; top: 221.76px; }
+        .mv-star5 { width: 34.32px; height: 35.2px; left: 1429.12px; top: 404.8px; }
+
+        .mv-micro { width: 289.52px; height: 221.76px; left: 862.4px; top: 124.08px; }
+
+        /* Character Assets */
+        .mv-char1 { width: 253.44px; height: 395.12px; left: 911.68px; top: 267.52px; z-index: 4; }
+        .mv-char2 { width: 181.28px; height: 381.04px; left: 1133.44px; top: 265.76px; z-index: 4; }
+        .mv-char3 { width: 216.48px; height: 262.24px; left: 836px; top: 441.76px; z-index: 5; }
+        .mv-char4 { width: 292.16px; height: 206.8px; left: 1192.4px; top: 462.88px; z-index: 5; }
+
+        /* Text & Content Container */
+        .mv-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 80px;
+            position: absolute;
+            width: 560px;
+            left: 100px;
+            top: 231px; /* 900px 기준 대략 25.73% 위치 */
+            z-index: 10;
+        }
+
+        .text-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 31.9px;
+            width: 442px;
+        }
+
+        .sub-title {
+            width: 198px;
+            height: 45px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 31.1px;
+            line-height: 45px;
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.64px;
+            color: #000000;
+        }
+
+        .main-heading {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0px;
+            width: 261px;
+        }
+
+        .brand-name {
+            width: 261px;
+            height: 76px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 72.3px;
+            line-height: 76px;
+            display: flex;
+            align-items: center;
+            letter-spacing: -1.76px;
+            color: #000000;
+        }
+
+        .recruitment-type {
+            width: 166px;
+            height: 72px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 45.8px;
+            line-height: 72px;
+            display: flex;
+            align-items: center;
+            letter-spacing: -1.12px;
+            color: #000000;
+        }
+
+        .period-info {
+            width: 442px;
+            height: 28px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 19.2px;
+            line-height: 28px;
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.4px;
+            color: #000000;
+            white-space: nowrap;
+        }
+
+        /* CTA Button Style & Hover Inversion */
+        .btn-cta {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            padding: 18.7px 64px 19.3px;
+            width: 303px;
+            max-width: 303px;
+            height: 72px;
+            background: linear-gradient(90deg, #E60012 0%, #FF5D32 100%);
+            border-radius: 500px;
+            text-decoration: none;
+            box-sizing: border-box;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-cta span {
+            width: 176px;
+            height: 34px;
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 22.7px;
+            line-height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            letter-spacing: -0.48px;
+            color: #FFFFFF;
+            transition: color 0.2s ease;
+        }
+
+        /* Hover: 반전 효과 (흰 배경 + 빨간 테두리 및 텍스트) */
+        .btn-cta:hover {
+            background: #FFFFFF;
+            border-color: #E60012;
+            box-shadow: 0px 4px 20px rgba(230, 0, 18, 0.2);
+        }
+
+        .btn-cta:hover span {
+            color: #E60012;
+        }
+
+        /* Scroll Down Button */
+        .scroll-down-wrapper {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 64px;
+            width: 80px;
+            height: 80px;
+            z-index: 20;
+        }
+
+        .btn-scroll {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: inset 4px 4px 10px rgba(255, 255, 255, 0.4), inset -4px -4px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 500px;
+            text-decoration: none;
+            position: relative;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .btn-scroll::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 500px;
+            background: linear-gradient(132.3deg, rgba(255, 255, 255, 0.8) 12.7%, rgba(255, 255, 255, 0) 86.3%);
+            pointer-events: none;
+        }
+
+        .scroll-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .scroll-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: #FFFFFF;
+            transition: stroke 0.2s ease;
+        }
+
+        .btn-scroll:hover {
+            transform: translateY(4px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-scroll:hover .scroll-icon svg {
+            stroke: #E60012;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <img src="../image/logo.svg.svg" alt="한미그룹">
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Visual Section -->
+    <main class="main_visual">
+        <div class="mv-container">
+            
+            <!-- Background Glow & Borders -->
+            <div class="bg-glow-outer"></div>
+            <div class="bg-glow-inner"></div>
+
+            <!-- Graphic Assets Layer -->
+            <div class="asset-group">
+                <!-- Stars & Deco -->
+                <div class="asset-item mv-star1"><img src="../image/mv_star1.png.png" alt=""></div>
+                <div class="asset-item mv-star2"><img src="../image/mv_star2.png.png" alt=""></div>
+                <div class="asset-item mv-star3"><img src="../image/mv_star3.png-1.png" alt=""></div>
+                <div class="asset-item mv-star4"><img src="../image/mv_star3.png.png" alt=""></div>
+                <div class="asset-item mv-star5"><img src="../image/mv_star4.png.png" alt=""></div>
+
+                <!-- Microscope -->
+                <div class="asset-item mv-micro"><img src="../image/mv_micro.png@2x.png" alt="현미경"></div>
+
+                <!-- Characters -->
+                <div class="asset-item mv-char1"><img src="../image/mv_char1.png@2x.png" alt="연구원 캐릭터"></div>
+                <div class="asset-item mv-char2"><img src="../image/mv_char2.png@2x.png" alt="생산/제조 캐릭터"></div>
+                <div class="asset-item mv-char3"><img src="../image/mv_char3.png@2x.png" alt="영업/비즈니스 캐릭터"></div>
+                <div class="asset-item mv-char4"><img src="../image/mv_char4.png@2x.png" alt="경영지원 캐릭터"></div>
+            </div>
+
+            <!-- Text & CTA Content -->
+            <div class="mv-content">
+                <div class="text-group">
+                    <p class="sub-title">2026년 하반기</p>
+                    <div class="main-heading">
+                        <h1 class="brand-name">한미그룹</h1>
+                        <span class="recruitment-type">공개채용</span>
+                    </div>
+                    <p class="period-info">모집기간 : 2026.9.28(월) ~ 2026.10.18(일) 23:59까지</p>
+                </div>
+
+                <!-- Main CTA Button -->
+                <a href="#recruitment-jobs" class="btn-cta">
+                    <span>모집직무 바로가기!</span>
+                </a>
+            </div>
+
+            <!-- Scroll Down Indicator -->
+            <div class="scroll-down-wrapper">
+                <a href="#section-next" class="btn-scroll" aria-label="아래로 스크롤">
+                    <div class="scroll-icon">
+                        <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M2 2L10 10L18 2" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
+</head>
+<body>
+    
+</body>
+</html>
