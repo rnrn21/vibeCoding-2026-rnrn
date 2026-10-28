@@ -588,7 +588,7 @@
             --history-head-gap: clamp(28px, 3.9vw, 56px);
             --history-row-gap: clamp(24px, 2.9vw, 40px);
             --history-item-gap: clamp(14px, 1.95vw, 28px);
-            --history-count-size: clamp(180px, 26vw, 300px);
+            --history-count-size: clamp(100px, 14vw, 180px);
             --history-line-w: clamp(12px, 1.7vw, 24px);
             --history-title-size: clamp(32px, 3.8vw, 44px);
             --history-label-size: clamp(30px, 3.9vw, 44px);
@@ -639,38 +639,35 @@
             word-break: keep-all;
         }
 
-        .history-timeline {
-            position: relative;
-            isolation: isolate;
-        }
+        /* 타임라인 컨테이너 기준 설정 */
+.history-timeline {
+    position: relative;
+    isolation: isolate;
+}
 
-        .history-timeline::before {
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 190px;       /* 53th 숫자 영역 아래쪽부터 선이 시작되도록 값 조정 */
-    bottom: 120px;    /* 100th 숫자 영역 위쪽에서 선이 끝나도록 값 조정 */
-            width: var(--history-line-w);
-            transform: translateX(-50%);
-            background: var(--history-color);
-            z-index: 0;
-        }
+/* 1. 중앙 선을 픽셀 및 마진 기반으로 안전하게 고정 */
+.history-timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    /* 상단 선이 53th 아래 딱 붙도록 계수를 높임 (예: 0.85) */
+    top: calc(var(--history-count-size) * 0.85); 
+    /* 하단 선이 100th 위에서 딱 멈추도록 계수를 높임 (예: 0.80) */
+    bottom: calc(var(--history-count-size) * 0.80); 
+    width: var(--history-line-w);
+    transform: translateX(-50%);
+    background: var(--history-color);
+    z-index: 0;
+}
 
-        .history-count {
-            position: relative;
-            z-index: 2;
-            margin: 0;
-            text-align: center;
-            font-size: var(--history-count-size);
-            font-weight: 800;
-            line-height: 1;
-            letter-spacing: -0.07em;
-            color: var(--history-color);
-        }
-        /* 숫자 텍스트 기본 스타일: 중앙 정렬 유지 */
+/* 2. 숫자 크기 최적화 및 안정적인 레이아웃 설정 */
+.history-section {
+    --history-count-size: clamp(80px, 10vw, 130px);
+}
+
 .history-count {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     margin: 0;
     text-align: center;
     font-size: var(--history-count-size);
@@ -679,30 +676,18 @@
     letter-spacing: -0.07em;
     color: var(--history-color);
 }
-        /* 3. 숫자가 가운데 정렬되어 배경색이 선을 제대로 가리도록 정렬 */
-        .history-count--start,
-        .history-count--end {
-            text-align: center;
-        }
 
-        .history-count-unit {
-            margin-left: 0.06em;
-            font-size: 0.62em;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-
-        .history-count--start {
-            margin-bottom: clamp(60px, 9.7vw, 140px);
-            text-align: center;
-        }
-
-        .history-count--end {
-            margin-top: var(--history-period-gap);
-            padding-left: 0; /* 우측으로 쏠리게 하던 좌측 패딩 제거하여 정중앙 배치 */
+/* 3. 상단 53th와 하단 100th 주변 여백을 주어 선이 자연스럽게 만나도록 조정 */
+.history-count--start {
+    margin-bottom: 20px;
     text-align: center;
-        }
+}
 
+.history-count--end {
+    margin-top: 20px;
+    padding-left: 0;
+    text-align: center;
+}
         .history-period {
             position: relative;
             display: grid;
@@ -865,7 +850,33 @@
         }
 
         .history-deco--sparkle   { left: 80%;  top: 0;    width: 14%; }
-        .history-deco--beaker    { left: 1.6%; top: 46%;  width: 10.5%; }
+        /* 1. 비커 이미지 크기 키우기 (기존 10.5% 등에서 18~22% 수준으로 확대) */
+.history-deco--beaker {
+    left: -2%; 
+    top: 42%;  
+    width: 22%; /* 크기를 기존보다 키움 */
+    max-width: 260px; /* 최대 크기 제한 */
+    height: auto;
+    animation: floatingBeaker 4s ease-in-out infinite; /* 위아래로 둥둥 뜨는 애니메이션 적용 */
+    z-index: 1;
+}
+
+/* 2. 위아래로 둥둥 떠있는 제자리 애니메이션 정의 */
+@keyframes floatingBeaker {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px); /* 위로 12px 이동했다가 제자리로 돌아옴 */
+    }
+}
+
+/* 3. 태블릿 및 모바일 화면(1024px 이하)에서는 비커 이미지 숨기기 */
+@media screen and (max-width: 1024px) {
+    .history-deco--beaker {
+        display: none !important;
+    }
+}
         .history-deco--blur-blue { right: -7%; top: 12%;  width: 16%; }
         .history-deco--microscope{ right: -1%; top: 66%;  width: 13%; }
         .history-deco--blur-gray { left: -8%;  top: 80%;  width: 14%; }
