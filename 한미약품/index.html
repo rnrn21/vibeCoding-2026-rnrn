@@ -648,8 +648,8 @@
             content: "";
             position: absolute;
             left: 50%;
-            top: calc(var(--history-count-size) * 0.62);
-            bottom: calc(var(--history-count-size) * 0.14);
+            top: 190px;       /* 53th 숫자 영역 아래쪽부터 선이 시작되도록 값 조정 */
+    bottom: 120px;    /* 100th 숫자 영역 위쪽에서 선이 끝나도록 값 조정 */
             width: var(--history-line-w);
             transform: translateX(-50%);
             background: var(--history-color);
@@ -658,7 +658,7 @@
 
         .history-count {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             margin: 0;
             text-align: center;
             font-size: var(--history-count-size);
@@ -666,6 +666,23 @@
             line-height: 1;
             letter-spacing: -0.07em;
             color: var(--history-color);
+        }
+        /* 숫자 텍스트 기본 스타일: 중앙 정렬 유지 */
+.history-count {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    text-align: center;
+    font-size: var(--history-count-size);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.07em;
+    color: var(--history-color);
+}
+        /* 3. 숫자가 가운데 정렬되어 배경색이 선을 제대로 가리도록 정렬 */
+        .history-count--start,
+        .history-count--end {
+            text-align: center;
         }
 
         .history-count-unit {
@@ -677,11 +694,13 @@
 
         .history-count--start {
             margin-bottom: clamp(60px, 9.7vw, 140px);
+            text-align: center;
         }
 
         .history-count--end {
             margin-top: var(--history-period-gap);
-            padding-left: 15.6%;
+            padding-left: 0; /* 우측으로 쏠리게 하던 좌측 패딩 제거하여 정중앙 배치 */
+    text-align: center;
         }
 
         .history-period {
@@ -1318,6 +1337,232 @@
                 display: none !important;
             }
         }
+       /* ==========================================
+   6. NEW SECTION: .innovation (성장 및 혁신 소식)
+   ========================================== */
+.innovation {
+    position: relative;
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 80px 0 120px;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* 배경 그라데이션 장식 */
+.innovation::before {
+    content: "";
+    position: absolute;
+    top: -5vw;
+    right: -12vw;
+    width: 30vw;
+    height: 30vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, #E60012 0%, rgba(230, 0, 18, 0) 70%);
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.innovation::after {
+    content: "";
+    position: absolute;
+    bottom: -5vw;
+    left: -8vw;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, #E60012 0%, rgba(230, 0, 18, 0) 70%);
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.inno-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 상단 텍스트 영역 */
+.inno-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.inno-title {
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #111111;
+    letter-spacing: -0.03em;
+    margin-bottom: 14px;
+    word-break: keep-all;
+}
+
+.inno-title strong {
+    font-weight: 800;
+}
+
+.inno-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: #555555;
+    word-break: keep-all;
+}
+
+/* 연분홍 컨테이너 영역 (입체감과 볼륨감 부여) */
+.inno-content {
+    position: relative;
+    width: 100%;
+    background: linear-gradient(180deg, #FFF8F9 0%, #FFF2F4 100%);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 36px;
+    padding: 60px 50px 40px;
+    box-shadow: 0 40px 80px rgba(230, 0, 18, 0.2), inset 0 2px 6px rgba(255, 255, 255, 0.8);
+}
+
+/* 우측 상단 이미지 레이어 및 겹침 정교화 (inno_Container / inno_Image 관계 조정) */
+.inno-deco-mol {
+    position: absolute;
+    top: -30px;
+    right: 90px;
+    width: 210px;
+    pointer-events: none;
+    z-index: 2; /* 화학식 배경 이미지 */
+}
+
+.inno-deco-atom {
+    position: absolute;
+    top: -55px;
+    right: 45px;
+    width: 160px;
+    pointer-events: none;
+    z-index: 3; /* 3D 원자 오브젝트가 화학식 위로 자연스럽게 겹치도록 설정 */
+}
+
+/* 좌측 하단 3D 분자 구조 이미지 */
+.inno-deco-structure {
+    position: absolute;
+    left: -40px;
+    bottom: -50px;
+    width: 150px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* 말풍선 목록 레이아웃 */
+.inno-list {
+    position: relative;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.inno-card {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    width: auto;
+    max-width: 78%;
+    padding: 18px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    word-break: keep-all;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.inno-card:hover {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.06));
+}
+
+.inno-card-text {
+    position: relative;
+    z-index: 2;
+    display: block;
+}
+
+/* 오렌지 그라데이션 말풍선 카드 (좌측 배치 및 꼬리) */
+.inno-card--orange {
+    align-self: flex-start;
+    color: #FFFFFF;
+    background: linear-gradient(90deg, #FF5D32 0%, #FF451A 100%);
+    border-radius: 20px 20px 20px 4px;
+    box-shadow: 0 6px 16px rgba(255, 93, 50, 0.22);
+}
+
+.inno-card--orange::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 10px 14px 0;
+    border-color: transparent #FF5D32 transparent transparent;
+}
+
+/* 흰색 말풍선 카드 (우측 배치 및 꼬리) */
+.inno-card--white {
+    align-self: flex-end;
+    color: #E60012;
+    background: #FFFFFF;
+    border-radius: 20px 20px 4px 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.inno-card--white::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 14px 10px;
+    border-color: transparent transparent #FFFFFF transparent;
+}
+
+/* 하단 안내 문구 */
+.inno-notice {
+    position: relative;
+    z-index: 4;
+    text-align: right;
+    margin-top: 32px;
+    font-size: 13px;
+    color: #888888;
+}
+
+/* 반응형 미디어 쿼리 */
+@media screen and (max-width: 1024px) {
+    .inno-container { padding: 0 30px; }
+    .inno-card { max-width: 88%; }
+    .inno-deco-atom { right: 20px; width: 140px; }
+}
+
+@media screen and (max-width: 768px) {
+    .inno-header { margin-bottom: 36px; }
+    .inno-title { font-size: 28px; }
+    .inno-subtitle { font-size: 14px; }
+    .inno-content { padding: 36px 20px 24px; border-radius: 20px; }
+    .inno-list { gap: 16px; }
+    .inno-card { max-width: 100%; padding: 14px 18px; font-size: 14px; }
+    .inno-card--white { align-self: flex-start; }
+    .inno-deco-atom { top: -35px; right: 10px; width: 100px; }
+    .inno-deco-mol { display: none; }
+    .inno-notice { text-align: center; margin-top: 20px; }
+}
     </style>
 </head>
 <body>
@@ -1641,6 +1886,69 @@
 
             </div>
         </section>
+        <!-- 5번째 신규 섹션: .innovation (성장 및 혁신 소식 영역) -->
+<section class="innovation" id="innovation">
+    <div class="inno-container">
+        <!-- 상단 헤더 영역 -->
+        <div class="inno-header">
+            <h2 class="inno-title">
+                당신의 가능성,<br>
+                <strong>한미그룹에서 더 크게 성장합니다</strong>
+            </h2>
+            <p class="inno-subtitle">연구와 혁신으로 성장하며 글로벌 제약/바이오 기업을 향해 나아갑니다.</p>
+        </div>
+
+        <!-- 카드 & 장식 요소 컨텐츠 영역 -->
+        <div class="inno-content">
+            <!-- 우측 상단 장식 이미지 (화학식 배경 'inno_Image.png'가 3D 원자 'inno_obj_mol.png' 아래 혹은 위로 자연스럽게 겹치도록 배치) -->
+            <img src="./image/inno_Image.png" alt="" class="inno-deco inno-deco-mol" aria-hidden="true">
+            <img src="./image/inno_Container.png" alt="" class="inno-deco inno-deco-atom" aria-hidden="true">
+
+            <div class="inno-list">
+                <!-- 기사 카드 1 -->
+                <a href="#" class="inno-card inno-card--orange inno-card--left">
+                    <span class="inno-card-text">한미약품, 상반기 누적 매출 8,602억원...2분기 영업이익 117% 증가</span>
+                </a>
+
+                <!-- 기사 카드 2 -->
+                <a href="#" class="inno-card inno-card--white inno-card--right">
+                    <span class="inno-card-text">"사업형 지주사 경쟁력 입증"...한미사이언스, 2분기 영업이익 71% ↑<br>2분기 매출 3,679억원...상반기 누적 매출 7,216억원 돌파</span>
+                </a>
+
+                <!-- 기사 카드 3 -->
+                <a href="#" class="inno-card inno-card--orange inno-card--left">
+                    <span class="inno-card-text">한미약품, 로슈 제넨텍에 비만신약 기술수출...최대 3조 2,000억 규모</span>
+                </a>
+
+                <!-- 기사 카드 4 -->
+                <a href="#" class="inno-card inno-card--white inno-card--right">
+                    <span class="inno-card-text">"UCN2 이어 또..." 한미약품, 두 번째 근육 증가 비만신약 공개</span>
+                </a>
+
+                <!-- 기사 카드 5 -->
+                <a href="#" class="inno-card inno-card--orange inno-card--left">
+                    <span class="inno-card-text">명품 반열 오른 한미 '로수젯'...압도적 데이터 경쟁력으로 시장 석권<br>2년 연속 국내사 개발 전문의약품 시장 '1위'...올해 상반기 누적 처방액도 선두</span>
+                </a>
+
+                <!-- 기사 카드 6 -->
+                <a href="#" class="inno-card inno-card--white inno-card--right">
+                    <span class="inno-card-text">"비만 넘어 항암으로 혁신 확장"...한미, AACR서 차세대 신약 대거 공개</span>
+                </a>
+
+                <!-- 기사 카드 7 -->
+                <a href="#" class="inno-card inno-card--orange inno-card--left">
+                    <span class="inno-card-text">한미 완전두유·케어미, 영양에 '맛'까지 인정...국제 우수 미각상 수상</span>
+                </a>
+            </div>
+
+            <!-- 하단 안내 문구 -->
+            <p class="inno-notice">• 말풍선을 클릭해서 기사를 확인해 보세요.</p>
+        </div>
+
+        <!-- 좌측 하단 3D 분자 구조 이미지 -->
+        <img src="./image/inno_obj_mol.png.png" alt="" class="inno-deco inno-deco-structure" aria-hidden="true">
+    </div>
+</section>
     </main>
 
     <footer></footer>
