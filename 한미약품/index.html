@@ -332,7 +332,7 @@
         }
 
         /* ==========================================
-           2. NEW SECTION: .mirae-section STYLES (캐릭터 & 구름 초대형 확대 수정)
+           2. NEW SECTION: .mirae-section STYLES
            ========================================== */
         .mirae-section {
             position: relative;
@@ -357,7 +357,6 @@
             align-items: center;
         }
 
-        /* 타이틀 문구 */
         .mirae-title-wrapper {
             position: relative;
             z-index: 10;
@@ -381,7 +380,6 @@
             color: #E60012;
         }
 
-        /* 캐릭터 & 초록색 언덕 이미지 (강제 초대형 확대) */
         .mirae-visual-group {
             position: relative;
             width: 100%;
@@ -402,7 +400,6 @@
             transform: translateY(18%);
         }
 
-        /* 구름 레이어 및 초대형 크기 설정 */
         .mirae-clouds-layer {
             position: absolute;
             top: 0;
@@ -420,7 +417,6 @@
             user-select: none;
         }
 
-        /* 오른쪽 상단 커다란 구름 */
         .mirae-cloud-right-top {
             width: clamp(360px, 35vw, 620px);
             right: -4vw;
@@ -428,7 +424,6 @@
             opacity: 0.95;
         }
 
-        /* 왼쪽 하단 커다란 구름 */
         .mirae-cloud-left-bottom {
             width: clamp(320px, 30vw, 540px);
             left: -5vw;
@@ -436,7 +431,6 @@
             opacity: 0.95;
         }
 
-        /* 배경 블러 구름들 */
         .mirae-cloud-left-top {
             width: clamp(200px, 20vw, 360px);
             left: 20vw;
@@ -453,7 +447,6 @@
             opacity: 0.5;
         }
 
-        /* 별 레이어 및 좌표 */
         .mirae-stars-layer {
             position: absolute;
             top: 0;
@@ -484,494 +477,110 @@
         }
 
         /* ==========================================
-           3. RESPONSIVE MEDIA QUERIES
+           3. RESPONSIVE MEDIA QUERIES (Main/Mirae)
            ========================================== */
-
         @media screen and (min-width: 1025px) and (max-width: 1439px) {
-            .header-inner {
-                padding: 0 clamp(32px, 6.94vw, 100px);
-            }
-
-            .main_visual {
-                height: min(62.5vw, 900px);
-                min-height: 640px;
-                background-size: cover;
-            }
-
-            .mv-container {
-                width: 100%;
-                max-width: 1440px;
-                height: 100%;
-                margin: 0 auto;
-            }
-
-            .bg-glow-outer {
-                width: 46.04%;
-                height: auto;
-                aspect-ratio: 1;
-                left: 48.61%;
-                top: 13.11%;
-            }
-
-            .bg-glow-inner {
-                width: 38.40%;
-                height: auto;
-                aspect-ratio: 1;
-                left: 52.43%;
-                top: 19.22%;
-            }
-
-            .asset-group {
-                width: 100%;
-                height: 100%;
-            }
-
-            .mv-star1 { width: 1.22%; height: 1.86%; left: 70.71%; top: 23.27%; }
-            .mv-star2 { width: 1.59%; height: 2.64%; left: 58.12%; top: 49.08%; }
-            .mv-star3 { width: 1.47%; height: 2.35%; left: 98.02%; top: 49.67%; }
-            .mv-star4 { width: 1.65%; height: 2.74%; left: 87.33%; top: 24.64%; }
-            .mv-star5 { width: 2.38%; height: 3.91%; left: 99.24%; top: 44.98%; }
-            .mv-micro { width: 20.11%; height: 24.64%; left: 59.89%; top: 13.79%; }
-
-            .mv-char1 { width: 17.60%; height: 43.90%; left: 63.31%; top: 29.72%; }
-            .mv-char2 { width: 12.59%; height: 42.34%; left: 78.71%; top: 29.53%; }
-            .mv-char3 { width: 15.03%; height: 29.14%; left: 58.06%; top: 49.08%; }
-            .mv-char4 { width: 20.29%; height: 22.98%; left: 82.81%; top: 51.43%; }
-
-            .mv-content {
-                left: 6.94%;
-                top: 25.67%;
-                width: 40%;
-                gap: clamp(32px, 5.55vw, 80px);
-            }
-
-            .text-group {
-                width: 100%;
-                gap: clamp(18px, 2.22vw, 31.9px);
-            }
-
-            .sub-title {
-                font-size: clamp(24px, 2.16vw, 31.1px);
-                width: auto;
-                height: auto;
-                line-height: 1.45;
-            }
-
-            .brand-name {
-                font-size: clamp(52px, 5.02vw, 72.3px);
-                width: auto;
-                height: auto;
-                line-height: 1.08;
-            }
-
-            .recruitment-type {
-                font-size: clamp(34px, 3.18vw, 45.8px);
-                width: auto;
-                height: auto;
-                line-height: 1.35;
-            }
-
-            .period-info {
-                width: 100%;
-                height: auto;
-                font-size: clamp(14px, 1.34vw, 19.2px);
-                line-height: 1.5;
-                white-space: normal;
-            }
-
-            .btn-cta {
-                width: clamp(260px, 21.04vw, 303px);
-                height: clamp(60px, 5vw, 72px);
-                padding: 0 24px;
-            }
-
-            .btn-cta span {
-                width: auto;
-                height: auto;
-                font-size: clamp(17px, 1.58vw, 22.7px);
-            }
-
-            .scroll-down-wrapper {
-                bottom: 4%;
-            }
+            .header-inner { padding: 0 clamp(32px, 6.94vw, 100px); }
+            .main_visual { height: min(62.5vw, 900px); min-height: 640px; background-size: cover; }
+            .mv-container { width: 100%; max-width: 1440px; height: 100%; margin: 0 auto; }
+            .bg-glow-outer { width: 46.04%; height: auto; aspect-ratio: 1; left: 48.61%; top: 13.11%; }
+            .bg-glow-inner { width: 38.40%; height: auto; aspect-ratio: 1; left: 52.43%; top: 19.22%; }
+            .asset-group { width: 100%; height: 100%; }
+            .mv-content { left: 6.94%; top: 25.67%; width: 40%; gap: clamp(32px, 5.55vw, 80px); }
+            .text-group { width: 100%; gap: clamp(18px, 2.22vw, 31.9px); }
+            .sub-title { font-size: clamp(24px, 2.16vw, 31.1px); width: auto; height: auto; line-height: 1.45; }
+            .brand-name { font-size: clamp(52px, 5.02vw, 72.3px); width: auto; height: auto; line-height: 1.08; }
+            .recruitment-type { font-size: clamp(34px, 3.18vw, 45.8px); width: auto; height: auto; line-height: 1.35; }
+            .period-info { width: 100%; height: auto; font-size: clamp(14px, 1.34vw, 19.2px); line-height: 1.5; white-space: normal; }
+            .btn-cta { width: clamp(260px, 21.04vw, 303px); height: clamp(60px, 5vw, 72px); padding: 0 24px; }
+            .btn-cta span { width: auto; height: auto; font-size: clamp(17px, 1.58vw, 22.7px); }
+            .scroll-down-wrapper { bottom: 4%; }
         }
 
-        /* 태블릿: 769px ~ 1024px */
         @media screen and (max-width: 1024px) {
-            header {
-                height: 80px;
-            }
-
-            .header-inner {
-                padding: 0 40px;
-            }
-
-            .nav-menu {
-                gap: 20px;
-            }
-
-            .nav-menu a {
-                font-size: 14px;
-            }
-
-            .btn-apply {
-                padding: 10px 20px;
-                font-size: 14px;
-            }
-
-            .main_visual {
-                height: auto;
-                min-height: 0;
-                padding: 120px 0 48px;
-                background-size: cover;
-                overflow: hidden;
-            }
-
-            .mv-container {
-                width: 100%;
-                max-width: 768px;
-                height: auto;
-                margin: 0 auto;
-                padding: 0 30px;
-                display: flex;
-                flex-direction: column;
-                align-items: stretch;
-                position: relative;
-            }
-
-            .mv-content {
-                position: relative;
-                left: auto;
-                top: auto;
-                width: 100%;
-                gap: 40px;
-                z-index: 10;
-            }
-
-            .text-group {
-                width: 100%;
-            }
-
-            .bg-glow-outer,
-            .bg-glow-inner {
-                display: none;
-            }
-
-            .asset-group {
-                position: relative;
-                width: min(100%, 520px);
-                max-width: 520px;
-                height: 400px;
-                flex: 0 0 400px;
-                align-self: center;
-                margin: 28px auto 0;
-                transform: none;
-                transform-origin: top center;
-            }
-
+            header { height: 80px; }
+            .header-inner { padding: 0 40px; }
+            .nav-menu { gap: 20px; }
+            .nav-menu a { font-size: 14px; }
+            .btn-apply { padding: 10px 20px; font-size: 14px; }
+            .main_visual { height: auto; min-height: 0; padding: 120px 0 48px; background-size: cover; overflow: hidden; }
+            .mv-container { width: 100%; max-width: 768px; height: auto; margin: 0 auto; padding: 0 30px; display: flex; flex-direction: column; align-items: stretch; position: relative; }
+            .mv-content { position: relative; left: auto; top: auto; width: 100%; gap: 40px; z-index: 10; }
+            .text-group { width: 100%; }
+            .bg-glow-outer, .bg-glow-inner { display: none; }
+            .asset-group { position: relative; width: min(100%, 520px); max-width: 520px; height: 400px; flex: 0 0 400px; align-self: center; margin: 28px auto 0; transform: none; transform-origin: top center; }
             .mv-micro { width: 200px; height: 153px; left: 100px; top: 10px; }
             .mv-char1 { width: 180px; height: 280px; left: 180px; top: 100px; }
             .mv-char2 { width: 130px; height: 273px; left: 360px; top: 105px; }
             .mv-char3 { width: 150px; height: 181px; left: 110px; top: 210px; }
             .mv-char4 { width: 190px; height: 134px; left: 300px; top: 240px; }
-
             .mv-star1 { left: 160px; top: 20px; }
             .mv-star2 { left: 100px; top: 170px; }
             .mv-star3 { left: 490px; top: 170px; }
             .mv-star4 { left: 420px; top: 20px; }
             .mv-star5 { left: 500px; top: 140px; }
-
-            .scroll-down-wrapper {
-                position: relative;
-                left: auto;
-                bottom: auto;
-                transform: none;
-                align-self: center;
-                margin-top: 28px;
-            }
-
-            .mirae-section {
-                padding-top: 50px;
-            }
-
-            .mirae-title {
-                font-size: 38px;
-            }
-
-            .mirae-visual-group {
-                max-width: 800px;
-            }
-
-            .mirae-main-img {
-                max-width: 700px;
-            }
-
-            .mirae-cloud-right-top {
-                width: 300px;
-                right: -20px;
-            }
-
-            .mirae-cloud-left-bottom {
-                width: 260px;
-                left: -20px;
-            }
+            .scroll-down-wrapper { position: relative; left: auto; bottom: auto; transform: none; align-self: center; margin-top: 28px; }
+            .mirae-section { padding-top: 50px; }
+            .mirae-title { font-size: 38px; }
+            .mirae-visual-group { max-width: 800px; }
+            .mirae-main-img { max-width: 700px; }
+            .mirae-cloud-right-top { width: 300px; right: -20px; }
+            .mirae-cloud-left-bottom { width: 260px; left: -20px; }
         }
 
-        /* 모바일: 768px 이하 */
         @media screen and (max-width: 768px) {
-            .header-inner {
-                padding: 0 20px;
-            }
-
-            .nav-menu {
-                display: none !important;
-            }
-
-            .hamburger-btn {
-                display: flex !important;
-                flex-direction: column;
-                justify-content: space-between;
-                width: 24px;
-                height: 18px;
-                background: transparent;
-                border: none;
-                cursor: pointer;
-                z-index: 250;
-            }
-
-            .hamburger-btn span {
-                display: block;
-                width: 100%;
-                height: 2px;
-                background-color: #000000;
-                border-radius: 2px;
-            }
-
-            .mobile-menu-overlay {
-                display: flex !important;
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100vh;
-                height: 100dvh;
-                background-color: #ffffff;
-                z-index: 300;
-                transition: right 0.3s ease-in-out;
-                padding: 24px 20px;
-                flex-direction: column;
-                box-sizing: border-box;
-            }
-
-            .mobile-menu-overlay.active {
-                right: 0;
-            }
-
-            .mobile-menu-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                height: 32px;
-                margin-bottom: 40px;
-            }
-
-            .mobile-menu-header .logo img {
-                height: 28px;
-            }
-
-            .mobile-close-btn {
-                background: transparent;
-                border: none;
-                cursor: pointer;
-                padding: 4px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .mobile-close-btn svg {
-                width: 24px;
-                height: 24px;
-                stroke: #000000;
-            }
-
-            .mobile-nav-list {
-                list-style: none;
-                display: flex;
-                flex-direction: column;
-            }
-
-            .mobile-nav-list li {
-                border-bottom: 1px solid #f2f2f2;
-            }
-
-            .mobile-nav-list li a {
-                display: block;
-                padding: 20px 0;
-                font-size: 18px;
-                font-weight: 700;
-                color: #000000;
-                text-decoration: none;
-            }
-
-            .mobile-menu-footer {
-                margin-top: 30px;
-            }
-
-            .mobile-btn-apply {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 100%;
-                height: 56px;
-                background: #E60012;
-                color: #FFFFFF;
-                border-radius: 500px;
-                font-size: 18px;
-                font-weight: 700;
-                text-decoration: none;
-            }
-
-            .mobile-menu-char {
-                position: absolute;
-                right: 0;
-                bottom: 0;
-                width: 180px;
-                pointer-events: none;
-            }
-
-            .mobile-menu-char img {
-                width: 100%;
-                height: auto;
-                object-fit: contain;
-            }
-
-            .main_visual {
-                padding: 100px 0 36px;
-            }
-
-            .mv-container {
-                max-width: 520px;
-                padding: 0 20px;
-                align-items: stretch;
-            }
-
-            .mv-content {
-                gap: 24px;
-            }
-
-            .text-group {
-                width: 100%;
-                gap: 16px;
-            }
-
-            .sub-title {
-                font-size: 20px;
-                line-height: 1.4;
-                height: auto;
-                width: auto;
-            }
-
-            .main-heading {
-                width: 100%;
-            }
-
-            .brand-name {
-                font-size: clamp(40px, 10vw, 56px);
-                height: auto;
-                line-height: 1.12;
-                width: auto;
-            }
-
-            .recruitment-type {
-                font-size: clamp(30px, 7.6vw, 40px);
-                height: auto;
-                line-height: 1.2;
-                width: auto;
-            }
-
-            .period-info {
-                font-size: clamp(12px, 3.2vw, 15px);
-                line-height: 1.5;
-                height: auto;
-                width: 100%;
-                white-space: normal;
-                overflow-wrap: anywhere;
-            }
-
-            .btn-cta {
-                width: min(280px, 100%);
-                max-width: 280px;
-                height: 54px;
-                padding: 0 12px;
-            }
-
-            .btn-cta span {
-                font-size: 16px;
-                width: auto;
-                height: auto;
-                line-height: 1.3;
-            }
-
-            .asset-group {
-                width: min(100%, 360px);
-                max-width: 360px;
-                height: 290px;
-                flex-basis: 290px;
-                margin: 26px auto 0;
-                align-self: center;
-                transform: none;
-            }
-
+            .header-inner { padding: 0 20px; }
+            .nav-menu { display: none !important; }
+            .hamburger-btn { display: flex !important; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; background: transparent; border: none; cursor: pointer; z-index: 250; }
+            .hamburger-btn span { display: block; width: 100%; height: 2px; background-color: #000000; border-radius: 2px; }
+            .mobile-menu-overlay { display: flex !important; position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; height: 100dvh; background-color: #ffffff; z-index: 300; transition: right 0.3s ease-in-out; padding: 24px 20px; flex-direction: column; box-sizing: border-box; }
+            .mobile-menu-overlay.active { right: 0; }
+            .mobile-menu-header { display: flex; justify-content: space-between; align-items: center; height: 32px; margin-bottom: 40px; }
+            .mobile-menu-header .logo img { height: 28px; }
+            .mobile-close-btn { background: transparent; border: none; cursor: pointer; padding: 4px; display: flex; align-items: center; justify-content: center; }
+            .mobile-close-btn svg { width: 24px; height: 24px; stroke: #000000; }
+            .mobile-nav-list { list-style: none; display: flex; flex-direction: column; }
+            .mobile-nav-list li { border-bottom: 1px solid #f2f2f2; }
+            .mobile-nav-list li a { display: block; padding: 20px 0; font-size: 18px; font-weight: 700; color: #000000; text-decoration: none; }
+            .mobile-menu-footer { margin-top: 30px; }
+            .mobile-btn-apply { display: flex; justify-content: center; align-items: center; width: 100%; height: 56px; background: #E60012; color: #FFFFFF; border-radius: 500px; font-size: 18px; font-weight: 700; text-decoration: none; }
+            .mobile-menu-char { position: absolute; right: 0; bottom: 0; width: 180px; pointer-events: none; }
+            .mobile-menu-char img { width: 100%; height: auto; object-fit: contain; }
+            .main_visual { padding: 100px 0 36px; }
+            .mv-container { max-width: 520px; padding: 0 20px; align-items: stretch; }
+            .mv-content { gap: 24px; }
+            .text-group { width: 100%; gap: 16px; }
+            .sub-title { font-size: 20px; line-height: 1.4; height: auto; width: auto; }
+            .main-heading { width: 100%; }
+            .brand-name { font-size: clamp(40px, 10vw, 56px); height: auto; line-height: 1.12; width: auto; }
+            .recruitment-type { font-size: clamp(30px, 7.6vw, 40px); height: auto; line-height: 1.2; width: auto; }
+            .period-info { font-size: clamp(12px, 3.2vw, 15px); line-height: 1.5; height: auto; width: 100%; white-space: normal; overflow-wrap: anywhere; }
+            .btn-cta { width: min(280px, 100%); max-width: 280px; height: 54px; padding: 0 12px; }
+            .btn-cta span { font-size: 16px; width: auto; height: auto; line-height: 1.3; }
+            .asset-group { width: min(100%, 360px); max-width: 360px; height: 290px; flex-basis: 290px; margin: 26px auto 0; align-self: center; transform: none; }
             .mv-micro { width: 150px; height: 114px; left: 55px; top: 0; }
             .mv-char1 { width: 140px; height: 218px; left: 105px; top: 80px; }
             .mv-char2 { width: 100px; height: 210px; left: 235px; top: 85px; }
             .mv-char3 { width: 120px; height: 145px; left: 25px; top: 170px; }
             .mv-char4 { width: 150px; height: 106px; left: 185px; top: 185px; }
-
             .mv-star1 { left: 90px; top: 8px; }
             .mv-star2 { left: 0; top: 140px; }
             .mv-star3 { left: 325px; top: 140px; }
             .mv-star4 { left: 260px; top: 10px; }
             .mv-star5 { left: 330px; top: 110px; }
-
-            .scroll-down-wrapper {
-                margin-top: 24px;
-            }
-
-            .mirae-section {
-                padding-top: 40px;
-            }
-
-            .mirae-title {
-                font-size: clamp(26px, 7vw, 36px);
-                line-height: 1.3;
-            }
-
-            .mirae-visual-group {
-                max-width: 520px;
-            }
-
-            .mirae-main-img {
-                max-width: 480px;
-                transform: translateY(12%);
-            }
-
-            .mirae-cloud-right-top {
-                width: 220px;
-                right: -10px;
-            }
-
-            .mirae-cloud-left-bottom {
-                width: 180px;
-                left: -10px;
-            }
+            .scroll-down-wrapper { margin-top: 24px; }
+            .mirae-section { padding-top: 40px; }
+            .mirae-title { font-size: clamp(26px, 7vw, 36px); line-height: 1.3; }
+            .mirae-visual-group { max-width: 520px; }
+            .mirae-main-img { max-width: 480px; transform: translateY(12%); }
+            .mirae-cloud-right-top { width: 220px; right: -10px; }
+            .mirae-cloud-left-bottom { width: 180px; left: -10px; }
         }
-                /* ==========================================
-           4. NEW SECTION: .history-section
+
+        /* ==========================================
+           4. NEW SECTION: .history-section (아코디언 및 뷰포트 높이 제어)
            ========================================== */
-           .history-section {
-            /* 디자인 토큰: 데스크탑 기준 + clamp()로 태블릿까지 유동 변화 */
+        .history-section {
             --history-color: #FF5D32;
             --history-pad-x: clamp(32px, 6.94vw, 100px);
             --history-col-gap: clamp(100px, 16.6vw, 200px);
@@ -996,20 +605,21 @@
             color: #111111;
         }
 
-        /* --- 접기/펼치기 패널 --- */
         .history-collapse {
             position: relative;
             overflow: hidden;
+            max-height: 100vh;
+            max-height: 100dvh;
             transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* JS가 높이 변수를 계산해 주입 (JS 미실행 시 제한 없음) */
-        .history-section.is-collapsed .history-collapse {
-            max-height: var(--history-collapsed-h, none);
         }
 
         .history-section.is-expanded .history-collapse {
             max-height: var(--history-full-h, none);
+            overflow: visible;
+        }
+
+        .history-section.is-collapsed .history-collapse {
+            overflow: hidden;
         }
 
         .history-container {
@@ -1029,7 +639,6 @@
             word-break: keep-all;
         }
 
-        /* --- 타임라인 & 중앙 세로선 --- */
         .history-timeline {
             position: relative;
             isolation: isolate;
@@ -1072,10 +681,9 @@
 
         .history-count--end {
             margin-top: var(--history-period-gap);
-            padding-left: 15.6%; /* 100th를 중앙선 기준 우측으로 이동 */
+            padding-left: 15.6%;
         }
 
-        /* --- 연대 블록 (Grid) --- */
         .history-period {
             position: relative;
             display: grid;
@@ -1099,14 +707,12 @@
         .history-list            { grid-area: list; }
         .history-visual          { grid-area: visual; }
 
-        /* 리스트가 왼쪽: 홀수 블록 */
         .history-period--left {
             grid-template-areas:
                 "headline label"
                 "list     visual";
         }
 
-        /* 리스트가 오른쪽: 짝수 블록 */
         .history-period--right {
             grid-template-areas:
                 "label  list"
@@ -1139,7 +745,6 @@
         .history-period--right .history-period-label   { justify-self: end; }
         .history-period--right .history-visual         { justify-self: end; }
 
-        /* --- 연도 리스트 --- */
         .history-list {
             display: flex;
             flex-direction: column;
@@ -1154,6 +759,14 @@
             display: flex;
             align-items: center;
             gap: var(--history-item-gap);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .history-item.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .history-year {
@@ -1177,16 +790,13 @@
             display: block;
         }
 
-        /* 리스트 왼쪽: [설명 | 연도] → row-reverse, 우측 정렬 */
         .history-period--left .history-item { flex-direction: row-reverse; }
         .history-period--left .history-year { text-align: right; }
         .history-period--left .history-desc { text-align: right; }
 
-        /* 리스트 오른쪽: [연도 | 설명], 좌측 정렬 */
         .history-period--right .history-year { text-align: left; }
         .history-period--right .history-desc { text-align: left; }
 
-        /* 연도 아래 세로 점 3개 (연도 칼럼 중앙 정렬) */
         .history-list::after {
             content: "";
             flex: none;
@@ -1209,7 +819,6 @@
             margin-left: calc(var(--history-year-w) / 2 - 5px);
         }
 
-        /* --- 비주얼 이미지 --- */
         .history-visual {
             margin: 0;
             width: 100%;
@@ -1228,7 +837,6 @@
         .history-period--p4 { --visual-w: 450px; }
         .history-period--p5 { --visual-w: 400px; }
 
-        /* --- 장식 이미지 (데스크탑 전용) --- */
         .history-deco {
             position: absolute;
             z-index: 0;
@@ -1245,7 +853,6 @@
         .history-deco--molecule  { right: -6%; top: 39%;  width: 15.5%; }
         .history-deco--mascot    { left: 0;    top: -110px; width: 13%; }
 
-        /* --- 클로징 문구 --- */
         .history-closing {
             position: relative;
             z-index: 1;
@@ -1277,7 +884,6 @@
             display: block;
         }
 
-        /* --- 펼치기/접기 버튼 + 페이드아웃 --- */
         .history-toggle-wrap {
             position: relative;
             z-index: 2;
@@ -1291,7 +897,6 @@
             display: none;
         }
 
-        /* 패널 하단을 덮는 그라데이션 (접힘 상태에서만 표시) */
         .history-toggle-wrap::before {
             content: "";
             position: absolute;
@@ -1337,22 +942,15 @@
             transform: rotate(180deg);
         }
 
-        /* ==========================================
-           4-1. HISTORY RESPONSIVE
-           ========================================== */
-
-        /* 태블릿: 2단 구조 유지, 여백/장식만 축소 */
         @media screen and (max-width: 1024px) {
             .history-section {
                 --history-pad-x: 40px;
             }
-
             .history-deco {
-                display: none; /* 장식 이미지는 이 규칙 하나로 일괄 제어 */
+                display: none;
             }
         }
 
-        /* 모바일: 1단 스택, 중앙선 제거, 홀/짝 정렬 교차 */
         @media screen and (max-width: 768px) {
             .history-section {
                 --history-pad-x: 20px;
@@ -1400,11 +998,324 @@
             .history-period--p5 { --visual-w: 70%; }
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            .history-collapse,
-            .history-toggle-wrap::before,
-            .history-toggle-icon {
-                transition: none;
+        /* ==========================================
+           5. NEW SECTION: .job-intro-section (직무소개)
+           ========================================== */
+        .job-intro-section {
+            position: relative;
+            width: 100%;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FFF5F7 100%);
+            padding: clamp(80px, 10vw, 140px) 0 clamp(80px, 10vw, 140px);
+            overflow: visible; 
+            isolation: isolate;
+        }
+
+        .job-intro-container {
+            position: relative;
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 clamp(20px, 6.94vw, 100px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .job-intro-header {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: clamp(48px, 6vw, 80px);
+        }
+
+        .job-intro-badge {
+            width: clamp(70px, 6vw, 90px);
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 12px;
+            animation: floatingLogo 4s ease-in-out infinite;
+        }
+
+        .job-intro-title {
+            font-size: clamp(28px, 3.6vw, 48px);
+            font-weight: 800;
+            line-height: 1.3;
+            letter-spacing: -0.03em;
+            color: #111111;
+            margin: 0 0 16px;
+            word-break: keep-all;
+        }
+
+        .job-intro-desc {
+            font-size: clamp(14px, 1.4vw, 18px);
+            font-weight: 500;
+            line-height: 1.5;
+            color: #555555;
+            margin: 0;
+            word-break: keep-all;
+        }
+
+        .job-intro-deco {
+            position: absolute;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .job-intro-deco--char {
+            width: clamp(160px, 18vw, 260px);
+            right: clamp(20px, 5vw, 80px);
+            top: clamp(20px, 3vw, 40px);
+            animation: floatingChar 5s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        /* 데스크탑 버전 약통 스타일 및 위치 (z-index를 낮게 두어 카드가 위에 오도록 함) */
+        .job-intro-deco--bottle {
+            width: clamp(200px, 20vw, 300px); 
+            left: clamp(20px, -10vw, 0px);
+            bottom: -60px;
+            transform: rotate(-12deg);
+            background: transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
+            animation: floatingBottle 4.5s ease-in-out infinite;
+            z-index: 1; /* 카드(z-index: 2)보다 뒤에 오도록 설정 */
+        }
+
+        @keyframes floatingLogo {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(-2deg); }
+        }
+
+        @keyframes floatingChar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes floatingBottle {
+            0%, 100% { transform: translateY(0) rotate(-12deg); }
+            50% { transform: translateY(-10px) rotate(-8deg); }
+        }
+
+        .job-intro-grid {
+            position: relative;
+            z-index: 2; /* 약통보다 높은 z-index로 설정하여 카드가 약통을 덮음 */
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: clamp(24px, 3vw, 40px);
+            width: 100%;
+            max-width: 1240px;
+            margin-bottom: clamp(48px, 6vw, 80px);
+        }
+
+        /* 개별 현직자 카드 - 평소엔 불투명(#FFFFFF), 호버 시 반투명화 */
+        .job-card {
+            position: relative;
+            background: #FFFFFF; /* 평소엔 불투명하게 약통을 완전히 가림 */
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 28px;
+            padding: clamp(24px, 2.5vw, 36px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, backdrop-filter 0.3s ease;
+        }
+
+        .job-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.6); /* 마우스 호버 시 반투명 적용되어 아래 약통이 비쳐 보임 */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 24px 50px rgba(230, 0, 18, 0.08);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .job-card-img-wrap {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 16 / 11;
+            margin-bottom: clamp(20px, 2.5vw, 28px);
+        }
+
+        .job-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .job-card:hover .job-card-img {
+            transform: scale(1.03);
+        }
+
+        .job-card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .job-card-title {
+            font-size: clamp(16px, 1.6vw, 21px);
+            font-weight: 700;
+            line-height: 1.45;
+            letter-spacing: -0.02em;
+            color: #111111;
+            word-break: keep-all;
+            margin: 0;
+        }
+
+        .job-card-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: clamp(13px, 1.2vw, 15px);
+            font-weight: 500;
+            color: #666666;
+        }
+
+        .job-card-divider {
+            color: #DDDDDD;
+        }
+
+        .job-card-btn {
+            position: absolute;
+            right: clamp(24px, 2.5vw, 36px);
+            bottom: clamp(24px, 2.5vw, 36px);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #FF5D32;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .job-card-btn:hover {
+            background: #E60012;
+            transform: scale(1.08);
+        }
+
+        /* 하단 CTA 버튼 영역 */
+        .job-intro-footer {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .job-intro-footer .job-intro-deco--bottle-tablet {
+            display: none;
+        }
+
+        .job-intro-cta-btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 48px;
+            min-width: 280px;
+            background: linear-gradient(90deg, #E60012 0%, #FF5D32 100%);
+            border-radius: 500px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-size: clamp(16px, 1.5vw, 18px);
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(230, 0, 18, 0.25);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .job-intro-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(230, 0, 18, 0.35);
+        }
+
+        /* ==========================================
+           5-1. JOB INTRO RESPONSIVE MEDIA QUERIES
+           ========================================== */
+        @media screen and (max-width: 1024px) {
+            .job-intro-section {
+                overflow: hidden;
+            }
+            .job-intro-container {
+                padding: 0 40px;
+            }
+            .job-intro-section > .job-intro-container > .job-intro-deco--bottle {
+                display: none !important;
+            }
+            .job-intro-footer .job-intro-deco--bottle-tablet {
+                display: block !important;
+                position: static !important;
+                width: 90px !important;
+                height: auto;
+                transform: rotate(-10deg);
+                animation: floatingBottle 4.5s ease-in-out infinite;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .job-intro-container {
+                padding: 0 20px;
+            }
+
+            .job-intro-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .job-card {
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            .job-card-img-wrap {
+                margin-bottom: 16px;
+                border-radius: 14px;
+            }
+
+            .job-card-btn {
+                position: relative;
+                right: auto;
+                bottom: auto;
+                align-self: flex-end;
+                width: 38px;
+                height: 38px;
+                margin-top: -10px;
+            }
+
+            .job-card-content {
+                margin-bottom: 12px;
+            }
+
+            .job-intro-cta-btn {
+                width: 100%;
+                max-width: 320px;
+                padding: 16px 24px;
+            }
+
+            .job-intro-deco--char {
+                width: 110px;
+                right: 10px;
+                top: 15px;
+            }
+
+            .job-intro-deco--bottle,
+            .job-intro-footer .job-intro-deco--bottle-tablet {
+                display: none !important;
             }
         }
     </style>
@@ -1511,7 +1422,6 @@
         <!-- 신규 추가 섹션: .mirae-section -->
         <section class="mirae-section" id="mirae-section">
             <div class="mirae-container">
-                
                 <div class="mirae-title-wrapper">
                     <h2 class="mirae-title">
                         <span class="highlight-red">새로운 미래</span>를 향해 나아갑니다
@@ -1533,134 +1443,204 @@
                     <img src="./image/mirae_mini-star1.png" alt="" class="mirae-star mirae-star-1" onerror="this.style.opacity=0">
                     <img src="./image/mirae_mini-star2.png" alt="" class="mirae-star mirae-star-2" onerror="this.style.opacity=0">
                 </div>
+            </div>
+        </section>
+
+        <!-- 3번째 신규 섹션: .history-section -->
+        <section class="history-section" id="history-section" aria-labelledby="history-title">
+
+            <div class="history-collapse" id="historyCollapse">
+                <div class="history-container">
+
+                    <h2 class="history-title" id="history-title">한미의 도전은 작은 가능성에서<br>시작되었습니다.</h2>
+
+                    <div class="history-timeline">
+
+                        <p class="history-count history-count--start">
+                            <span class="history-count-num">53</span><span class="history-count-unit">th</span>
+                            <img class="history-deco history-deco--sparkle" src="./image/obj_star_big.png" alt="반짝이는 노란 별 세 개 장식" aria-hidden="true" loading="lazy">
+                        </p>
+
+                        <!-- 1973~2001 -->
+                        <article class="history-period history-period--left history-period--p1">
+                            <h3 class="history-period-label">1973~2001</h3>
+                            <p class="history-period-headline">한계를 하나씩 넘을 때마다,</p>
+                            <ul class="history-list">
+                                <li class="history-item"><span class="history-year">1973</span><span class="history-desc">한미약품공업주식회사 설립</span></li>
+                                <li class="history-item"><span class="history-year">1984</span><span class="history-desc">팔탄 GMP 공장 신축</span></li>
+                                <li class="history-item"><span class="history-year">1989</span><span class="history-desc">세프트리악손 제조방법 Roche사 기술 수출</span></li>
+                                <li class="history-item"><span class="history-year">1997</span><span class="history-desc">마이크로에멀전 제제기술 Novartis사 기술 수출</span></li>
+                            </ul>
+                            <figure class="history-visual">
+                                <img src="./image/his1.png" alt="한미약품 어린이 영양제 '텐텐'과 비타민C '쎄쎄' 제품 패키지">
+                            </figure>
+                            <img class="history-deco history-deco--beaker" src="./image/obj_beaker.png" alt="분홍색 용액이 담긴 실험용 비커 장식" aria-hidden="true" loading="lazy">
+                        </article>
+
+                        <!-- 2002~2010 -->
+                        <article class="history-period history-period--right history-period--p2">
+                            <h3 class="history-period-label">2002~2010</h3>
+                            <ul class="history-list">
+                                <li class="history-item"><span class="history-year">2004</span><span class="history-desc">국내 최초 고혈압치료제 '아모디핀' 미국특허 획득</span></li>
+                                <li class="history-item"><span class="history-year">2006</span><span class="history-desc">세계 최초 유소아 해열 시럽신약 '맥시부펜' 개발 성공</span></li>
+                                <li class="history-item"><span class="history-year">2008</span><span class="history-desc">국내 최초 주사용항생제 세프트리악손 美 FDA 승인</span></li>
+                                <li class="history-item"><span class="history-year">2009</span><span class="history-desc">세계최초 암로디핀+로살탄 복합제 '아모잘탄' 발매</span></li>
+                            </ul>
+                            <figure class="history-visual">
+                                <img src="./image/his2.png" alt="석양이 지는 해변에서 손을 잡고 함께 점프하는 다섯 사람의 실루엣">
+                            </figure>
+                            <img class="history-deco history-deco--blur-blue" src="./image/obj_mol_blur1.png" alt="푸른빛으로 흐릿하게 번진 분자 구조 장식" aria-hidden="true" loading="lazy">
+                            <img class="history-deco history-deco--microscope" src="./image/obj_microscope.png" alt="파란색 현미경 장식" aria-hidden="true" loading="lazy">
+                        </article>
+
+                        <!-- 2011~2015 -->
+                        <article class="history-period history-period--left history-period--p3">
+                            <h3 class="history-period-label">2011~2015</h3>
+                            <p class="history-period-headline">새로운 가능성이 현실이 되었어요.</p>
+                            <ul class="history-list">
+                                <li class="history-item"><span class="history-year">2011</span><span class="history-desc">MSD와 '아모잘탄' 50여개국 수출 계약 체결</span></li>
+                                <li class="history-item"><span class="history-year">2012</span><span class="history-desc">'LAPS-GCSF' 美 스펙트럼사와 공동개발 및 상업화 계약</span></li>
+                                <li class="history-item"><span class="history-year">2013</span><span class="history-desc">국내 개량신약 최초 미국 FDA 승인 및 미국 출시 '에소메졸'</span></li>
+                                <li class="history-item"><span class="history-year">2014</span><span class="history-desc">'트리약손' 국내 최초 유럽 4개국 시판 허가</span></li>
+                                <li class="history-item"><span class="history-year">2015</span><span class="history-desc">한국 사상 최대규모 릴레이 기술수출</span></li>
+                            </ul>
+                            <figure class="history-visual">
+                                <img src="./image/his3.png" alt="인체 투시 이미지와 에소메졸 20mg·40mg 제품, 스펙트럼 파마슈티컬스 로고">
+                            </figure>
+                            <img class="history-deco history-deco--blur-gray" src="./image/obj_mol_blur2.png" alt="회색빛으로 흐릿하게 번진 분자 구조 장식" aria-hidden="true" loading="lazy">
+                        </article>
+
+                        <!-- 2016~2020 -->
+                        <article class="history-period history-period--right history-period--p4">
+                            <h3 class="history-period-label">2016~2020</h3>
+                            <ul class="history-list">
+                                <li class="history-item"><span class="history-year">2016</span><span class="history-desc">차세대 RAF 저해제, Roche 제넨텍 기술수출</span></li>
+                                <li class="history-item"><span class="history-year">2017</span><span class="history-desc">'에소메졸' 국내 제약회사 최초 미국약전(USP) 등재</span></li>
+                                <li class="history-item"><span class="history-year">2018</span><span class="history-desc">'Glucagon Analog', '오락솔' 차세대 AML 치료제 美 희귀의약품 지정</span></li>
+                                <li class="history-item"><span class="history-year">2019</span><span class="history-desc">최근 10년간 처방실적 최다 4조 4,176억원</span></li>
+                            </ul>
+                            <figure class="history-visual">
+                                <img src="./image/his4.png" alt="미국임상종양학회(ASCO) 로고와 로수젯 제품군, 미국약전(USP) 로고">
+                            </figure>
+                        </article>
+
+                        <!-- 2021~2026 -->
+                        <article class="history-period history-period--left history-period--p5">
+                            <h3 class="history-period-label">2021~2026</h3>
+                            <p class="history-period-headline">하지만 아직, 가야 할 길이 더 남아 있습니다.</p>
+                            <ul class="history-list">
+                                <li class="history-item"><span class="history-year">2021</span><span class="history-desc">'로수젯', 국내사 개발 처방의약품 매출 1위 달성</span></li>
+                                <li class="history-item"><span class="history-year">2022</span><span class="history-desc"><span class="history-desc-line">'롤론티스' 한국 최초 FDA 허가 받은 바이오신약 등재</span><span class="history-desc-line">'로수젯 RACING 연구' 세계 최고 권위 의학저널 'LANCET' 등재</span></span></li>
+                                <li class="history-item"><span class="history-year">2023</span><span class="history-desc">비만 프로젝트 'H.O.P' 프로젝트 가동</span></li>
+                                <li class="history-item"><span class="history-year">2024</span><span class="history-desc">근손실 한계 뛰어넘은 신개념 비만 신약 'HM17321' 발표</span></li>
+                                <li class="history-item"><span class="history-year">2025</span><span class="history-desc"><span class="history-desc-line">'로수젯' 한국 전문의약품 시장 1위 품목 등록</span><span class="history-desc-line">한미약품 8년 연속 원외처방 1위</span><span class="history-desc-line">미국암연구학회(AACR)서 국내 최다 11개 연구 성과 발표</span><span class="history-desc-line">한미사이언스 약국화장품 'EGF크림' 27만개 완판</span></span></li>
+                                <li class="history-item"><span class="history-year">2026</span><span class="history-desc"><span class="history-desc-line">희귀질환치료제 'LAPS-GLP2' 릴리 기술수출</span><span class="history-desc-line">한미 '완전두유·케어미' 국제 우수 미각상 수상</span></span></li>
+                            </ul>
+                            <figure class="history-visual">
+                                <img src="./image/his5.png" alt="더 랜싯 창간 200주년 표지와 롤론티스 제품, 지속형 약물 작용 원리 도식">
+                            </figure>
+                            <img class="history-deco history-deco--molecule" src="./image/obj_mol_big.png" alt="투명한 유리 질감의 분자 구조 장식" aria-hidden="true" loading="lazy">
+                        </article>
+
+                        <p class="history-count history-count--end">
+                            <img class="history-deco history-deco--mascot" src="./image/con2_char.png" alt="출입증을 목에 건 한미 알약 캐릭터" aria-hidden="true" loading="lazy">
+                            <span class="history-count-num">100</span><span class="history-count-unit">th</span>
+                        </p>
+
+                    </div>
+
+                    <div class="history-closing">
+                        <p class="history-closing-text">한계를 넘을 때마다, 건강한 미래는 가까워졌습니다. 한계를 넘는 일, 우리에게는 꽤 익숙하니까.</p>
+                        <p class="history-closing-lead">
+                            <span class="history-closing-line">수많은 도전이 오늘의 한미를 만들었습니다.</span>
+                            <span class="history-closing-line">이제 또 다른 가능성을 향해 당신과 함께 나아갑니다.</span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 펼치기/접기 버튼 -->
+            <div class="history-toggle-wrap" hidden>
+                <button type="button" class="history-toggle" id="historyToggle" aria-expanded="false" aria-controls="historyCollapse">
+                    <svg class="history-toggle-icon" width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
+                        <path d="M2 2L10 10L18 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="history-toggle-label">펼치기</span>
+                </button>
+            </div>
+
+        </section>
+
+        <!-- 4번째 신규 섹션: .job-intro-section (직무소개 파트) -->
+        <section class="job-intro-section" id="job-intro">
+            <div class="job-intro-container">
+                
+                <!-- 상단 타이틀 및 로고, 캐릭터 영역 -->
+                <div class="job-intro-header">
+                    <img src="./image/con3_logo.png.png" alt="Hanmi 로고" class="job-intro-badge" onerror="this.style.opacity=0">
+                    <h2 class="job-intro-title">한미에서는 어떤 일을 할까요?</h2>
+                    <p class="job-intro-desc">일의 보람부터 성장의 순간까지, 먼저 경험한 현직자들이 솔직하게 들려드립니다.</p>
+                </div>
+
+                <!-- 배경 장식용 캐릭터 및 약병 (약병을 카드 그리드보다 먼저 선언하여 카드 뒤에 위치하도록 함) -->
+                <img src="./image/con3_char.png.png" alt="" class="job-intro-deco job-intro-deco--char" aria-hidden="true" onerror="this.style.opacity=0">
+                <img src="./image/con3_bottle.png.png" alt="" class="job-intro-deco job-intro-deco--bottle" aria-hidden="true" onerror="this.style.opacity=0">
+
+                <!-- 현직자 카드 그리드 (z-index를 주어 약병보다 위에 오도록 함) -->
+                <div class="job-intro-grid">
+                    <!-- 카드 1 -->
+                    <article class="job-card">
+                        <div class="job-card-img-wrap">
+                            <img src="./image/con3_int1.jpg.png" alt="연구실에서 파이팅 포즈를 취하고 있는 이건호 사원" class="job-card-img">
+                        </div>
+                        <div class="job-card-content">
+                            <h3 class="job-card-title">정밀한 시험과 분석으로 의약품의 품질을 확인해 안전하고 신뢰할 수 있는 의약품을 만들어갑니다.</h3>
+                            <div class="job-card-info">
+                                <span class="job-card-dept">한미약품 품질관리</span>
+                                <span class="job-card-divider">|</span>
+                                <span class="job-card-name">이건호 사원</span>
+                            </div>
+                        </div>
+                        <a href="#" class="job-card-btn" aria-label="이건호 사원 직무 인터뷰 보기">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </article>
+
+                    <!-- 카드 2 -->
+                    <article class="job-card">
+                        <div class="job-card-img-wrap">
+                            <img src="./image/con3_int2.jpg.png" alt="소파에 앉아 있는 박진하 연구원" class="job-card-img">
+                        </div>
+                        <div class="job-card-content">
+                            <h3 class="job-card-title">신약 후보물질의 가능성을 과학적으로 검증해 새로운 치료제가 환자에 향하는 첫걸음을 만듭니다.</h3>
+                            <div class="job-card-info">
+                                <span class="job-card-dept">한미약품 전임상연구</span>
+                                <span class="job-card-divider">|</span>
+                                <span class="job-card-name">박진하 연구원</span>
+                            </div>
+                        </div>
+                        <a href="#" class="job-card-btn" aria-label="박진하 연구원 직무 인터뷰 보기">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </article>
+                </div>
+
+                <!-- 하단 CTA 버튼 및 태블릿용 약통 영역 -->
+                <div class="job-intro-footer">
+                    <!-- 태블릿 버전에서 CTA 버튼 왼쪽에 위치할 약통 -->
+                    <img src="./image/con3_bottle.png.png" alt="" class="job-intro-deco job-intro-deco--bottle-tablet" aria-hidden="true" onerror="this.style.opacity=0">
+                    <a href="#all-employees" class="job-intro-cta-btn">
+                        <span>모든 현직자 알아가기!</span>
+                    </a>
+                </div>
 
             </div>
         </section>
-                <!-- 3번째 신규 섹션: .history-section -->
-                <section class="history-section" id="history-section" aria-labelledby="history-title">
-
-                    <div class="history-collapse" id="historyCollapse">
-                        <div class="history-container">
-        
-                            <h2 class="history-title" id="history-title">한미의 도전은 작은 가능성에서<br>시작되었습니다.</h2>
-        
-                            <div class="history-timeline">
-        
-                                <p class="history-count history-count--start">
-                                    <span class="history-count-num">53</span><span class="history-count-unit">th</span>
-                                    <img class="history-deco history-deco--sparkle" src="./image/obj_star_big.png" alt="반짝이는 노란 별 세 개 장식" aria-hidden="true" loading="lazy">
-                                </p>
-        
-                                <!-- 1973~2001 -->
-                                <article class="history-period history-period--left history-period--p1">
-                                    <h3 class="history-period-label">1973~2001</h3>
-                                    <p class="history-period-headline">한계를 하나씩 넘을 때마다,</p>
-                                    <ul class="history-list">
-                                        <li class="history-item"><span class="history-year">1973</span><span class="history-desc">한미약품공업주식회사 설립</span></li>
-                                        <li class="history-item"><span class="history-year">1984</span><span class="history-desc">팔탄 GMP 공장 신축</span></li>
-                                        <li class="history-item"><span class="history-year">1989</span><span class="history-desc">세프트리악손 제조방법 Roche사 기술 수출</span></li>
-                                        <li class="history-item"><span class="history-year">1997</span><span class="history-desc">마이크로에멀전 제제기술 Novartis사 기술 수출</span></li>
-                                    </ul>
-                                    <figure class="history-visual">
-                                        <img src="./image/his1.png" alt="한미약품 어린이 영양제 '텐텐'과 비타민C '쎄쎄' 제품 패키지">
-                                    </figure>
-                                    <img class="history-deco history-deco--beaker" src="./image/obj_beaker.png" alt="분홍색 용액이 담긴 실험용 비커 장식" aria-hidden="true" loading="lazy">
-                                </article>
-        
-                                <!-- 2002~2010 -->
-                                <article class="history-period history-period--right history-period--p2">
-                                    <h3 class="history-period-label">2002~2010</h3>
-                                    <ul class="history-list">
-                                        <li class="history-item"><span class="history-year">2004</span><span class="history-desc">국내 최초 고혈압치료제 '아모디핀' 미국특허 획득</span></li>
-                                        <li class="history-item"><span class="history-year">2006</span><span class="history-desc">세계 최초 유소아 해열 시럽신약 '맥시부펜' 개발 성공</span></li>
-                                        <li class="history-item"><span class="history-year">2008</span><span class="history-desc">국내 최초 주사용항생제 세프트리악손 美 FDA 승인</span></li>
-                                        <li class="history-item"><span class="history-year">2009</span><span class="history-desc">세계최초 암로디핀+로살탄 복합제 '아모잘탄' 발매</span></li>
-                                    </ul>
-                                    <figure class="history-visual">
-                                        <img src="./image/his2.png" alt="석양이 지는 해변에서 손을 잡고 함께 점프하는 다섯 사람의 실루엣">
-                                    </figure>
-                                    <img class="history-deco history-deco--blur-blue" src="./image/obj_mol_blur1.png" alt="푸른빛으로 흐릿하게 번진 분자 구조 장식" aria-hidden="true" loading="lazy">
-                                    <img class="history-deco history-deco--microscope" src="./image/obj_microscope.png" alt="파란색 현미경 장식" aria-hidden="true" loading="lazy">
-                                </article>
-        
-                                <!-- 2011~2015 -->
-                                <article class="history-period history-period--left history-period--p3">
-                                    <h3 class="history-period-label">2011~2015</h3>
-                                    <p class="history-period-headline">새로운 가능성이 현실이 되었어요.</p>
-                                    <ul class="history-list">
-                                        <li class="history-item"><span class="history-year">2011</span><span class="history-desc">MSD와 '아모잘탄' 50여개국 수출 계약 체결</span></li>
-                                        <li class="history-item"><span class="history-year">2012</span><span class="history-desc">'LAPS-GCSF' 美 스펙트럼사와 공동개발 및 상업화 계약</span></li>
-                                        <li class="history-item"><span class="history-year">2013</span><span class="history-desc">국내 개량신약 최초 미국 FDA 승인 및 미국 출시 '에소메졸'</span></li>
-                                        <li class="history-item"><span class="history-year">2014</span><span class="history-desc">'트리약손' 국내 최초 유럽 4개국 시판 허가</span></li>
-                                        <li class="history-item"><span class="history-year">2015</span><span class="history-desc">한국 사상 최대규모 릴레이 기술수출</span></li>
-                                    </ul>
-                                    <figure class="history-visual">
-                                        <img src="./image/his3.png" alt="인체 투시 이미지와 에소메졸 20mg·40mg 제품, 스펙트럼 파마슈티컬스 로고">
-                                    </figure>
-                                    <img class="history-deco history-deco--blur-gray" src="./image/obj_mol_blur2.png" alt="회색빛으로 흐릿하게 번진 분자 구조 장식" aria-hidden="true" loading="lazy">
-                                </article>
-        
-                                <!-- 2016~2020 -->
-                                <article class="history-period history-period--right history-period--p4">
-                                    <h3 class="history-period-label">2016~2020</h3>
-                                    <ul class="history-list">
-                                        <li class="history-item"><span class="history-year">2016</span><span class="history-desc">차세대 RAF 저해제, Roche 제넨텍 기술수출</span></li>
-                                        <li class="history-item"><span class="history-year">2017</span><span class="history-desc">'에소메졸' 국내 제약회사 최초 미국약전(USP) 등재</span></li>
-                                        <li class="history-item"><span class="history-year">2018</span><span class="history-desc">'Glucagon Analog', '오락솔' 차세대 AML 치료제 美 희귀의약품 지정</span></li>
-                                        <li class="history-item"><span class="history-year">2019</span><span class="history-desc">최근 10년간 처방실적 최다 4조 4,176억원</span></li>
-                                    </ul>
-                                    <figure class="history-visual">
-                                        <img src="./image/his4.png" alt="미국임상종양학회(ASCO) 로고와 로수젯 제품군, 미국약전(USP) 로고">
-                                    </figure>
-                                </article>
-        
-                                <!-- 2021~2026 -->
-                                <article class="history-period history-period--left history-period--p5">
-                                    <h3 class="history-period-label">2021~2026</h3>
-                                    <p class="history-period-headline">하지만 아직, 가야 할 길이 더 남아 있습니다.</p>
-                                    <ul class="history-list">
-                                        <li class="history-item"><span class="history-year">2021</span><span class="history-desc">'로수젯', 국내사 개발 처방의약품 매출 1위 달성</span></li>
-                                        <li class="history-item"><span class="history-year">2022</span><span class="history-desc"><span class="history-desc-line">'롤론티스' 한국 최초 FDA 허가 받은 바이오신약 등재</span><span class="history-desc-line">'로수젯 RACING 연구' 세계 최고 권위 의학저널 'LANCET' 등재</span></span></li>
-                                        <li class="history-item"><span class="history-year">2023</span><span class="history-desc">비만 프로젝트 'H.O.P' 프로젝트 가동</span></li>
-                                        <li class="history-item"><span class="history-year">2024</span><span class="history-desc">근손실 한계 뛰어넘은 신개념 비만 신약 'HM17321' 발표</span></li>
-                                        <li class="history-item"><span class="history-year">2025</span><span class="history-desc"><span class="history-desc-line">'로수젯' 한국 전문의약품 시장 1위 품목 등록</span><span class="history-desc-line">한미약품 8년 연속 원외처방 1위</span><span class="history-desc-line">미국암연구학회(AACR)서 국내 최다 11개 연구 성과 발표</span><span class="history-desc-line">한미사이언스 약국화장품 'EGF크림' 27만개 완판</span></span></li>
-                                        <li class="history-item"><span class="history-year">2026</span><span class="history-desc"><span class="history-desc-line">희귀질환치료제 'LAPS-GLP2' 릴리 기술수출</span><span class="history-desc-line">한미 '완전두유·케어미' 국제 우수 미각상 수상</span></span></li>
-                                    </ul>
-                                    <figure class="history-visual">
-                                        <img src="./image/his5.png" alt="더 랜싯 창간 200주년 표지와 롤론티스 제품, 지속형 약물 작용 원리 도식">
-                                    </figure>
-                                    <img class="history-deco history-deco--molecule" src="./image/obj_mol_big.png" alt="투명한 유리 질감의 분자 구조 장식" aria-hidden="true" loading="lazy">
-                                </article>
-        
-                                <p class="history-count history-count--end">
-                                    <img class="history-deco history-deco--mascot" src="./image/con2_char.png" alt="출입증을 목에 건 한미 알약 캐릭터" aria-hidden="true" loading="lazy">
-                                    <span class="history-count-num">100</span><span class="history-count-unit">th</span>
-                                </p>
-        
-                            </div>
-        
-                            <div class="history-closing">
-                                <p class="history-closing-text">한계를 넘을 때마다, 건강한 미래는 가까워졌습니다. 한계를 넘는 일, 우리에게는 꽤 익숙하니까.</p>
-                                <p class="history-closing-lead">
-                                    <span class="history-closing-line">수많은 도전이 오늘의 한미를 만들었습니다.</span>
-                                    <span class="history-closing-line">이제 또 다른 가능성을 향해 당신과 함께 나아갑니다.</span>
-                                </p>
-                            </div>
-        
-                        </div>
-                    </div>
-        
-                    <!-- JS 실행 전에는 hidden → 전체 콘텐츠가 그대로 노출 (점진적 향상) -->
-                    <div class="history-toggle-wrap" hidden>
-                        <button type="button" class="history-toggle" id="historyToggle" aria-expanded="false" aria-controls="historyCollapse">
-                            <svg class="history-toggle-icon" width="20" height="12" viewBox="0 0 20 12" fill="none" aria-hidden="true">
-                                <path d="M2 2L10 10L18 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span class="history-toggle-label">펼치기</span>
-                        </button>
-                    </div>
-        
-                </section>
     </main>
 
     <footer></footer>
@@ -1687,7 +1667,8 @@
                 document.body.classList.remove('menu-open');
             });
         });
-        /* ===== History section: 펼치기 / 접기 ===== */
+
+        /* ===== History section: 펼치기 / 접기 및 Intersection Observer 애니메이션 ===== */
         (() => {
             const section = document.getElementById('history-section');
             if (!section) return;
@@ -1698,13 +1679,9 @@
             const label  = section.querySelector('.history-toggle-label');
             const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-            const COLLAPSE_RATIO = 2 / 3; // 접힘 시 노출 비율
-
-            // 전체 높이 / 접힘 높이를 CSS 변수로 주입 (max-height 전환이 px ↔ px로 부드럽게 동작)
             const updateHeights = () => {
                 const full = inner.offsetHeight;
                 section.style.setProperty('--history-full-h', full + 'px');
-                section.style.setProperty('--history-collapsed-h', Math.round(full * COLLAPSE_RATIO) + 'px');
             };
 
             const setExpanded = (expanded) => {
@@ -1714,7 +1691,6 @@
                 label.textContent = expanded ? '접기' : '펼치기';
             };
 
-            // 초기화: 접힘 상태로 시작
             updateHeights();
             setExpanded(false);
             wrap.hidden = false;
@@ -1724,7 +1700,6 @@
                 updateHeights();
                 setExpanded(willExpand);
 
-                // 접을 때 섹션 상단으로 스크롤해 시선 유지
                 if (!willExpand) {
                     section.scrollIntoView({
                         behavior: reduceMotion.matches ? 'auto' : 'smooth',
@@ -1733,7 +1708,30 @@
                 }
             });
 
-            // 리사이즈, 이미지/폰트 로딩으로 높이가 바뀌어도 변수 재계산
+            const historyItems = section.querySelectorAll('.history-item');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px 0px -10% 0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const list = entry.target.closest('.history-list');
+                        if (list) {
+                            const items = Array.from(list.querySelectorAll('.history-item'));
+                            const index = items.indexOf(entry.target);
+                            entry.target.style.transitionDelay = `${index * 0.08}s`;
+                        }
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            historyItems.forEach(item => observer.observe(item));
+
             if ('ResizeObserver' in window) {
                 new ResizeObserver(updateHeights).observe(inner);
             } else {
@@ -1741,7 +1739,6 @@
             }
             window.addEventListener('load', updateHeights);
         })();
-
     </script>
 </body>
 </html>
