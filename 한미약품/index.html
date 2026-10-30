@@ -40,9 +40,30 @@
         overflow: hidden;
       }
 
+      main > section.scroll-reveal {
+        opacity: 0;
+        transform: translateY(20%);
+        transition:
+          opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+          transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      main > section.scroll-reveal.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        main > section.scroll-reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+
       /* Top Header */
       header {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -51,15 +72,42 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        background: transparent;
+        transition:
+          background-color 220ms ease,
+          box-shadow 220ms ease;
+      }
+
+      header.is-scrolled {
+        background: #ffffff;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
       }
 
       .header-inner {
         width: 100%;
         max-width: 1440px;
+        height: 80px;
         padding: 0 100px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          transform 280ms ease,
+          opacity 220ms ease;
+      }
+
+      .header-inner.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-100%);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .header-inner {
+          transition: none;
+        }
       }
 
       .logo {
@@ -3076,6 +3124,1186 @@
           font-size: 13px;
         }
       }
+
+      .requirement {
+        --requirement-accent: #ff5b35;
+        padding: 72px 0 64px;
+        background: #ffffff;
+        color: #111111;
+      }
+
+      .requirement-container {
+        position: relative;
+        width: min(100% - 56px, 1208px);
+        margin: 0 auto;
+      }
+
+      .requirement-title {
+        margin: 0;
+        font-size: clamp(30px, 3.2vw, 40px);
+        font-weight: 800;
+        line-height: 1.35;
+        letter-spacing: -0.04em;
+        text-align: center;
+      }
+
+      .requirement-bulb {
+        position: absolute;
+        top: 16px;
+        right: 12%;
+        width: clamp(64px, 8vw, 96px);
+        height: auto;
+      }
+
+      .requirement-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin: 64px 0 0;
+        padding: 0 0 24px;
+        border-bottom: 1px solid #dddddd;
+      }
+
+      .requirement-tab {
+        min-width: 0;
+        min-height: 56px;
+        border: 0;
+        border-radius: 14px;
+        background: transparent;
+        color: #888888;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      .requirement-tab[aria-selected="true"] {
+        background: #fff8f5;
+        box-shadow: 0 5px 14px rgba(90, 45, 28, 0.13);
+        color: var(--requirement-accent);
+        font-weight: 700;
+      }
+
+      .requirement-panel[hidden] {
+        display: none;
+      }
+
+      .requirement-eligibility {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        padding: 56px 0;
+        border-bottom: 1px solid #dddddd;
+      }
+
+      .requirement-eligibility-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 126px;
+        padding: 0 18px;
+        text-align: center;
+      }
+
+      .requirement-eligibility-item + .requirement-eligibility-item {
+        border-left: 1px solid #e6e6e6;
+      }
+
+      .requirement-eligibility-icon {
+        font-size: 48px;
+        line-height: 1;
+      }
+
+      .requirement-eligibility-item strong {
+        font-size: clamp(16px, 1.6vw, 20px);
+        line-height: 1.45;
+      }
+
+      .requirement-eligibility-notes {
+        display: grid;
+        gap: 8px;
+        justify-content: center;
+        margin: 0;
+        padding: 36px 20px;
+        border-bottom: 1px solid #dddddd;
+        list-style: none;
+      }
+
+      .requirement-eligibility-notes li,
+      .requirement-process-notes li {
+        position: relative;
+        padding-left: 14px;
+        font-size: 13px;
+        line-height: 1.65;
+      }
+
+      .requirement-eligibility-notes li::before,
+      .requirement-process-notes li::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: var(--requirement-accent);
+        content: "•";
+        font-weight: 700;
+      }
+
+      .requirement-notice {
+        margin: 0;
+        padding: 36px 16px;
+        border-bottom: 1px solid #dddddd;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      .requirement-notice strong {
+        color: var(--requirement-accent);
+      }
+
+      .requirement-process-group {
+        padding: 36px 0;
+        border-bottom: 1px solid #dddddd;
+      }
+
+      .requirement-process-title {
+        margin: 0 0 24px 24px;
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .requirement-process-steps {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .requirement-process-step {
+        position: relative;
+        display: flex;
+        flex: 1 1 0;
+        flex-direction: column;
+        align-items: center;
+        min-width: 0;
+        text-align: center;
+      }
+
+      .requirement-process-step:not(:last-child)::after {
+        position: absolute;
+        top: 26px;
+        right: -5px;
+        color: #111111;
+        content: "›";
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .requirement-process-icon {
+        display: block;
+        width: 72px;
+        height: 72px;
+        margin-bottom: 16px;
+        object-fit: contain;
+      }
+
+      .requirement-process-step strong {
+        font-size: clamp(11px, 1.25vw, 15px);
+        line-height: 1.45;
+        white-space: nowrap;
+      }
+
+      .requirement-process-date {
+        margin-top: 4px;
+        color: #999999;
+        font-size: clamp(9px, 1vw, 12px);
+        line-height: 1.4;
+        white-space: nowrap;
+      }
+
+      .requirement-process-notes {
+        display: grid;
+        gap: 6px;
+        margin: 0;
+        padding: 32px 28px 0;
+        list-style: none;
+      }
+
+      .requirement-process-notes li {
+        font-size: 13px;
+      }
+
+      @media screen and (min-width: 601px) and (max-width: 1024px) {
+        .requirement {
+          padding: 64px 0 56px;
+        }
+
+        .requirement-container {
+          width: calc(100% - 40px);
+        }
+
+        .requirement-title {
+          font-size: clamp(28px, 4vw, 36px);
+        }
+
+        .requirement-bulb {
+          right: 3%;
+          width: 72px;
+        }
+
+        .requirement-tabs {
+          margin-top: 52px;
+          padding-bottom: 18px;
+        }
+
+        .requirement-eligibility {
+          padding: 44px 0;
+        }
+
+        .requirement-process-title {
+          margin-left: 18px;
+          font-size: 18px;
+        }
+
+        .requirement-process-group {
+          padding: 30px 0;
+        }
+
+        .requirement-process-icon {
+          width: 66px;
+          height: 66px;
+          margin-bottom: 14px;
+        }
+
+        .requirement-process-step:not(:last-child)::after {
+          top: 25px;
+        }
+
+        .requirement-process-notes {
+          padding: 28px 18px 0;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .requirement {
+          padding: 44px 0 40px;
+        }
+
+        .requirement-container {
+          width: calc(100% - 30px);
+        }
+
+        .requirement-title {
+          font-size: 20px;
+          line-height: 1.5;
+        }
+
+        .requirement-bulb {
+          display: none;
+        }
+
+        .requirement-tabs {
+          gap: 8px;
+          margin: 32px 0 0;
+          padding-bottom: 14px;
+        }
+
+        .requirement-tab {
+          min-height: 46px;
+          padding: 8px 4px;
+          border-radius: 12px;
+          font-size: 11px;
+          white-space: nowrap;
+        }
+
+        .requirement-eligibility {
+          grid-template-columns: 1fr;
+          padding: 14px 0;
+        }
+
+        .requirement-eligibility-item {
+          min-height: 132px;
+          gap: 8px;
+          padding: 18px 8px;
+        }
+
+        .requirement-eligibility-item + .requirement-eligibility-item {
+          border-top: 1px solid #dddddd;
+          border-left: 0;
+        }
+
+        .requirement-eligibility-icon {
+          font-size: 38px;
+        }
+
+        .requirement-eligibility-item strong {
+          font-size: 14px;
+        }
+
+        .requirement-eligibility-notes {
+          gap: 6px;
+          padding: 22px 18px;
+        }
+
+        .requirement-eligibility-notes li {
+          font-size: 10px;
+        }
+
+        .requirement-notice {
+          padding: 24px 10px;
+          font-size: 11px;
+        }
+
+        .requirement-process-group {
+          padding: 24px 0;
+        }
+
+        .requirement-process-title {
+          margin: 0 0 20px 4px;
+          font-size: 15px;
+        }
+
+        .requirement-process-step:not(:last-child)::after {
+          top: 18px;
+          right: -3px;
+          font-size: 16px;
+        }
+
+        .requirement-process-icon {
+          width: 45px;
+          height: 45px;
+          margin-bottom: 10px;
+        }
+
+        .requirement-process-step strong {
+          font-size: clamp(7px, 2.3vw, 10px);
+        }
+
+        .requirement-process-date {
+          font-size: clamp(7px, 1.9vw, 9px);
+        }
+
+        .requirement-process-notes {
+          gap: 7px;
+          padding: 22px 4px 0;
+        }
+
+        .requirement-process-notes li {
+          padding-left: 10px;
+          font-size: 9px;
+        }
+      }
+
+      .exposition {
+        --exposition-accent: #ff684d;
+        padding: 92px 0 110px;
+        background: #ffffff;
+        color: #111111;
+      }
+
+      .exposition-container {
+        position: relative;
+        width: min(100% - 56px, 1208px);
+        margin: 0 auto;
+      }
+
+      .exposition-character {
+        position: absolute;
+        z-index: 1;
+        top: -118px;
+        left: -22px;
+        width: clamp(110px, 11vw, 150px);
+        height: auto;
+      }
+
+      .exposition-title {
+        margin: 0;
+        font-size: clamp(30px, 3.2vw, 40px);
+        font-weight: 800;
+        line-height: 1.35;
+        letter-spacing: -0.04em;
+        text-align: center;
+      }
+
+      .exposition-intro {
+        margin: 18px 0 0;
+        color: #333333;
+        font-size: 16px;
+        line-height: 1.7;
+        text-align: center;
+      }
+
+      .exposition-notice {
+        margin: 14px 0 0;
+        font-size: 12px;
+        text-align: center;
+      }
+
+      .exposition-notice::before {
+        margin-right: 8px;
+        color: var(--exposition-accent);
+        content: "•";
+        font-weight: 700;
+      }
+
+      .exposition-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin: 64px 0 0;
+        padding: 0 0 20px;
+        border-bottom: 1px solid #dddddd;
+      }
+
+      .exposition-tab,
+      .exposition-region-tab {
+        min-width: 0;
+        border: 0;
+        border-radius: 14px;
+        background: transparent;
+        color: #888888;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .exposition-tab {
+        min-height: 56px;
+        font-size: 16px;
+      }
+
+      .exposition-tab[aria-selected="true"],
+      .exposition-region-tab[aria-selected="true"] {
+        background: #fff8f5;
+        box-shadow: 0 5px 14px rgba(90, 45, 28, 0.13);
+        color: var(--exposition-accent);
+        font-weight: 700;
+      }
+
+      .exposition-panel[hidden] {
+        display: none;
+      }
+
+      .exposition-region-tabs {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 8px;
+        margin: 24px 0 26px;
+        padding: 8px;
+        border-radius: 14px;
+        background: #fffaf8;
+      }
+
+      .exposition-region-tab {
+        min-height: 52px;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .exposition-schedule {
+        display: grid;
+        gap: 16px;
+      }
+
+      .exposition-week {
+        min-height: 148px;
+      }
+
+      .exposition-dates,
+      .exposition-schools {
+        display: grid;
+        grid-template-columns: repeat(
+          var(--exposition-day-count, 5),
+          minmax(0, 1fr)
+        );
+      }
+
+      .exposition-dates {
+        border-top: 1px solid #dddddd;
+        border-bottom: 1px solid #dddddd;
+      }
+
+      .exposition-date {
+        position: relative;
+        padding: 12px 4px;
+        font-size: 15px;
+        font-weight: 700;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .exposition-date + .exposition-date::before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 1px;
+        height: 14px;
+        background: #dddddd;
+        content: "";
+        transform: translateY(-50%);
+      }
+
+      .exposition-schools {
+        min-height: 104px;
+      }
+
+      .exposition-school-cell {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        min-width: 0;
+        padding: 18px 4px;
+        color: var(--exposition-accent);
+        font-size: 14px;
+        line-height: 1.5;
+        text-align: center;
+      }
+
+      .exposition-school-button {
+        max-width: 100%;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+      }
+
+      .exposition-school-button:hover,
+      .exposition-school-button:focus-visible {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+
+      .exposition-school-button + .exposition-school-button::before {
+        display: block;
+        width: 42px;
+        height: 1px;
+        margin: 0 auto 10px;
+        background: #ffe0d8;
+        content: "";
+      }
+
+      .exposition-school-detail {
+        display: grid;
+        gap: 8px;
+        width: min(100%, 190px);
+        margin-top: 6px;
+        padding: 14px 10px;
+        border-radius: 0 0 8px 8px;
+        background: #fff7f4;
+        color: #111111;
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .exposition-school-detail[hidden] {
+        display: none;
+      }
+
+      .exposition-school-detail-label {
+        display: block;
+        margin-bottom: 3px;
+        color: var(--exposition-accent);
+        font-size: 11px;
+      }
+
+      .exposition-school-detail-pending {
+        color: #666666;
+        font-size: 12px;
+      }
+
+      .exposition-cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: start;
+        gap: 32px;
+        margin-top: 94px;
+      }
+
+      .exposition-card:nth-child(2) {
+        transform: translateY(-30px);
+      }
+
+      .exposition-card:nth-child(3) {
+        transform: translateY(34px);
+      }
+
+      .exposition-card-image {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 0.69;
+        border-radius: 9px;
+        background: #222222;
+      }
+
+      .exposition-card-image > img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .exposition-card-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        padding: 20px;
+        background: rgba(25, 16, 15, 0.58);
+        color: #ffffff;
+        opacity: 0;
+        text-align: center;
+      }
+
+      .exposition-card-overlay strong {
+        font-size: clamp(18px, 2vw, 26px);
+        line-height: 1.4;
+      }
+
+      .exposition-card-arrow {
+        display: grid;
+        width: 58px;
+        height: 58px;
+        place-items: center;
+        border: 2px solid rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ff684d, #ffc0ad);
+        font-size: 32px;
+        line-height: 1;
+      }
+
+      .exposition-card:hover .exposition-card-overlay,
+      .exposition-card:focus-within .exposition-card-overlay {
+        opacity: 1;
+      }
+
+      .exposition-card:hover .exposition-card-image > img,
+      .exposition-card:focus-within .exposition-card-image > img {
+        transform: scale(1.04);
+      }
+
+      .exposition-card-caption {
+        position: relative;
+        min-height: 64px;
+        margin: 12px 10px 0;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 1.5;
+        text-align: center;
+      }
+
+      .exposition-sign {
+        position: absolute;
+        pointer-events: none;
+      }
+
+      .exposition-sign-arrow1 {
+        top: -2.3em;
+        left: 5.5%;
+        width: 10.5%;
+      }
+
+      .exposition-sign-arrow2 {
+        top: -2.25em;
+        right: 9%;
+        width: 10.5%;
+      }
+
+      .exposition-sign-circle {
+        top: -0.25em;
+        left: 41.5%;
+        width: 17.7%;
+      }
+
+      .exposition-sign-star {
+        top: -1.5em;
+        right: -4.5%;
+        width: 13.3%;
+      }
+
+      .exposition-sign-line {
+        top: 1em;
+        right: 34%;
+        width: 28%;
+      }
+
+      .exposition-sign-wave {
+        top: 1.7em;
+        right: 44%;
+        width: 28%;
+      }
+
+      .exposition-campus-character {
+        position: absolute;
+        right: -10px;
+        bottom: -18px;
+        z-index: 1;
+        display: block;
+        width: clamp(120px, 15vw, 180px);
+        height: auto;
+      }
+
+      .con8 {
+        position: relative;
+        isolation: isolate;
+        display: flex;
+        min-height: clamp(620px, 56.8vw, 860px);
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        background: #e7faff url("./image/con9_bg.png") center / cover no-repeat;
+        color: #111111;
+        text-align: center;
+      }
+
+      .con8-content {
+        position: relative;
+        z-index: 1;
+        width: min(100% - 48px, 1100px);
+        padding-top: clamp(100px, 8.8vw, 130px);
+      }
+
+      .con8-title {
+        margin: 0;
+        font-size: clamp(34px, 3.6vw, 44px);
+        font-weight: 800;
+        line-height: 1.35;
+      }
+
+      .con8-countdown {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: center;
+        gap: 0 0.18em;
+        margin: 8px 0 0;
+        font-size: clamp(36px, 4.2vw, 52px);
+        font-weight: 800;
+        line-height: 1.35;
+        white-space: nowrap;
+      }
+
+      .con8-countdown-unit {
+        display: inline-flex;
+        align-items: baseline;
+        gap: 0.08em;
+      }
+
+      .con8-countdown-value {
+        color: #ff3f2e;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .con8-earth {
+        position: absolute;
+        z-index: 1;
+        top: 46%;
+        left: 50%;
+        display: block;
+        width: clamp(180px, 18vw, 250px);
+        height: auto;
+        transform: translateX(-50%);
+        transition: transform 250ms ease;
+      }
+
+      .con8-earth:hover {
+        transform: translateX(-50%) scale(1.3);
+      }
+
+      .con8-apply {
+        position: absolute;
+        z-index: 2;
+        top: 63.5%;
+        left: 50%;
+        display: flex;
+        width: clamp(154px, 13.5vw, 176px);
+        min-height: 60px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 14px 8px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.76);
+        box-shadow: 0 4px 14px rgba(37, 91, 112, 0.2);
+        color: #ff563d;
+        font-size: 16px;
+        font-weight: 700;
+        text-decoration: none;
+        transform: translate(-50%, -50%);
+        backdrop-filter: blur(6px);
+      }
+
+      .con8-apply-arrow {
+        display: grid;
+        width: 30px;
+        height: 30px;
+        flex: 0 0 auto;
+        place-items: center;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ff684d, #ffa18b);
+        box-shadow: 0 2px 6px rgba(255, 104, 77, 0.3);
+        color: #ffffff;
+        font-size: 20px;
+        line-height: 1;
+      }
+
+      .con8-cloud {
+        position: absolute;
+        z-index: 0;
+        bottom: 0;
+        display: block;
+        height: auto;
+        pointer-events: none;
+      }
+
+      .con8-cloud-left {
+        left: 0;
+        width: clamp(360px, 42vw, 560px);
+      }
+
+      .con8-cloud-right {
+        right: 0;
+        width: clamp(260px, 30vw, 410px);
+      }
+
+      .con8-hint {
+        position: absolute;
+        z-index: 1;
+        right: 20px;
+        bottom: 6.5%;
+        left: 20px;
+        margin: 0;
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .con8-hint::before {
+        margin-right: 7px;
+        color: #ff563d;
+        content: "•";
+        font-weight: 700;
+      }
+
+      footer {
+        display: flex;
+        min-height: 64px;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 20px;
+        background: #ffffff;
+      }
+
+      .footer-logo {
+        display: block;
+        width: 122px;
+        height: auto;
+      }
+
+      @media screen and (min-width: 601px) and (max-width: 1024px) {
+        .exposition {
+          padding: 78px 0 90px;
+        }
+
+        .exposition-container {
+          width: calc(100% - 40px);
+        }
+
+        .exposition-character {
+          top: -92px;
+          left: -12px;
+          width: 125px;
+        }
+
+        .exposition-title {
+          font-size: clamp(28px, 4vw, 36px);
+        }
+
+        .exposition-intro {
+          font-size: 14px;
+        }
+
+        .exposition-tabs {
+          margin-top: 48px;
+        }
+
+        .exposition-date {
+          font-size: 13px;
+        }
+
+        .exposition-school-cell {
+          font-size: 12px;
+        }
+
+        .exposition-cards {
+          gap: 22px;
+          margin-top: 78px;
+        }
+
+        .exposition-card-caption {
+          margin-right: 4px;
+          margin-left: 4px;
+          font-size: 14px;
+        }
+
+        .con8 {
+          min-height: clamp(520px, 72vw, 680px);
+        }
+
+        .con8-content {
+          width: calc(100% - 40px);
+          padding-top: clamp(82px, 11vw, 112px);
+        }
+
+        .con8-title {
+          font-size: clamp(30px, 4vw, 38px);
+        }
+
+        .con8-countdown {
+          font-size: clamp(32px, 4.5vw, 44px);
+        }
+
+        .con8-earth {
+          top: 45%;
+          width: clamp(180px, 25vw, 230px);
+        }
+
+        .con8-apply {
+          top: 63%;
+        }
+
+        .con8-cloud-left {
+          width: 48vw;
+        }
+
+        .con8-cloud-right {
+          width: 34vw;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .exposition {
+          padding: 52px 0 60px;
+        }
+
+        .exposition-container {
+          width: calc(100% - 30px);
+        }
+
+        .exposition-character {
+          display: none;
+        }
+
+        .exposition-title {
+          font-size: 22px;
+          line-height: 1.45;
+        }
+
+        .exposition-intro {
+          margin-top: 12px;
+          font-size: 12px;
+          line-height: 1.65;
+        }
+
+        .exposition-notice {
+          font-size: 10px;
+          line-height: 1.5;
+        }
+
+        .exposition-tabs {
+          gap: 8px;
+          margin-top: 30px;
+          padding-bottom: 14px;
+        }
+
+        .exposition-tab {
+          min-height: 46px;
+          border-radius: 12px;
+          font-size: 12px;
+        }
+
+        .exposition-region-tabs {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 4px;
+          margin: 16px 0 18px;
+          padding: 5px;
+          border-radius: 10px;
+        }
+
+        .exposition-region-tab {
+          min-height: 38px;
+          border-radius: 9px;
+          font-size: 12px;
+        }
+
+        .exposition-schedule {
+          gap: 12px;
+        }
+
+        .exposition-week {
+          min-height: 0;
+        }
+
+        .exposition-dates,
+        .exposition-schools {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .exposition-date {
+          padding: 10px 2px;
+          font-size: 11px;
+        }
+
+        .exposition-date:nth-child(odd)::before {
+          display: none;
+        }
+
+        .exposition-date:nth-child(n + 3) {
+          border-top: 1px solid #eeeeee;
+        }
+
+        .exposition-school-cell {
+          min-height: 96px;
+          gap: 10px;
+          padding: 14px 3px;
+          font-size: 10px;
+        }
+
+        .exposition-school-detail {
+          gap: 7px;
+          padding: 10px 6px;
+          font-size: 11px;
+        }
+
+        .exposition-school-detail-label {
+          font-size: 10px;
+        }
+
+        .exposition-cards {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 14px;
+          margin-top: 42px;
+        }
+
+        .exposition-card:nth-child(2),
+        .exposition-card:nth-child(3) {
+          transform: none;
+        }
+
+        .exposition-card-image {
+          aspect-ratio: 1.55;
+        }
+
+        .exposition-card-overlay {
+          gap: 8px;
+          padding: 12px;
+          background: rgba(25, 16, 15, 0.48);
+          opacity: 1;
+        }
+
+        .exposition-card-overlay strong {
+          font-size: 13px;
+        }
+
+        .exposition-card-arrow {
+          width: 34px;
+          height: 34px;
+          font-size: 22px;
+        }
+
+        .exposition-card-caption {
+          min-height: 0;
+          margin: 8px 4px 0;
+          font-size: 13px;
+        }
+
+        .exposition-sign {
+          display: none;
+        }
+
+        .exposition-campus-character {
+          display: none !important;
+        }
+
+        .con8 {
+          min-height: clamp(500px, 135vw, 620px);
+          background-position: center;
+        }
+
+        .con8-content {
+          width: calc(100% - 28px);
+          padding-top: 58px;
+        }
+
+        .con8-title {
+          font-size: clamp(20px, 5.5vw, 27px);
+          line-height: 1.45;
+        }
+
+        .con8-countdown {
+          gap: 0 0.12em;
+          margin-top: 8px;
+          font-size: clamp(18px, 5.2vw, 25px);
+          line-height: 1.5;
+          white-space: normal;
+        }
+
+        .con8-earth {
+          top: 42%;
+          width: clamp(170px, 49vw, 205px);
+        }
+
+        .con8-apply {
+          top: 61%;
+          width: 152px;
+          min-height: 52px;
+          padding: 7px 12px 7px 18px;
+          font-size: 14px;
+        }
+
+        .con8-apply-arrow {
+          width: 27px;
+          height: 27px;
+          font-size: 18px;
+        }
+
+        .con8-cloud-left {
+          width: 72vw;
+        }
+
+        .con8-cloud-right {
+          width: 53vw;
+        }
+
+        .con8-hint {
+          right: 12px;
+          bottom: 5%;
+          left: 12px;
+          font-size: 11px;
+        }
+
+        footer {
+          min-height: 56px;
+          padding: 14px 16px;
+        }
+
+        .footer-logo {
+          width: 112px;
+        }
+      }
+
+      @media screen and (max-width: 359px) {
+        body {
+          min-width: 360px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -4400,18 +5628,600 @@
           <div class="tasks-modal-content"></div>
         </dialog>
       </section>
+      <section
+        class="requirement"
+        id="requirement"
+        aria-labelledby="requirement-title"
+      >
+        <div class="requirement-container">
+          <h2 class="requirement-title" id="requirement-title">
+            한미그룹과 함께하는 문은<br />활짝 열려 있습니다
+          </h2>
+          <img
+            class="requirement-bulb"
+            src="./image/obj_bulb.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <div
+            class="requirement-tabs"
+            role="tablist"
+            aria-label="지원 및 전형 안내"
+          >
+            <button
+              class="requirement-tab"
+              id="requirement-tab-eligibility"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="requirement-panel-eligibility"
+            >
+              지원자격
+            </button>
+            <button
+              class="requirement-tab"
+              id="requirement-tab-process"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="requirement-panel-process"
+              tabindex="-1"
+            >
+              전형절차 및 접수방법
+            </button>
+          </div>
+          <div
+            class="requirement-panel"
+            id="requirement-panel-eligibility"
+            role="tabpanel"
+            aria-labelledby="requirement-tab-eligibility"
+          >
+            <div class="requirement-eligibility">
+              <div class="requirement-eligibility-item">
+                <span class="requirement-eligibility-icon" aria-hidden="true"
+                  >🗓️</span
+                >
+                <strong>27년 1월 입사가 가능한 자</strong>
+              </div>
+              <div class="requirement-eligibility-item">
+                <span class="requirement-eligibility-icon" aria-hidden="true"
+                  >🎓</span
+                >
+                <strong>기졸업자 또는 27년 2월 졸업 예정자</strong>
+              </div>
+            </div>
+            <ul class="requirement-eligibility-notes">
+              <li>남성의 경우 병역을 마쳤거나 면제인 분</li>
+              <li>해외여행 (또는 해외 출장)에 결격사유가 없는 분</li>
+              <li>취업보호대상자는 관련 법령에 의거하여 우대</li>
+            </ul>
+            <p class="requirement-notice">
+              모집 직무별로 지원자격이 상이하오니 반드시
+              <strong>채용 공고</strong>를 확인해 주시기 바랍니다.
+            </p>
+          </div>
+          <div
+            class="requirement-panel"
+            id="requirement-panel-process"
+            role="tabpanel"
+            aria-labelledby="requirement-tab-process"
+            hidden
+          >
+            <section class="requirement-process-group">
+              <h3 class="requirement-process-title">영업직군</h3>
+              <ol class="requirement-process-steps">
+                <li class="requirement-process-step">
+                  <img
+                    class="requirement-process-icon"
+                    src="./image/require_step_apply.png"
+                    alt=""
+                    aria-hidden="true"
+                  /><strong>지원접수</strong
+                  ><span class="requirement-process-date">9.28~10.18</span>
+                </li>
+                <li class="requirement-process-step">
+                  <img
+                    class="requirement-process-icon"
+                    src="./image/require_step_doc.png"
+                    alt=""
+                    aria-hidden="true"
+                  /><strong>서류전형</strong
+                  ><span class="requirement-process-date">10.19~10.20</span>
+                </li>
+                <li class="requirement-process-step">
+                  <img
+                    class="requirement-process-icon"
+                    src="./image/require_step_ai.png"
+                    alt=""
+                    aria-hidden="true"
+                  /><strong>AI역량검사</strong
+                  ><span class="requirement-process-date">10.21~10.25</span>
+                </li>
+                <li class="requirement-process-step">
+                  <img
+                    class="requirement-process-icon"
+                    src="./image/require_step_interview1.png"
+                    alt=""
+                    aria-hidden="true"
+                  /><strong>1차면접</strong
+                  ><span class="requirement-process-date">11월 중</span>
+                </li>
+                <li class="requirement-process-step">
+                  <img
+                    class="requirement-process-icon"
+                    src="./image/require_step_field.png"
+                    alt=""
+                    aria-hidden="true"
+                  /><strong>현장체험</strong
+                  ><span class="requirement-process-date">12월 초</span>
+                </li>
+                <li class="requirement-process-step">
+                  <img
+                    class="requirement-process-icon"
+                    src="./image/require_step_interview2.png"
+                    alt=""
+                    aria-hidden="true"
+                  /><strong>2차면접</strong
+                  ><span class="requirement-process-date">12월 중</span>
+                </li>
+                <li class="requirement-process-step">
+                  <img
+                    class="requirement-process-icon"
+                    src="./image/require_step_edu.png"
+                    alt=""
+                    aria-hidden="true"
+                  /><strong>교육전형</strong
+                  ><span class="requirement-process-date">27.1.4~</span>
+                </li>
+              </ol>
+            </section>
+            <section class="requirement-process-group">
+              <h3 class="requirement-process-title">영업 외 전직군</h3>
+              <ol class="requirement-process-steps">
+                <li class="requirement-process-step">
+                  <img
+                    class="requirement-process-icon"
+                    src="./image/require_step_apply.png"
+                    alt=""
+                    aria-hidden="true"
+                  /><strong>지원접수</strong
+                  ><span class="requirement-process-date">9.28~10.18</span>
+                </li>
+                <li class="requirement-process-step">
+                  <img
+                    class="requirement-process-icon"
+                    src="./image/require_step_doc.png"
+                    alt=""
+                    aria-hidden="true"
+                  /><strong>서류전형</strong
+                  ><span class="requirement-process-date">10.19~10.20</span>
+                </li>
+                <li class="requirement-process-step">
+                  <img
+                    class="requirement-process-icon"
+                    src="./image/require_step_ai.png"
+                    alt=""
+                    aria-hidden="true"
+                  /><strong>AI역량검사</strong
+                  ><span class="requirement-process-date">10.21~10.25</span>
+                </li>
+                <li class="requirement-process-step">
+                  <img
+                    class="requirement-process-icon"
+                    src="./image/require_step_interview1.png"
+                    alt=""
+                    aria-hidden="true"
+                  /><strong>1차면접</strong
+                  ><span class="requirement-process-date">11월 중</span>
+                </li>
+                <li class="requirement-process-step">
+                  <img
+                    class="requirement-process-icon"
+                    src="./image/require_step_interview2.png"
+                    alt=""
+                    aria-hidden="true"
+                  /><strong>2차면접</strong
+                  ><span class="requirement-process-date">12월 중</span>
+                </li>
+                <li class="requirement-process-step">
+                  <img
+                    class="requirement-process-icon"
+                    src="./image/require_step_join.png"
+                    alt=""
+                    aria-hidden="true"
+                  /><strong>입사</strong
+                  ><span class="requirement-process-date"
+                    >27.1.4<br />(경력직 협의 가능)</span
+                  >
+                </li>
+              </ol>
+            </section>
+            <ul class="requirement-process-notes">
+              <li>
+                상기 일정은 상황에 따라 변경될 수 있으며 각 전형별 상세 일정은
+                대상자에 한해 개별 안내 예정입니다.
+              </li>
+              <li>
+                입사지원서에 허위 기재가 있거나 제출서류가 허위로 판명되는 경우,
+                또는 입사 이후 자격 미확보 및 상실하는 경우는 입사가 취소될 수
+                있습니다.
+              </li>
+              <li>지원서 제출 후에는 수정이 절대 불가하오니, 주의하시기 바랍니다.</li>
+              <li>
+                전형단계별 결과는 E-Mail 및 SMS를 통하여 안내하오니 E-Mail 주소 및
+                휴대전화 번호를 정확히 기재해주시기 바랍니다.
+              </li>
+              <li>
+                입사 후 3개월간 수습기간이 적용되며, 수습 기간 중 성적이
+                불량하거나 직무 수행 능력이 부족하다고 판단되는 경우 입사가
+                취소될 수 있습니다.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section
+        class="exposition"
+        id="exposition"
+        aria-labelledby="exposition-title"
+      >
+        <div class="exposition-container">
+          <img
+            class="exposition-character"
+            src="./image/expo_char.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <h2 class="exposition-title" id="exposition-title">
+            Hanmi 박람회/캠퍼스로 출발!
+          </h2>
+          <p class="exposition-intro">
+            한미그룹이 여러분을 만나러 박람회와 캠퍼스로 찾아갑니다.<br />
+            우리가 어디서 만날지 궁금하다면 아래 지역에서 찾아보세요!
+          </p>
+          <p class="exposition-notice">
+            학교명/장소를 클릭하거나 터치하면 세부장소를 확인하실 수 있습니다.
+          </p>
+
+          <div
+            class="exposition-tabs"
+            role="tablist"
+            aria-label="박람회 및 캠퍼스 일정"
+          >
+            <button
+              class="exposition-tab"
+              id="exposition-tab-fair"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="exposition-panel-fair"
+            >
+              박람회
+            </button>
+            <button
+              class="exposition-tab"
+              id="exposition-tab-campus"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="exposition-panel-campus"
+              tabindex="-1"
+            >
+              캠퍼스
+            </button>
+          </div>
+
+          <div
+            class="exposition-panel"
+            id="exposition-panel-fair"
+            role="tabpanel"
+            aria-labelledby="exposition-tab-fair"
+          >
+            <div
+              class="exposition-schedule"
+              id="exposition-fair-schedule"
+              aria-live="polite"
+            ></div>
+          </div>
+          <div
+            class="exposition-panel"
+            id="exposition-panel-campus"
+            role="tabpanel"
+            aria-labelledby="exposition-tab-campus"
+            hidden
+          >
+            <div
+              class="exposition-region-tabs"
+              role="tablist"
+              aria-label="캠퍼스 방문 지역"
+              id="exposition-region-tabs"
+            ></div>
+            <div
+              class="exposition-schedule"
+              id="exposition-campus-schedule"
+              aria-live="polite"
+            ></div>
+            <img
+              class="exposition-campus-character"
+              src="./image/expo_char1.png"
+              alt=""
+              aria-hidden="true"
+            />
+          </div>
+          <div class="exposition-cards">
+            <article class="exposition-card">
+              <div class="exposition-card-image">
+                <img
+                  src="./image/con8_img1.jpg"
+                  alt="한미그룹 구성원"
+                  loading="lazy"
+                />
+                <div class="exposition-card-overlay">
+                  <strong>한미그룹 YouTube</strong>
+                  <span class="exposition-card-arrow" aria-hidden="true"
+                    >→</span
+                  >
+                </div>
+              </div>
+              <p class="exposition-card-caption">
+                한미그룹의 문화와 복지가 궁금하다면?
+                <img
+                  class="exposition-sign exposition-sign-arrow1"
+                  src="./image/con10_sign_arrow1.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <img
+                  class="exposition-sign exposition-sign-star"
+                  src="./image/con10_sign_star.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <img
+                  class="exposition-sign exposition-sign-line"
+                  src="./image/con10_sign_line.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </p>
+            </article>
+            <article class="exposition-card">
+              <div class="exposition-card-image">
+                <img
+                  src="./image/con8_img2.jpg"
+                  alt="촬영 카메라"
+                  loading="lazy"
+                />
+                <div class="exposition-card-overlay">
+                  <strong>한미그룹 직무 소개 페이지</strong>
+                  <span class="exposition-card-arrow" aria-hidden="true"
+                    >→</span
+                  >
+                </div>
+              </div>
+              <p class="exposition-card-caption">
+                한미그룹의 직무가 궁금하다면?
+                <img
+                  class="exposition-sign exposition-sign-arrow2"
+                  src="./image/con10_sign_arrow2.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <img
+                  class="exposition-sign exposition-sign-circle"
+                  src="./image/con10_sign_circle.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </p>
+            </article>
+            <article class="exposition-card">
+              <div class="exposition-card-image">
+                <img
+                  src="./image/con8_img3.jpg"
+                  alt="한미약품 연구센터"
+                  loading="lazy"
+                />
+                <div class="exposition-card-overlay">
+                  <strong>한미그룹 채용 홈페이지</strong>
+                  <span class="exposition-card-arrow" aria-hidden="true"
+                    >→</span
+                  >
+                </div>
+              </div>
+              <p class="exposition-card-caption">
+                한미그룹의 채용소식을 빠르게 받고 싶다면?
+                <img
+                  class="exposition-sign exposition-sign-wave"
+                  src="./image/con10_sign_wave.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section
+        class="con8"
+        aria-labelledby="con8-title"
+        data-deadline="2026-10-18T23:59:59+09:00"
+      >
+        <div class="con8-content">
+          <h2 class="con8-title" id="con8-title">
+            당신에게 딱 맞는 자리를 찾으러 출발!
+          </h2>
+          <p
+            class="con8-countdown"
+            role="timer"
+            aria-label="지원 마감까지 남은 시간"
+          >
+            <span class="con8-countdown-unit"
+              ><strong class="con8-countdown-value" data-countdown-days
+                >00</strong
+              >일</span
+            >
+            <span class="con8-countdown-unit"
+              ><strong class="con8-countdown-value" data-countdown-hours
+                >00</strong
+              >시간</span
+            >
+            <span class="con8-countdown-unit"
+              ><strong class="con8-countdown-value" data-countdown-minutes
+                >00</strong
+              >분</span
+            >
+            <span class="con8-countdown-unit"
+              ><strong class="con8-countdown-value" data-countdown-seconds
+                >00</strong
+              >초</span
+            >
+            남았어요
+          </p>
+        </div>
+        <img
+          class="con8-earth"
+          src="./image/con9_earth.png"
+          alt=""
+          aria-hidden="true"
+        />
+        <a class="con8-apply" href="#apply">
+          <span>지원하기</span>
+          <span class="con8-apply-arrow" aria-hidden="true">→</span>
+        </a>
+        <img
+          class="con8-cloud con8-cloud-left"
+          src="./image/con9_cloud_l.png"
+          alt=""
+          aria-hidden="true"
+        />
+        <img
+          class="con8-cloud con8-cloud-right"
+          src="./image/con9_cloud_r.png"
+          alt=""
+          aria-hidden="true"
+        />
+        <p class="con8-hint">아이콘을 클릭해서 지원해주세요!</p>
+      </section>
     </main>
 
-    <footer></footer>
+    <footer>
+      <img class="footer-logo" src="./image/logo.svg.svg" alt="한미그룹" />
+    </footer>
 
     <script src="./data/task_data.js"></script>
     <script>
+      (() => {
+        const countdown = document.querySelector(".con8");
+        const deadline = Date.parse(countdown.dataset.deadline);
+        if (!Number.isFinite(deadline)) {
+          throw new Error("지원 마감 날짜를 확인할 수 없습니다.");
+        }
+
+        const daysElement = countdown.querySelector("[data-countdown-days]");
+        const hoursElement = countdown.querySelector("[data-countdown-hours]");
+        const minutesElement = countdown.querySelector(
+          "[data-countdown-minutes]",
+        );
+        const secondsElement = countdown.querySelector(
+          "[data-countdown-seconds]",
+        );
+
+        const updateCountdown = () => {
+          const remainingSeconds = Math.max(
+            0,
+            Math.floor((deadline - Date.now()) / 1000),
+          );
+          daysElement.textContent = String(
+            Math.floor(remainingSeconds / 86400),
+          ).padStart(2, "0");
+          hoursElement.textContent = String(
+            Math.floor((remainingSeconds % 86400) / 3600),
+          ).padStart(2, "0");
+          minutesElement.textContent = String(
+            Math.floor((remainingSeconds % 3600) / 60),
+          ).padStart(2, "0");
+          secondsElement.textContent = String(remainingSeconds % 60).padStart(
+            2,
+            "0",
+          );
+        };
+
+        updateCountdown();
+        window.setInterval(updateCountdown, 1000);
+      })();
+
       const hamburgerBtn = document.getElementById("hamburgerBtn");
       const mobileMenu = document.getElementById("mobileMenu");
       const mobileCloseBtn = document.getElementById("mobileCloseBtn");
       const mobileLinks = document.querySelectorAll(".mobile-link");
+      const header = document.querySelector("header");
+      const headerInner = document.querySelector(".header-inner");
+      const revealSections = document.querySelectorAll(
+        "main > section:not(.main_visual):not(.con8)",
+      );
+      const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)",
+      );
+      let previousScrollY = window.scrollY;
+      let scrollUpdateScheduled = false;
+
+      if (reduceMotion.matches) {
+        revealSections.forEach((section) =>
+          section.classList.add("is-visible"),
+        );
+      } else {
+        revealSections.forEach((section) =>
+          section.classList.add("scroll-reveal"),
+        );
+        const revealObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            });
+          },
+          {
+            rootMargin: "-45% 0px -45% 0px",
+          },
+        );
+        revealSections.forEach((section) => revealObserver.observe(section));
+      }
+
+      const updateHeaderVisibility = () => {
+        const currentScrollY = window.scrollY;
+        const scrollDifference = currentScrollY - previousScrollY;
+
+        const menuIsOpen = document.body.classList.contains("menu-open");
+        if (currentScrollY <= 40 || menuIsOpen) {
+          headerInner.classList.remove("is-hidden");
+          header.classList.toggle("is-scrolled", currentScrollY > 40 || menuIsOpen);
+        } else if (scrollDifference > 4) {
+          headerInner.classList.add("is-hidden");
+          header.classList.remove("is-scrolled");
+        } else if (scrollDifference < -4) {
+          headerInner.classList.remove("is-hidden");
+          header.classList.add("is-scrolled");
+        }
+
+        previousScrollY = currentScrollY;
+        scrollUpdateScheduled = false;
+      };
+
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (scrollUpdateScheduled) return;
+          scrollUpdateScheduled = true;
+          window.requestAnimationFrame(updateHeaderVisibility);
+        },
+        { passive: true },
+      );
 
       hamburgerBtn.addEventListener("click", () => {
+        headerInner.classList.remove("is-hidden");
+        header.classList.add("is-scrolled");
         mobileMenu.classList.add("active");
         document.body.classList.add("menu-open");
       });
@@ -4711,6 +6521,436 @@
 
         renderCategory(0);
       })();
-    </script>
+
+      (() => {
+        const tabs = Array.from(
+          document.querySelectorAll(".requirement-tab"),
+        );
+        const panels = Array.from(
+          document.querySelectorAll(".requirement-panel"),
+        );
+
+        const selectTab = (selectedIndex, focus = false) => {
+          tabs.forEach((tab, index) => {
+            const selected = index === selectedIndex;
+            tab.setAttribute("aria-selected", String(selected));
+            tab.tabIndex = selected ? 0 : -1;
+            panels[index].hidden = !selected;
+            if (selected && focus) tab.focus();
+          });
+        };
+
+        tabs.forEach((tab, index) => {
+          tab.addEventListener("click", () => selectTab(index));
+          tab.addEventListener("keydown", (event) => {
+            let nextIndex = null;
+            if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+              const direction = event.key === "ArrowRight" ? 1 : -1;
+              nextIndex = (index + direction + tabs.length) % tabs.length;
+            }
+            if (event.key === "Home") nextIndex = 0;
+            if (event.key === "End") nextIndex = tabs.length - 1;
+            if (nextIndex !== null) {
+              event.preventDefault();
+              selectTab(nextIndex, true);
+            }
+          });
+        });
+      })();
+
+      (async () => {
+        const fairSchedule = [
+          {
+            dates: [
+              "8월 31일 (월)",
+              "9월 1일 (화)",
+              "9월 2일 (수)",
+              "9월 3일 (목)",
+              "9월 4일 (금)",
+            ],
+            schools: [
+              ["KAIST"],
+              ["서울대학교", "서강대학교", "연세대학교"],
+              ["UNIST", "한양대학교"],
+              ["GIST"],
+              ["고려대학교", "성균관대학교(자연)"],
+            ],
+          },
+          {
+            dates: [
+              "9월 7일 (월)",
+              "9월 8일 (화)",
+              "9월 9일 (수)",
+              "",
+              "10월 7일 (수)",
+            ],
+            schools: [
+              ["KIST", "동국대학교"],
+              ["이화여자대학교", "중견기업박람회(대전)"],
+              ["POSTECH"],
+              [],
+              ["서울교육센터"],
+            ],
+          },
+        ];
+
+        const regionNames = ["서울", "경기", "강원", "경상", "충청", "전라"];
+
+        const expositionTabs = Array.from(
+          document.querySelectorAll(".exposition-tab"),
+        );
+        const expositionPanels = expositionTabs.map((tab) =>
+          document.getElementById(tab.getAttribute("aria-controls")),
+        );
+        const regionTabsContainer = document.getElementById(
+          "exposition-region-tabs",
+        );
+        const fairScheduleElement = document.getElementById(
+          "exposition-fair-schedule",
+        );
+        const campusScheduleElement = document.getElementById(
+          "exposition-campus-schedule",
+        );
+        let schoolDetailId = 0;
+        const weekdays = ["일", "월", "화", "수", "목", "금", "토"];
+        const weekdayIndices = {
+          일: 0,
+          월: 1,
+          화: 2,
+          수: 3,
+          목: 4,
+          금: 5,
+          토: 6,
+        };
+        const getDateKey = (date) =>
+          `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+        let regions;
+
+        try {
+          const response = await fetch("./data/campus_recruiting_date.json");
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+
+          const campusDates = await response.json();
+          if (!Array.isArray(campusDates)) {
+            throw new Error("일정 데이터 형식이 배열이 아닙니다.");
+          }
+
+          const events = campusDates.map((entry, index) => {
+            const requiredFields = ["지역", "날짜", "대학교", "장소", "시간"];
+            if (
+              !entry ||
+              requiredFields.some(
+                (field) =>
+                  typeof entry[field] !== "string" ||
+                  entry[field].trim() === "",
+              )
+            ) {
+              throw new Error(`${index + 1}번째 일정의 필수 정보가 없습니다.`);
+            }
+
+            const dateMatch = entry["날짜"].match(
+              /^(\d{1,2})월\s*(\d{1,2})일\s*\((.)\)$/,
+            );
+            if (!dateMatch || !(dateMatch[3] in weekdayIndices)) {
+              throw new Error(`일정 날짜 형식이 올바르지 않습니다: ${entry["날짜"]}`);
+            }
+
+            const [, monthText, dayText, weekday] = dateMatch;
+            const date = new Date(
+              2026,
+              Number(monthText) - 1,
+              Number(dayText),
+            );
+            if (
+              date.getMonth() !== Number(monthText) - 1 ||
+              date.getDate() !== Number(dayText) ||
+              date.getDay() !== weekdayIndices[weekday]
+            ) {
+              throw new Error(`일정 날짜가 올바르지 않습니다: ${entry["날짜"]}`);
+            }
+            if (!regionNames.includes(entry["지역"])) {
+              throw new Error(`알 수 없는 일정 지역입니다: ${entry["지역"]}`);
+            }
+
+            return {
+              region: entry["지역"],
+              date,
+              dateLabel: entry["날짜"],
+              school: entry["대학교"],
+              location: entry["장소"],
+              time: entry["시간"],
+            };
+          });
+
+          regions = regionNames.map((name) => {
+            const regionEvents = events
+              .filter((event) => event.region === name)
+              .sort((left, right) => left.date - right.date);
+            const weeks = new Map();
+
+            regionEvents.forEach((event) => {
+              const monday = new Date(event.date);
+              monday.setDate(monday.getDate() - ((monday.getDay() + 6) % 7));
+              const weekKey = getDateKey(monday);
+              if (!weeks.has(weekKey)) {
+                weeks.set(weekKey, { monday, events: [] });
+              }
+              weeks.get(weekKey).events.push(event);
+            });
+
+            const lastEvent = regionEvents.at(-1);
+            const lastWeekMonday = lastEvent
+              ? new Date(lastEvent.date)
+              : null;
+            if (lastWeekMonday) {
+              lastWeekMonday.setDate(
+                lastWeekMonday.getDate() -
+                  ((lastWeekMonday.getDay() + 6) % 7),
+              );
+            }
+            const lastWeekKey = lastWeekMonday
+              ? getDateKey(lastWeekMonday)
+              : null;
+
+            const scheduleWeeks = Array.from(weeks.entries())
+              .sort(([left], [right]) => left.localeCompare(right))
+              .map(([weekKey, week]) => {
+                const endDate = new Date(week.monday);
+                endDate.setDate(
+                  endDate.getDate() +
+                    (weekKey === lastWeekKey
+                      ? (lastEvent.date.getDay() + 6) % 7
+                      : 4),
+                );
+                const dates = [];
+                const schools = [];
+
+                for (
+                  let date = new Date(week.monday);
+                  date <= endDate;
+                  date.setDate(date.getDate() + 1)
+                ) {
+                  const dateKey = getDateKey(date);
+                  const dayEvents = week.events.filter(
+                    (event) => getDateKey(event.date) === dateKey,
+                  );
+                  dates.push(
+                    dayEvents[0]?.dateLabel ||
+                      `${date.getMonth() + 1}월 ${date.getDate()}일 (${weekdays[date.getDay()]})`,
+                  );
+                  schools.push(
+                    dayEvents.map((event) => ({
+                      name: event.school,
+                      location: event.location,
+                      time: event.time,
+                    })),
+                  );
+                }
+
+                return { dates, schools };
+              });
+
+            return { name, weeks: scheduleWeeks };
+          });
+        } catch (error) {
+          console.error("캠퍼스 일정 데이터를 불러오지 못했습니다.", error);
+          campusScheduleElement.textContent =
+            "캠퍼스 일정 데이터를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.";
+          return;
+        }
+
+        const createSchedule = (scheduleElement, weeks, labelledBy) => {
+          scheduleElement.replaceChildren();
+          if (labelledBy) {
+            scheduleElement.setAttribute("role", "tabpanel");
+            scheduleElement.setAttribute("aria-labelledby", labelledBy);
+          }
+
+          weeks.forEach((week) => {
+            const weekElement = document.createElement("section");
+            weekElement.className = "exposition-week";
+
+            const datesElement = document.createElement("div");
+            datesElement.className = "exposition-dates";
+            datesElement.setAttribute("aria-label", "일정 날짜");
+            const schoolsElement = document.createElement("div");
+            schoolsElement.className = "exposition-schools";
+
+            datesElement.style.setProperty(
+              "--exposition-day-count",
+              week.dates.length,
+            );
+            schoolsElement.style.setProperty(
+              "--exposition-day-count",
+              week.schools.length,
+            );
+            const { dates, schools } = week;
+
+            dates.forEach((date) => {
+              const dateElement = document.createElement("div");
+              dateElement.className = "exposition-date";
+              dateElement.textContent = date;
+              datesElement.append(dateElement);
+            });
+
+            schools.forEach((schoolNames, index) => {
+              const cell = document.createElement("div");
+              cell.className = "exposition-school-cell";
+              if (dates[index]) {
+                cell.setAttribute("aria-label", `${dates[index]} 일정`);
+              }
+              schoolNames.forEach((schoolEntry) => {
+                const schoolName =
+                  typeof schoolEntry === "string" ? schoolEntry : schoolEntry.name;
+                const school = document.createElement(
+                  typeof schoolEntry === "string" ? "span" : "button",
+                );
+                school.textContent = schoolName;
+                school.className = "exposition-school-button";
+                cell.append(school);
+
+                if (typeof schoolEntry === "string") return;
+
+                const detailId = `exposition-school-detail-${schoolDetailId++}`;
+                const detail = document.createElement("div");
+                school.type = "button";
+                school.setAttribute("aria-expanded", "false");
+                school.setAttribute("aria-controls", detailId);
+                detail.id = detailId;
+                detail.className = "exposition-school-detail";
+                detail.hidden = true;
+                detail.setAttribute("aria-live", "polite");
+
+                [
+                  ["장소", schoolEntry.location],
+                  ["시간", schoolEntry.time],
+                ].forEach(([label, value]) => {
+                  const item = document.createElement("div");
+                  const itemLabel = document.createElement("span");
+                  itemLabel.className = "exposition-school-detail-label";
+                  itemLabel.textContent = label;
+                  const itemValue = document.createElement("strong");
+                  itemValue.textContent = value;
+                  item.append(itemLabel, itemValue);
+                  detail.append(item);
+                });
+
+                school.addEventListener("click", () => {
+                  const isExpanded =
+                    school.getAttribute("aria-expanded") === "true";
+                  if (isExpanded) {
+                    school.setAttribute("aria-expanded", "false");
+                    detail.hidden = true;
+                    return;
+                  }
+
+                  scheduleElement
+                    .querySelectorAll(".exposition-school-button")
+                    .forEach((button) => {
+                      if (button === school) return;
+                      button.setAttribute("aria-expanded", "false");
+                      document.getElementById(
+                        button.getAttribute("aria-controls"),
+                      ).hidden = true;
+                    });
+                  school.setAttribute("aria-expanded", "true");
+                  detail.hidden = false;
+                });
+                cell.append(detail);
+              });
+              schoolsElement.append(cell);
+            });
+
+            weekElement.append(datesElement, schoolsElement);
+            scheduleElement.append(weekElement);
+          });
+        };
+
+        const regionTabs = regions.map((region, index) => {
+          const tab = document.createElement("button");
+          tab.className = "exposition-region-tab";
+          tab.id = `exposition-region-tab-${index}`;
+          tab.type = "button";
+          tab.setAttribute("role", "tab");
+          tab.setAttribute("aria-controls", "exposition-campus-schedule");
+          tab.setAttribute("aria-selected", String(index === 0));
+          tab.tabIndex = index === 0 ? 0 : -1;
+          tab.textContent = region.name;
+          regionTabsContainer.append(tab);
+          return tab;
+        });
+
+        const selectRegion = (regionIndex, focus = false) => {
+          regionTabs.forEach((tab, index) => {
+            const selected = index === regionIndex;
+            tab.setAttribute("aria-selected", String(selected));
+            tab.tabIndex = selected ? 0 : -1;
+            if (selected && focus) tab.focus();
+          });
+          createSchedule(
+            campusScheduleElement,
+            regions[regionIndex].weeks,
+            regionTabs[regionIndex].id,
+          );
+        };
+
+        const selectExpositionTab = (selectedIndex, focus = false) => {
+          expositionTabs.forEach((tab, index) => {
+            const selected = index === selectedIndex;
+            tab.setAttribute("aria-selected", String(selected));
+            tab.tabIndex = selected ? 0 : -1;
+            expositionPanels[index].hidden = !selected;
+            if (selected && focus) tab.focus();
+          });
+          if (selectedIndex === 1) {
+            const selectedRegionIndex = regionTabs.findIndex(
+              (tab) => tab.getAttribute("aria-selected") === "true",
+            );
+            selectRegion(Math.max(selectedRegionIndex, 0));
+          }
+        };
+
+        expositionTabs.forEach((tab, index) => {
+          tab.addEventListener("click", () => selectExpositionTab(index));
+          tab.addEventListener("keydown", (event) => {
+            let nextIndex = null;
+            if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+              const direction = event.key === "ArrowRight" ? 1 : -1;
+              nextIndex = (index + direction + expositionTabs.length) %
+                expositionTabs.length;
+            }
+            if (event.key === "Home") nextIndex = 0;
+            if (event.key === "End") nextIndex = expositionTabs.length - 1;
+            if (nextIndex !== null) {
+              event.preventDefault();
+              selectExpositionTab(nextIndex, true);
+            }
+          });
+        });
+
+        regionTabs.forEach((tab, index) => {
+          tab.addEventListener("click", () => selectRegion(index));
+          tab.addEventListener("keydown", (event) => {
+            let nextIndex = null;
+            if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+              const direction = event.key === "ArrowRight" ? 1 : -1;
+              nextIndex = (index + direction + regionTabs.length) %
+                regionTabs.length;
+            }
+            if (event.key === "Home") nextIndex = 0;
+            if (event.key === "End") nextIndex = regionTabs.length - 1;
+            if (nextIndex !== null) {
+              event.preventDefault();
+              selectRegion(nextIndex, true);
+            }
+          });
+        });
+
+        createSchedule(fairScheduleElement, fairSchedule);
+        selectRegion(0);
+      })();
+      </script>
   </body>
 </html>
