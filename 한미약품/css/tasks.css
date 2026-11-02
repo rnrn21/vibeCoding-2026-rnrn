@@ -1,0 +1,537 @@
+      .tasks {
+        --tasks-accent: #ff5b35;
+        overflow: hidden;
+        padding: 0 0 96px;
+        background: #ffffff;
+        color: #111111;
+      }
+
+      .tasks-hero {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        height: clamp(360px, 45vw, 514px);
+        overflow: hidden;
+        background: linear-gradient(180deg, #ffe1d9 0%, #fff3ef 72%, #ffffff 100%);
+      }
+
+      .tasks-hero::before {
+        position: absolute;
+        inset: 0 0 auto;
+        height: clamp(90px, 18vw, 174px);
+        background: url("../image/tasks_bg_title.png") center top / cover no-repeat;
+        content: "";
+      }
+
+      .tasks-character {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 50vw;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        border: 0;
+        transform: translateX(-50%);
+      }
+
+      .tasks-content {
+        width: min(100% - 64px, 1208px);
+        margin: 0 auto;
+      }
+
+      .tasks-intro {
+        margin: 100px 0 0;
+        text-align: center;
+      }
+
+      .tasks-title {
+        margin: 0;
+        font-size: clamp(28px, 3vw, 34px);
+        font-weight: 800;
+        line-height: 1.45;
+        letter-spacing: -0.04em;
+      }
+
+      .tasks-subtitle {
+        margin: 12px 0 0;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .tasks-tabs {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 48px 0 24px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .tasks-tabs::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tasks-tab {
+        flex: 1 0 auto;
+        min-width: 112px;
+        min-height: 76px;
+        padding: 12px 18px;
+        border: 0;
+        border-radius: 16px;
+        background: transparent;
+        color: #888888;
+        font-size: 20px;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          color 160ms ease,
+          background 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .tasks-tab[aria-selected="true"] {
+        background: #fff8f5;
+        box-shadow: 0 6px 16px rgba(90, 45, 28, 0.12);
+        color: var(--tasks-accent);
+      }
+
+      .tasks-departments {
+        border-top: 1px solid #dddddd;
+      }
+
+      .tasks-department {
+        border-bottom: 1px solid #dddddd;
+      }
+
+      .tasks-department-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        width: 100%;
+        min-height: 88px;
+        padding: 20px 44px;
+        border: 0;
+        background: transparent;
+        color: #858585;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .tasks-department-toggle[aria-expanded="true"] {
+        color: var(--tasks-accent);
+      }
+
+      .tasks-department-name {
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.4;
+      }
+
+      .tasks-count {
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-items: center;
+        justify-content: center;
+        min-width: 52px;
+        height: 32px;
+        padding: 0 14px;
+        border-radius: 999px;
+        background: var(--tasks-accent);
+        color: #ffffff;
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .tasks-department-panel {
+        padding: 0 44px 40px;
+      }
+
+      .tasks-role-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .tasks-role-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        width: 100%;
+        min-height: 88px;
+        padding: 22px 32px;
+        border: 1px solid #ffddd3;
+        border-radius: 22px;
+        background: linear-gradient(110deg, #fffaf8 0%, #ffffff 100%);
+        box-shadow: 0 6px 12px rgba(90, 45, 28, 0.08);
+        color: #111111;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.45;
+        text-align: left;
+        cursor: pointer;
+        transition:
+          transform 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .tasks-role-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(90, 45, 28, 0.12);
+      }
+
+      .tasks-role-arrow {
+        flex: 0 0 auto;
+        color: #858585;
+        font-size: 28px;
+        font-weight: 400;
+      }
+
+      .tasks-modal {
+        position: fixed;
+        inset: 0;
+        width: min(824px, calc(100% - 48px));
+        max-width: none;
+        max-height: calc(100dvh - 48px);
+        margin: auto;
+        padding: 0;
+        overflow: auto;
+        border: 0;
+        border-radius: 20px;
+        background: #ffffff;
+        color: #111111;
+      }
+
+      .tasks-modal::backdrop {
+        background: rgba(0, 0, 0, 0.5);
+      }
+
+      .tasks-modal-banner {
+        position: relative;
+        height: 164px;
+        background: url("../image/tasks_rnd_bg.jpg") center / cover no-repeat;
+      }
+
+      .tasks-modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border: 0;
+        border-radius: 50%;
+        background: #ff8a6c;
+        color: #ffffff;
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 1;
+        cursor: pointer;
+      }
+
+      .tasks-modal-content {
+        padding: 58px 62px 64px;
+      }
+
+      .tasks-modal-heading {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 10px 18px;
+        margin: 0;
+      }
+
+      .tasks-modal-title {
+        margin: 0;
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.4;
+      }
+
+      .tasks-modal-category {
+        color: var(--tasks-accent);
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .tasks-modal-unit {
+        color: #888888;
+        font-size: 16px;
+      }
+
+      .tasks-modal-career {
+        margin: 4px 0 0;
+        font-size: 14px;
+      }
+
+      .tasks-modal-section {
+        margin-top: 62px;
+      }
+
+      .tasks-modal-section + .tasks-modal-section {
+        margin-top: 40px;
+        padding-top: 38px;
+        border-top: 1px solid #dddddd;
+      }
+
+      .tasks-modal-section-title {
+        margin: 0 0 18px;
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .tasks-modal-list {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .tasks-modal-list li {
+        position: relative;
+        padding-left: 18px;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .tasks-modal-list li::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: var(--tasks-accent);
+        content: "•";
+        font-weight: 700;
+      }
+
+      @media screen and (min-width: 601px) and (max-width: 1024px) {
+        .tasks {
+          padding-bottom: 80px;
+        }
+
+        .tasks-hero {
+          height: clamp(360px, 60.5vw, 465px);
+        }
+
+        .tasks-character {
+          width: 50vw;
+        }
+
+        .tasks-content {
+          width: calc(100% - 56px);
+        }
+
+        .tasks-intro {
+          margin-top: 104px;
+        }
+
+        .tasks-title {
+          font-size: 30px;
+        }
+
+        .tasks-tabs {
+          gap: 4px;
+          margin-top: 48px;
+        }
+
+        .tasks-tab {
+          min-width: 0;
+          min-height: 64px;
+          padding: 10px 12px;
+          font-size: 17px;
+        }
+
+        .tasks-department-toggle {
+          min-height: 72px;
+          padding: 18px 24px;
+        }
+
+        .tasks-department-name {
+          font-size: 23px;
+        }
+
+        .tasks-department-panel {
+          padding: 0 24px 32px;
+        }
+
+        .tasks-role-list {
+          gap: 16px;
+        }
+
+        .tasks-role-button {
+          min-height: 78px;
+          padding: 18px 22px;
+          border-radius: 18px;
+          font-size: 17px;
+        }
+
+        .tasks-modal-content {
+          padding: 48px 48px 56px;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .tasks {
+          padding-bottom: 64px;
+        }
+
+        .tasks-hero {
+          height: 280px;
+        }
+
+        .tasks-hero::before {
+          height: 90px;
+          background-size: auto 90px;
+        }
+
+        .tasks-character {
+          width: 50vw;
+          height: auto;
+          max-width: none;
+          max-height: 100%;
+          transform: translateX(-50%);
+        }
+
+        .tasks-content {
+          width: calc(100% - 30px);
+        }
+
+        .tasks-intro {
+          margin-top: 60px;
+        }
+
+        .tasks-title {
+          font-size: 20px;
+          line-height: 1.45;
+        }
+
+        .tasks-subtitle {
+          max-width: 340px;
+          margin: 12px auto 0;
+          font-size: 12px;
+          line-height: 1.65;
+        }
+
+        .tasks-tabs {
+          justify-content: flex-start;
+          gap: 8px;
+          margin: 32px -15px 16px;
+          padding: 0 15px 10px;
+          overscroll-behavior-x: contain;
+          scroll-snap-type: x mandatory;
+        }
+
+        .tasks-tab {
+          flex: 0 0 76px;
+          min-width: 76px;
+          min-height: 48px;
+          padding: 8px 10px;
+          border-radius: 13px;
+          font-size: 13px;
+          scroll-snap-align: start;
+        }
+
+        .tasks-department-toggle {
+          min-height: 52px;
+          gap: 10px;
+          padding: 13px 15px;
+        }
+
+        .tasks-department-name {
+          font-size: 14px;
+          line-height: 1.4;
+        }
+
+        .tasks-count {
+          min-width: 23px;
+          height: 15px;
+          padding: 0 5px;
+          font-size: 11px;
+        }
+
+        .tasks-department-panel {
+          padding: 0 14px 22px;
+        }
+
+        .tasks-role-list {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 10px;
+        }
+
+        .tasks-role-button {
+          min-height: 60px;
+          gap: 12px;
+          padding: 16px 18px;
+          border-radius: 16px;
+          font-size: 15px;
+        }
+
+        .tasks-role-arrow {
+          font-size: 22px;
+        }
+
+        .tasks-modal {
+          width: calc(100% - 24px);
+          max-height: calc(100dvh - 24px);
+          border-radius: 16px;
+        }
+
+        .tasks-modal-banner {
+          height: 118px;
+        }
+
+        .tasks-modal-close {
+          top: 12px;
+          right: 12px;
+          width: 36px;
+          height: 36px;
+          font-size: 26px;
+        }
+
+        .tasks-modal-content {
+          padding: 28px 24px 36px;
+        }
+
+        .tasks-modal-title {
+          font-size: 20px;
+        }
+
+        .tasks-modal-category,
+        .tasks-modal-unit {
+          font-size: 13px;
+        }
+
+        .tasks-modal-career {
+          font-size: 12px;
+        }
+
+        .tasks-modal-section {
+          margin-top: 36px;
+        }
+
+        .tasks-modal-section + .tasks-modal-section {
+          margin-top: 28px;
+          padding-top: 26px;
+        }
+
+        .tasks-modal-section-title {
+          margin-bottom: 14px;
+          font-size: 17px;
+        }
+
+        .tasks-modal-list {
+          gap: 9px;
+        }
+
+        .tasks-modal-list li {
+          font-size: 13px;
+        }
+      }
+

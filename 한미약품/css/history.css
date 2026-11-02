@@ -1,0 +1,553 @@
+      /* ==========================================
+           4. NEW SECTION: .history-section (아코디언 및 뷰포트 높이 제어)
+           ========================================== */
+      .history-section {
+        --history-color: #ff5d32;
+        --history-pad-x: clamp(32px, 6.94vw, 100px);
+        --history-col-gap: clamp(100px, 16.6vw, 200px);
+        --history-period-gap: clamp(100px, 18vw, 220px);
+        --history-head-gap: clamp(28px, 3.9vw, 56px);
+        --history-row-gap: clamp(24px, 2.9vw, 40px);
+        --history-item-gap: clamp(14px, 1.95vw, 28px);
+        --history-count-size: clamp(100px, 14vw, 180px);
+        --history-line-w: clamp(12px, 1.7vw, 24px);
+        --history-title-size: clamp(32px, 3.8vw, 44px);
+        --history-label-size: clamp(30px, 3.9vw, 44px);
+        --history-headline-size: clamp(20px, 2.34vw, 26px);
+        --history-year-size: clamp(18px, 2vw, 24px);
+        --history-year-w: calc(var(--history-year-size) * 2.6);
+        --history-desc-size: clamp(14px, 1.52vw, 17px);
+        --history-closing-sm: clamp(13px, 1.52vw, 17px);
+        --history-closing-lg: clamp(18px, 2.15vw, 31px);
+
+        position: relative;
+        width: 100%;
+        background: #ffffff;
+        color: #111111;
+      }
+
+      .history-collapse {
+        position: relative;
+        overflow: hidden;
+        max-height: 100vh;
+        max-height: 100dvh;
+        transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .history-section.is-expanded .history-collapse {
+        max-height: var(--history-full-h, none);
+        overflow: visible;
+      }
+
+      .history-section.is-collapsed .history-collapse {
+        overflow: hidden;
+      }
+
+      .history-container {
+        display: flow-root;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: clamp(80px, 11vw, 160px) var(--history-pad-x) 0;
+      }
+
+      .history-title {
+        margin: 0 0 clamp(24px, 3vw, 44px);
+        text-align: center;
+        font-size: var(--history-title-size);
+        font-weight: 700;
+        line-height: 1.35;
+        letter-spacing: -0.03em;
+        word-break: keep-all;
+      }
+
+      /* 타임라인 컨테이너 기준 설정 */
+      .history-timeline {
+        position: relative;
+        isolation: isolate;
+      }
+
+      /* 1. 중앙 선을 픽셀 및 마진 기반으로 안전하게 고정 */
+      .history-timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        /* 상단 선이 53th 아래 딱 붙도록 계수를 높임 (예: 0.85) */
+        top: calc(var(--history-count-size) * 0.85);
+        /* 하단 선이 100th 위에서 딱 멈추도록 계수를 높임 (예: 0.80) */
+        bottom: calc(var(--history-count-size) * 0.8);
+        width: var(--history-line-w);
+        transform: translateX(-50%);
+        background: var(--history-color);
+        z-index: 0;
+      }
+
+      /* 2. 숫자 크기 최적화 및 안정적인 레이아웃 설정 */
+      .history-section {
+        --history-count-size: clamp(80px, 10vw, 130px);
+      }
+
+      .history-count {
+        position: relative;
+        z-index: 2;
+        margin: 0;
+        text-align: center;
+        font-size: var(--history-count-size);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -0.07em;
+        color: var(--history-color);
+      }
+
+      /* 3. 상단 53th와 하단 100th 주변 여백을 주어 선이 자연스럽게 만나도록 조정 */
+      .history-count--start {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .history-count--end {
+        margin-top: 20px;
+        padding-left: 0;
+        text-align: center;
+      }
+      .history-period {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        column-gap: var(--history-col-gap);
+        row-gap: var(--history-head-gap);
+        align-items: start;
+      }
+
+      .history-period + .history-period {
+        margin-top: var(--history-period-gap);
+      }
+
+      .history-period > *:not(.history-deco) {
+        position: relative;
+        z-index: 1;
+      }
+
+      .history-period-label {
+        grid-area: label;
+      }
+      .history-period-headline {
+        grid-area: headline;
+      }
+      .history-list {
+        grid-area: list;
+      }
+      .history-visual {
+        grid-area: visual;
+      }
+
+      .history-period--left {
+        grid-template-areas:
+          "headline label"
+          "list     visual";
+      }
+
+      .history-period--right {
+        grid-template-areas:
+          "label  list"
+          "visual list";
+      }
+
+      .history-period-label {
+        margin: 0;
+        align-self: center;
+        font-size: var(--history-label-size);
+        font-weight: 800;
+        line-height: 1.2;
+        letter-spacing: -0.03em;
+        color: var(--history-color);
+      }
+
+      .history-period-headline {
+        margin: 0;
+        align-self: center;
+        font-size: var(--history-headline-size);
+        font-weight: 700;
+        line-height: 1.4;
+        letter-spacing: -0.02em;
+        word-break: keep-all;
+      }
+
+      .history-period--left .history-period-headline {
+        justify-self: end;
+        text-align: right;
+      }
+      .history-period--left .history-period-label {
+        justify-self: start;
+      }
+      .history-period--left .history-visual {
+        justify-self: start;
+      }
+      .history-period--right .history-period-label {
+        justify-self: end;
+      }
+      .history-period--right .history-visual {
+        justify-self: end;
+      }
+
+      .history-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--history-row-gap);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        max-width: 100%;
+      }
+
+      .history-item {
+        display: flex;
+        align-items: center;
+        gap: var(--history-item-gap);
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .history-item.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .history-year {
+        flex: 0 0 var(--history-year-w);
+        font-size: var(--history-year-size);
+        font-weight: 700;
+        line-height: 1.2;
+        color: #111111;
+      }
+
+      .history-desc {
+        min-width: 0;
+        font-size: var(--history-desc-size);
+        font-weight: 500;
+        line-height: 1.55;
+        letter-spacing: -0.02em;
+        word-break: keep-all;
+      }
+
+      .history-desc-line {
+        display: block;
+      }
+
+      .history-period--left .history-item {
+        flex-direction: row-reverse;
+      }
+      .history-period--left .history-year {
+        text-align: right;
+      }
+      .history-period--left .history-desc {
+        text-align: right;
+      }
+
+      .history-period--right .history-year {
+        text-align: left;
+      }
+      .history-period--right .history-desc {
+        text-align: left;
+      }
+
+      .history-list::after {
+        content: "";
+        flex: none;
+        width: 10px;
+        height: 10px;
+        margin-top: 8px;
+        margin-bottom: 40px;
+        border-radius: 50%;
+        background: var(--history-color);
+        box-shadow:
+          0 20px 0 rgba(255, 93, 50, 0.45),
+          0 40px 0 rgba(255, 93, 50, 0.2);
+      }
+
+      .history-period--left .history-list::after {
+        align-self: flex-end;
+        margin-right: calc(var(--history-year-w) / 2 - 5px);
+      }
+
+      .history-period--right .history-list::after {
+        align-self: flex-start;
+        margin-left: calc(var(--history-year-w) / 2 - 5px);
+      }
+
+      .history-visual {
+        margin: 0;
+        width: 100%;
+        max-width: min(100%, var(--visual-w, 100%));
+      }
+
+      .history-visual img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .history-period--p1 {
+        --visual-w: 410px;
+      }
+      .history-period--p2 {
+        --visual-w: 450px;
+      }
+      .history-period--p3 {
+        --visual-w: 530px;
+      }
+      .history-period--p4 {
+        --visual-w: 450px;
+      }
+      .history-period--p5 {
+        --visual-w: 400px;
+      }
+
+      .history-deco {
+        position: absolute;
+        z-index: 0;
+        height: auto;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .history-deco--sparkle {
+        left: 80%;
+        top: 0;
+        width: 14%;
+      }
+      /* 1. 비커 이미지 크기 키우기 (기존 10.5% 등에서 18~22% 수준으로 확대) */
+      .history-deco--beaker {
+        left: -2%;
+        top: 42%;
+        width: 22%; /* 크기를 기존보다 키움 */
+        max-width: 260px; /* 최대 크기 제한 */
+        height: auto;
+        animation: floatingBeaker 4s ease-in-out infinite; /* 위아래로 둥둥 뜨는 애니메이션 적용 */
+        z-index: 1;
+      }
+
+      /* 2. 위아래로 둥둥 떠있는 제자리 애니메이션 정의 */
+      @keyframes floatingBeaker {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(
+            -12px
+          ); /* 위로 12px 이동했다가 제자리로 돌아옴 */
+        }
+      }
+
+      /* 3. 태블릿 및 모바일 화면(1024px 이하)에서는 비커 이미지 숨기기 */
+      @media screen and (max-width: 1024px) {
+        .history-deco--beaker {
+          display: none !important;
+        }
+      }
+      .history-deco--blur-blue {
+        right: -7%;
+        top: 12%;
+        width: 16%;
+      }
+      .history-deco--microscope {
+        right: -1%;
+        top: 66%;
+        width: 13%;
+      }
+      .history-deco--blur-gray {
+        left: -8%;
+        top: 80%;
+        width: 14%;
+      }
+      .history-deco--molecule {
+        right: -6%;
+        top: 39%;
+        width: 15.5%;
+      }
+      .history-deco--mascot {
+        left: 0;
+        top: -110px;
+        width: 13%;
+      }
+
+      .history-closing {
+        position: relative;
+        z-index: 1;
+        margin-top: clamp(40px, 9vw, 130px);
+        padding: clamp(20px, 3vw, 40px) 0 clamp(60px, 8vw, 120px);
+        text-align: center;
+        background: radial-gradient(
+          ellipse 50% 70% at 50% 60%,
+          rgba(255, 235, 240, 0.9) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+      }
+
+      .history-closing-text {
+        margin: 0 0 clamp(10px, 1.4vw, 20px);
+        font-size: var(--history-closing-sm);
+        font-weight: 500;
+        line-height: 1.6;
+        letter-spacing: -0.02em;
+        word-break: keep-all;
+      }
+
+      .history-closing-lead {
+        margin: 0;
+        font-size: var(--history-closing-lg);
+        font-weight: 700;
+        line-height: 1.5;
+        letter-spacing: -0.03em;
+        word-break: keep-all;
+      }
+
+      .history-closing-line {
+        display: block;
+      }
+
+      .history-toggle-wrap {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        padding: 8px 0 clamp(60px, 8vw, 100px);
+        background: #ffffff;
+      }
+
+      .history-toggle-wrap[hidden] {
+        display: none;
+      }
+
+      .history-toggle-wrap::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 100%;
+        height: clamp(120px, 14vw, 200px);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0) 0%,
+          #ffffff 100%
+        );
+        opacity: 1;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+      }
+
+      .history-section.is-expanded .history-toggle-wrap::before {
+        opacity: 0;
+      }
+
+      .history-toggle {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 12px 24px;
+        border: 0;
+        background: transparent;
+        color: #333333;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+
+      .history-toggle:focus-visible {
+        outline: 2px solid var(--history-color);
+        outline-offset: 4px;
+        border-radius: 8px;
+      }
+
+      .history-toggle-icon {
+        transition: transform 0.3s ease;
+      }
+
+      .history-toggle[aria-expanded="true"] .history-toggle-icon {
+        transform: rotate(180deg);
+      }
+
+      @media screen and (max-width: 1024px) {
+        .history-section {
+          --history-pad-x: 40px;
+        }
+        .history-deco {
+          display: none;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .history-section {
+          --history-pad-x: 20px;
+          --history-period-gap: 56px;
+          --history-head-gap: 20px;
+          --history-row-gap: 18px;
+          --history-item-gap: 12px;
+          --history-count-size: clamp(88px, 27vw, 120px);
+          --history-title-size: clamp(18px, 5.6vw, 22px);
+          --history-label-size: 20px;
+          --history-headline-size: 16px;
+          --history-year-size: 15px;
+          --history-desc-size: 13px;
+          --history-closing-sm: 12px;
+          --history-closing-lg: 15px;
+        }
+
+        .history-container {
+          padding-top: 56px;
+        }
+
+        .history-timeline::before {
+          content: none;
+        }
+
+        .history-count--start {
+          margin-bottom: 40px;
+        }
+        .history-count--end {
+          padding-left: 0;
+        }
+
+        .history-period {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .history-period--left {
+          align-items: flex-end;
+        }
+        .history-period--right {
+          align-items: flex-start;
+        }
+
+        .history-period-label {
+          margin-bottom: 12px;
+        }
+        .history-period-headline {
+          margin-bottom: 20px;
+        }
+        .history-visual {
+          margin-top: 24px;
+        }
+
+        .history-period--p1 {
+          --visual-w: 86%;
+        }
+        .history-period--p2 {
+          --visual-w: 70%;
+        }
+        .history-period--p3 {
+          --visual-w: 80%;
+        }
+        .history-period--p4 {
+          --visual-w: 88%;
+        }
+        .history-period--p5 {
+          --visual-w: 70%;
+        }
+      }
+

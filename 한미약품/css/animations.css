@@ -1,0 +1,26 @@
+      .updown {
+  animation: move-updown 2s ease-in-out infinite;
+}
+
+.leftright {
+  animation: move-leftright 2s ease-in-out infinite;
+}
+
+.bigsmall {
+  animation: move-bigsmall 2s ease-in-out infinite;
+}
+
+@keyframes move-updown {
+  0%, 100% { transform: translateY(-10%); }
+  50% { transform: translateY(10%); }
+}
+
+@keyframes move-leftright {
+  0%, 100% { transform: translateX(-10%); }
+  50% { transform: translateX(10%); }
+}
+
+@keyframes move-bigsmall {
+  0%, 100% { transform: scale(0.9); }
+  50% { transform: scale(1.1); }
+}

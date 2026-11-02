@@ -1,0 +1,348 @@
+      /* 회사 복지 */
+      .welfare {
+        --welfare-accent: #ff5d3d;
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+        width: 100%;
+        padding: 82px 0 108px;
+        background: #ffffff;
+        color: #111111;
+      }
+
+      .welfare-container {
+        position: relative;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 clamp(32px, 5.5vw, 80px);
+      }
+
+      .welfare-header {
+        position: relative;
+        top: auto;
+        left: auto;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: auto;
+        height: auto;
+        margin: 0 0 44px;
+        text-align: center;
+      }
+
+      .welfare-title {
+        margin: 0;
+        font-size: clamp(28px, 3.2vw, 36px);
+        font-weight: 800;
+        line-height: 1.35;
+        letter-spacing: -0.04em;
+      }
+
+      .welfare-subtitle {
+        margin: 12px 0 0;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.6;
+      }
+
+      .welfare-character,
+      .welfare-cloud {
+        position: absolute;
+        z-index: 0;
+        height: auto;
+        object-fit: contain;
+        pointer-events: none;
+      }
+
+      .welfare-character {
+        top: -50px;
+        right: 0;
+        width: clamp(112px, 17vw, 156px);
+      }
+
+      .welfare-cloud {
+        bottom: -80px;
+        left: max(0px, calc((100% - 1440px) / 2));
+        width: clamp(120px, 17vw, 170px);
+      }
+
+      .welfare-list {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        max-height: 412px;
+        margin: 0;
+        padding: 0 10px 0 0;
+        overflow-y: auto;
+        scrollbar-color: var(--welfare-accent) #f1f1f1;
+        scrollbar-width: thin;
+      }
+
+      .welfare-group {
+        min-width: 0;
+      }
+
+      .welfare-group-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 10px;
+        margin: 0 0 16px;
+      }
+
+      .welfare-group-title {
+        flex: 0 1 auto;
+        margin: 0;
+        color: var(--welfare-accent);
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.45;
+      }
+
+      .welfare-group-description {
+        min-width: 0;
+        margin: 0;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .welfare-group-items {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-rows: minmax(74px, auto);
+        gap: 10px 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .welfare-list::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      .welfare-list::-webkit-scrollbar-track {
+        border-radius: 999px;
+        background: #f1f1f1;
+      }
+
+      .welfare-list::-webkit-scrollbar-thumb {
+        border-radius: 999px;
+        background: var(--welfare-accent);
+      }
+
+      .welfare-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        min-width: 0;
+        min-height: 74px;
+        padding: 12px 18px;
+        border: 1px solid #ffe2da;
+        border-radius: 14px;
+        background: #fffdfc;
+        box-shadow: 0 3px 6px rgba(90, 45, 28, 0.08);
+      }
+
+      .welfare-card-content {
+        min-width: 0;
+      }
+
+      .welfare-card-title {
+        margin: 0;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.4;
+      }
+
+      .welfare-card-description {
+        margin: 4px 0 0;
+        color: #555555;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 1.45;
+        word-break: keep-all;
+      }
+
+      .welfare-card-icon {
+        flex: 0 0 42px;
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+      }
+
+      .welfare-card-symbol {
+        display: grid;
+        flex: 0 0 42px;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        font-size: 32px;
+        line-height: 1;
+      }
+
+      @media screen and (min-width: 601px) and (max-width: 1024px) {
+        .welfare {
+          padding: 104px 0 100px;
+        }
+
+        .welfare-container {
+          padding: 0 30px;
+        }
+
+        .welfare-header {
+          margin-bottom: 46px;
+        }
+
+        .welfare-title {
+          font-size: 32px;
+        }
+
+        .welfare-subtitle {
+          font-size: 15px;
+        }
+
+        .welfare-character {
+          top: -76px;
+          right: 0;
+          width: 150px;
+        }
+
+        .welfare-list {
+          max-height: 480px;
+          padding-right: 12px;
+        }
+
+        .welfare-group-items {
+          grid-template-columns: minmax(0, 1fr);
+          grid-auto-rows: minmax(83px, auto);
+          gap: 12px;
+        }
+
+        .welfare-card {
+          min-height: 83px;
+          padding: 14px 18px;
+        }
+
+        .welfare-card-title {
+          font-size: 14px;
+        }
+
+        .welfare-card-description {
+          font-size: 11px;
+        }
+
+        .welfare-card-icon {
+          flex-basis: 48px;
+          width: 48px;
+          height: 48px;
+        }
+
+        .welfare-card-symbol {
+          flex-basis: 48px;
+          width: 48px;
+          height: 48px;
+        }
+      }
+
+      @media screen and (max-width: 600px) {
+        .welfare {
+          padding: 76px 0 100px;
+        }
+
+        .welfare-container {
+          max-width: 520px;
+          padding: 0 20px;
+        }
+
+        .welfare-header {
+          margin: 0 0 38px;
+          padding: 0 12px;
+        }
+
+        .welfare-title {
+          font-size: clamp(24px, 6.4vw, 28px);
+          line-height: 1.35;
+        }
+
+        .welfare-subtitle {
+          margin-top: 10px;
+          font-size: 13px;
+        }
+
+        .welfare-character {
+          top: -38px;
+          right: 4px;
+          width: clamp(82px, 22vw, 104px);
+        }
+
+        .welfare-cloud {
+          bottom: -107px;
+          left: 12px;
+          width: 116px;
+        }
+
+        .welfare-list {
+          max-height: 468px;
+        }
+
+        .welfare-group {
+          padding: 0 2px;
+        }
+
+        .welfare-group-header {
+          display: block;
+          margin-bottom: 14px;
+        }
+
+        .welfare-group-title {
+          font-size: 17px;
+        }
+
+        .welfare-group-description {
+          margin-top: 4px;
+          font-size: 11px;
+        }
+
+        .welfare-group-items {
+          grid-template-columns: minmax(0, 1fr);
+          grid-auto-rows: minmax(108px, auto);
+          gap: 12px;
+        }
+
+        .welfare-card {
+          min-height: 108px;
+          gap: 12px;
+          padding: 16px 18px;
+          border-radius: 17px;
+        }
+
+        .welfare-card-title {
+          font-size: 16px;
+        }
+
+        .welfare-card-description {
+          margin-top: 8px;
+          font-size: 12px;
+          line-height: 1.5;
+        }
+
+        .welfare-card-icon {
+          flex-basis: 50px;
+          width: 50px;
+          height: 50px;
+        }
+
+        .welfare-card-symbol {
+          flex-basis: 50px;
+          width: 50px;
+          height: 50px;
+          font-size: 36px;
+        }
+      }
+

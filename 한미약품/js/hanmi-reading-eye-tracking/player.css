@@ -1,0 +1,7 @@
+.hanmi-walker{position:relative;width:100%;max-width:1200px;margin-inline:auto;isolation:isolate}
+.hanmi-walker canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;touch-action:pan-y}
+.hanmi-walker [data-status]{position:absolute;top:8px;left:50%;transform:translateX(-50%);font:13px/1.6 system-ui,sans-serif;color:#345f6d;background:#ffffffeb;padding:6px 12px;border-radius:20px;max-width:90%;text-align:center}
+.hanmi-walker [data-status][hidden]{display:none}
+.hanmi-walker .walker-controls{display:flex;justify-content:center;align-items:center;gap:20px;padding:16px;font:14px/1.5 system-ui,sans-serif;color:#285769}
+.hanmi-walker button{font:inherit;color:inherit;background:#fff;border:1px solid #bfd8df;border-radius:24px;padding:8px 20px;cursor:pointer}
+.hanmi-walker input{accent-color:#187e9a}

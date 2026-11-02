@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>한미 돋보기 캐릭터 · 마우스 시선 추적</title><link rel="stylesheet" href="./player.css"><style>body{margin:0;background:#f4f0ff;color:#174c65;font-family:system-ui,sans-serif}header{text-align:center;padding:48px 20px 0}h1{font-size:clamp(23px,4vw,38px);margin:0 0 12px;letter-spacing:-1px}p{font-size:15px;color:#52798a;margin:0}main{max-width:1200px;margin:auto}footer{text-align:center;font-size:12px;color:#668a9b;padding:24px}canvas{outline-offset:-3px}</style></head><body>
+<header><h1>한미 생활을 더 즐겁게 만드는 방법</h1><p>마우스를 움직이면 캐릭터가 바라봅니다.</p></header>
+<main><section class="hanmi-walker" data-hanmi-walker aria-label="돋보기를 든 캐릭터">
+<canvas width="1920" height="1080" role="img" aria-label="마우스를 바라보며 돋보기를 든 캐릭터"></canvas>
+<span data-status role="status">이미지 준비 중</span>
+<div class="walker-controls"><button type="button" data-pause aria-pressed="false">일시정지</button><label><input type="checkbox" data-track checked> 시선 추적</label></div>
+</section></main><footer>원본 PNG 시퀀스 + Canvas 눈동자 합성</footer>
+<script src="./metadata-v3.js"></script><script src="./player-v3.js"></script></body></html>

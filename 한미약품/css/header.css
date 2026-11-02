@@ -1,0 +1,102 @@
+      /* Top Header */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: transparent;
+        transition:
+          background-color 220ms ease,
+          box-shadow 220ms ease;
+      }
+
+      header.is-scrolled {
+        background: #ffffff;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      .header-inner {
+        width: 100%;
+        max-width: 1440px;
+        height: 80px;
+        padding: 0 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          transform 280ms ease,
+          opacity 220ms ease;
+      }
+
+      .header-inner.is-hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-100%);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .header-inner {
+          transition: none;
+        }
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 32px;
+        object-fit: contain;
+      }
+
+      /* Desktop Navigation */
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .nav-menu a {
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 16px;
+        color: #000000;
+        transition: color 0.2s ease;
+      }
+
+      .nav-menu a:hover {
+        color: #e60012;
+      }
+
+      .btn-apply {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 28px;
+        background: #e60012;
+        color: #ffffff;
+        border-radius: 500px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        transition: background 0.2s ease;
+      }
+
+      .btn-apply:hover {
+        background: #c50010;
+      }
+
+      /* Mobile Hamburger & Overlay (Desktop에서 숨김) */
+      .hamburger-btn,
+      .mobile-menu-overlay {
+        display: none;
+      }
+
